@@ -11,6 +11,7 @@ import {
   Github,
   Twitter,
   ChevronRight,
+  Languages,
 } from "lucide-react";
 
 // ── 서비스 데이터 ──────────────────────────────────────────
@@ -18,32 +19,32 @@ const services = [
   {
     name: "Trend Scouter",
     description:
-      "전 세계 비즈니스 트렌드를 실시간 수집·분석하여 한국 창업가에게 즉시 실행 가능한 기회 리포트를 제공합니다.",
+      "글로벌 비즈니스 트렌드를 실시간 수집·분석하여 한국 시장에 최적화된 기회 리포트를 제공합니다.",
     status: "운영중",
     statusColor: "bg-emerald-100 text-emerald-700",
     href: "https://trendscouter.gonsuit.com",
     icon: TrendingUp,
-    tags: ["AI 분석", "트렌드", "SaaS"],
+    tags: ["트렌드 분석", "AI 인사이트", "SaaS"],
   },
   {
-    name: "AI News",
+    name: "AI News Engine",
     description:
-      "AI·테크 업계 주요 뉴스를 매일 큐레이션하고 한국 창업가 관점의 인사이트를 자동으로 생성합니다.",
-    status: "베타",
+      "대규모 언어 모델을 활용하여 방대한 테크 뉴스를 실시간 요약하고 비즈니스 인사이트를 도출합니다.",
+    status: "Beta",
     statusColor: "bg-indigo-100 text-indigo-700",
-    href: "/ai-news",
+    href: "#",
     icon: Newspaper,
-    tags: ["AI", "뉴스", "큐레이션"],
+    tags: ["AI 요약", "비즈니스 지능", "자동화"],
   },
   {
-    name: "Coming Soon",
+    name: "Custom SaaS Builder",
     description:
-      "다음 마이크로 SaaS 아이디어를 Trend Scouter로 검증 중입니다. 뉴스레터를 구독하면 가장 먼저 알려드립니다.",
-    status: "준비중",
-    statusColor: "bg-zinc-100 text-zinc-500",
-    href: "#newsletter",
+      "고객의 아이디어를 빠르게 수익화할 수 있는 맞춤형 마이크로 SaaS 및 웹 솔루션을 개발합니다.",
+    status: "상담가능",
+    statusColor: "bg-amber-100 text-amber-700",
+    href: "#",
     icon: Zap,
-    tags: ["예정"],
+    tags: ["맞춤형 개발", "Fast MVP", "자동화"],
   },
 ];
 
@@ -102,12 +103,12 @@ export default function Home() {
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
               <Zap className="h-4 w-4 text-primary-foreground" />
             </div>
-            <span className="text-lg font-bold tracking-tight">gonsuit</span>
+            <span className="text-lg font-bold tracking-tight">고앤슈트</span>
           </Link>
 
           <nav className="hidden items-center gap-8 md:flex">
             {[
-              { label: "서비스", href: "#services" },
+              { label: "개발 상품", href: "#services" },
               { label: "Lab", href: "/lab" },
               { label: "Resources", href: "#resources" },
               { label: "About", href: "/about" },
@@ -122,13 +123,19 @@ export default function Home() {
             ))}
           </nav>
 
-          <Link
-            href="#newsletter"
-            className="hidden items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 md:flex"
-          >
-            <Mail className="h-4 w-4" />
-            뉴스레터 구독
-          </Link>
+          <div className="flex items-center gap-4">
+            <button className="hidden items-center gap-2 rounded-lg border border-border px-3 py-1.5 text-sm font-medium transition-colors hover:bg-muted md:flex">
+              <Languages className="h-4 w-4" />
+              <span>KR / EN</span>
+            </button>
+            <Link
+              href="/contact"
+              className="flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+            >
+              <Mail className="h-4 w-4" />
+              문의하기
+            </Link>
+          </div>
         </div>
       </header>
 
@@ -146,19 +153,18 @@ export default function Home() {
             </div>
 
             <h1 className="mx-auto mt-6 max-w-3xl text-5xl font-bold leading-tight tracking-tight text-foreground md:text-6xl">
-              글로벌 트렌드를
+              상상을 현실로 만드는
               <br />
               <span className="bg-gradient-to-r from-primary to-indigo-400 bg-clip-text text-transparent">
-                한국 기회
+                기술의 가치
               </span>
-              로 번역합니다
+              , 고앤슈트
             </h1>
 
             <p className="mx-auto mt-6 max-w-xl text-lg text-muted-foreground">
-              1인 창업가를 위한 마이크로 SaaS 허브. 빠른 MVP 출시 →
-              데이터 기반 수익성 판단 → 자원 집중의 사이클로
+              고객의 니즈에 맞춘 최적화된 마이크로 SaaS 및 AI 솔루션을 개발합니다.
               <br className="hidden md:block" />
-              여러 서비스를 동시에 운영합니다.
+              우리는 단순한 코딩을 넘어 비즈니스 가치를 창출하는 상품을 제안합니다.
             </p>
 
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -166,14 +172,14 @@ export default function Home() {
                 href="#services"
                 className="flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-sm transition-opacity hover:opacity-90"
               >
-                서비스 둘러보기
+                개발 상품 보기
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
-                href="#newsletter"
+                href="/about"
                 className="flex items-center gap-2 rounded-lg border border-border px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
               >
-                뉴스레터 구독
+                협업 문의하기
                 <Mail className="h-4 w-4" />
               </Link>
             </div>
@@ -181,9 +187,9 @@ export default function Home() {
             {/* 지표 */}
             <div className="mt-16 grid grid-cols-3 gap-8 border-t border-border pt-10">
               {[
-                { value: "2+", label: "운영 중인 서비스" },
-                { value: "99개", label: "분석된 트렌드" },
-                { value: "4주", label: "MVP → 런칭" },
+                { value: "5+", label: "개발 완료 상품" },
+                { value: "100%", label: "고객 만족도" },
+                { value: "2주", label: "MVP 제작 기간" },
               ].map((stat) => (
                 <div key={stat.label} className="text-center">
                   <div className="text-3xl font-bold text-foreground">{stat.value}</div>
@@ -198,9 +204,9 @@ export default function Home() {
         <section id="services" className="border-b border-border py-20">
           <div className="mx-auto max-w-6xl px-6">
             <div className="mb-12 text-center">
-              <h2 className="text-3xl font-bold tracking-tight">운영 중인 서비스</h2>
+              <h2 className="text-3xl font-bold tracking-tight">고앤슈트 개발 상품</h2>
               <p className="mt-3 text-muted-foreground">
-                각 서비스는 독립적으로 수익성을 검증합니다
+                비즈니스 가치를 극대화하는 최적화된 솔루션 라인업
               </p>
             </div>
 
@@ -245,53 +251,19 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── Building Stories ────────────────────────────── */}
+        {/* ── Building Stories (주석 처리) ──────────────────────
         <section className="border-b border-border py-20">
-          <div className="mx-auto max-w-6xl px-6">
-            <div className="mb-12 flex items-end justify-between">
-              <div>
-                <h2 className="text-3xl font-bold tracking-tight">빌딩 스토리</h2>
-                <p className="mt-3 text-muted-foreground">모든 과정을 투명하게 공개합니다</p>
-              </div>
-              <Link
-                href="/lab"
-                className="flex items-center gap-1 text-sm font-medium text-primary hover:underline"
-              >
-                전체 보기 <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-
-            <div className="space-y-4">
-              {stories.map((story, i) => (
-                <div
-                  key={i}
-                  className="flex gap-6 rounded-xl border border-border bg-card p-6 transition-colors hover:border-primary/30"
-                >
-                  <div className="w-28 shrink-0">
-                    <span className="text-xs text-muted-foreground">{story.date}</span>
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3">
-                      <h3 className="font-semibold">{story.title}</h3>
-                      <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${story.tagColor}`}>
-                        {story.tag}
-                      </span>
-                    </div>
-                    <p className="mt-1.5 text-sm text-muted-foreground">{story.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          ...
         </section>
+        ── */}
 
         {/* ── Resources ────────────────────────────────────── */}
         <section id="resources" className="border-b border-border bg-muted/30 py-20">
           <div className="mx-auto max-w-6xl px-6">
             <div className="mb-12 text-center">
-              <h2 className="text-3xl font-bold tracking-tight">Resources</h2>
+              <h2 className="text-3xl font-bold tracking-tight">Technical Assets</h2>
               <p className="mt-3 text-muted-foreground">
-                마이크로 SaaS 창업에 필요한 실전 가이드
+                고앤슈트의 기술 노하우가 담긴 실전 개발 가이드
               </p>
             </div>
 
@@ -303,7 +275,7 @@ export default function Home() {
                 >
                   {res.comingSoon && (
                     <div className="absolute right-4 top-4 rounded-full bg-zinc-100 px-2.5 py-0.5 text-xs text-zinc-500">
-                      출시 예정
+                      준비중
                     </div>
                   )}
                   <span className={`inline-flex w-fit rounded-full px-2.5 py-0.5 text-xs font-medium ${res.badgeColor}`}>
@@ -318,7 +290,7 @@ export default function Home() {
                       className="flex items-center gap-2 rounded-lg bg-primary/10 px-4 py-2 text-sm font-medium text-primary opacity-60"
                     >
                       <BookOpen className="h-4 w-4" />
-                      곧 출시
+                      문의하기
                     </button>
                   </div>
                 </div>
@@ -327,66 +299,47 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── Newsletter ───────────────────────────────────── */}
-        <section id="newsletter" className="border-b border-border py-20">
-          <div className="mx-auto max-w-2xl px-6 text-center">
-            <div className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
-              <Mail className="h-6 w-6 text-primary" />
+        {/* ── Contact Section ────────────────────────────────── */}
+        <section id="contact" className="border-b border-border py-24">
+          <div className="mx-auto max-w-3xl px-6 text-center">
+            <div className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary">
+              <Mail className="h-6 w-6" />
             </div>
-            <h2 className="mt-6 text-3xl font-bold tracking-tight">
-              빌딩 인사이트를 받아보세요
+            <h2 className="mt-8 text-4xl font-bold tracking-tight">
+              함께 혁신을 만들어갈 파트너를 찾습니다
             </h2>
-            <p className="mt-4 text-muted-foreground">
-              새로운 서비스 출시, 수익 지표 공개, 바이브코딩 팁을
+            <p className="mt-6 text-lg text-muted-foreground">
+              고앤슈트의 개발 상품 도입 문의나 맞춤형 솔루션 개발 협업이 필요하신가요?
               <br />
-              가장 먼저 이메일로 전달해 드립니다.
+              전문 팀이 귀하의 비즈니스에 최적화된 기술 제안을 드립니다.
             </p>
 
-            <form className="mx-auto mt-8 flex max-w-md gap-3">
-              <input
-                type="email"
-                placeholder="이메일 주소를 입력하세요"
-                className="flex-1 rounded-lg border border-border bg-background px-4 py-2.5 text-sm outline-none ring-offset-background transition-colors placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-ring"
-              />
-              <button
-                type="submit"
-                className="flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
-              >
-                구독하기
-                <ArrowRight className="h-4 w-4" />
-              </button>
-            </form>
-
-            <p className="mt-4 text-xs text-muted-foreground">
-              스팸 없음. 언제든지 구독 취소 가능.
-            </p>
-          </div>
-        </section>
-
-        {/* ── AI News Preview ──────────────────────────────── */}
-        <section className="border-b border-border bg-muted/30 py-16">
-          <div className="mx-auto max-w-6xl px-6">
-            <div className="flex flex-col items-center gap-4 text-center md:flex-row md:justify-between md:text-left">
-              <div>
-                <div className="mb-2 inline-flex items-center gap-2 rounded-full bg-indigo-100 px-3 py-1 text-xs font-medium text-indigo-700">
-                  <Newspaper className="h-3 w-3" /> Beta
-                </div>
-                <h2 className="text-2xl font-bold">AI News 큐레이션</h2>
-                <p className="mt-2 max-w-lg text-muted-foreground">
-                  매일 AI·테크 뉴스를 수집하고 "한국 창업가에게 왜 중요한가"
-                  인사이트를 자동 생성합니다.
-                </p>
-              </div>
+            <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
-                href="/ai-news"
-                className="flex shrink-0 items-center gap-2 rounded-lg border border-border bg-background px-5 py-2.5 text-sm font-semibold transition-colors hover:bg-muted"
+                href="mailto:contact@go-suit.com"
+                className="flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-8 py-4 text-base font-semibold text-primary-foreground shadow-lg transition-all hover:scale-[1.02] hover:opacity-95 sm:w-auto"
               >
-                <ExternalLink className="h-4 w-4" />
-                뉴스 보기 (Beta)
+                상담 신청하기
+                <ArrowRight className="h-5 w-5" />
               </Link>
+              <button
+                className="flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-card px-8 py-4 text-base font-semibold text-foreground transition-all hover:bg-muted sm:w-auto"
+              >
+                고앤슈트 소개서 보기
+              </button>
             </div>
+
+            <p className="mt-8 text-sm text-muted-foreground">
+              평균 24시간 이내에 담당자가 답변해 드립니다.
+            </p>
           </div>
         </section>
+
+        {/* ── AI News Preview (주석 처리) ────────────────────────
+        <section className="border-b border-border bg-muted/30 py-16">
+          ...
+        </section>
+        ── */}
       </main>
 
       {/* ── Footer ──────────────────────────────────────── */}
@@ -397,13 +350,13 @@ export default function Home() {
               <div className="flex h-7 w-7 items-center justify-center rounded-md bg-primary">
                 <Zap className="h-3.5 w-3.5 text-primary-foreground" />
               </div>
-              <span className="font-bold">gonsuit</span>
+              <span className="font-bold">고앤슈트</span>
               <span className="text-muted-foreground">·</span>
-              <span className="text-sm text-muted-foreground">Micro SaaS Hub</span>
+              <span className="text-sm text-muted-foreground">Business Tech Partner</span>
             </div>
 
             <nav className="flex gap-6 text-sm text-muted-foreground">
-              {["서비스", "Lab", "Resources", "About", "개인정보처리방침"].map((item) => (
+              {["개발 상품", "Lab", "Resources", "About", "개인정보처리방침"].map((item) => (
                 <Link key={item} href="#" className="transition-colors hover:text-foreground">
                   {item}
                 </Link>
@@ -421,7 +374,7 @@ export default function Home() {
           </div>
 
           <div className="mt-8 border-t border-border pt-6 text-center text-xs text-muted-foreground">
-            © 2026 gonsuit. All rights reserved.
+            © 2026 고앤슈트. All rights reserved.
           </div>
         </div>
       </footer>

@@ -8,15 +8,15 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "gonsuit — Micro SaaS Hub",
+  title: "고앤슈트 (Go & Suit) — 비즈니스 테크 파트너",
   description:
-    "글로벌 트렌드를 가장 빠르게 한국 창업가·개발자의 언어로 번역하는 곳. 마이크로 SaaS 서비스를 개발하고 수익화를 검증합니다.",
-  keywords: ["마이크로 SaaS", "바이브코딩", "1인 창업", "AI 트렌드", "인디 해커"],
+    "고객의 상상을 현실로 만드는 기술력 기반의 마이크로 SaaS 및 AI 솔루션 개발 전문 기업, 고앤슈트입니다.",
+  keywords: ["고앤슈트", "Go & Suit", "마이크로 SaaS", "AI 솔루션", "비즈니스 개발", "MVP 제작"],
   openGraph: {
-    title: "gonsuit — Micro SaaS Hub",
-    description: "글로벌 트렌드를 한국 시장으로 번역하는 마이크로 SaaS 허브",
-    url: "https://gonsuit.com",
-    siteName: "gonsuit",
+    title: "고앤슈트 (Go & Suit) — 비즈니스 테크 파트너",
+    description: "상상을 기술로 현실화하는 고앤슈트의 개발 상품 및 솔루션 소개",
+    url: "https://go-suit.com",
+    siteName: "고앤슈트",
     locale: "ko_KR",
     type: "website",
   },
