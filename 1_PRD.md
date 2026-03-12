@@ -28,7 +28,8 @@
 ### 페이지 구조
 ```
 고앤슈트 (go-suit.com)
-├── /            → 비전 + 주요 개발 상품 라인업 + 협업 문의
+├── /            → 비전 + 주요 개발 상품 라인업 + 협업 문의 (Build in Public)
+├── /contact     → 협업 및 서비스 문의 (Supabase + Resend 연동)
 ├── /products    → 개발 상품 상세 목록 (상태: 운영/준비중)
 ├── /lab         → 기술 블로그 (고앤슈트의 기술 인사이트)
 ├── /about       → 고앤슈트의 철학, 팀, 로드맵
@@ -91,16 +92,22 @@ graph TD
         NewsScraper <--> AIEngine[AI 요약 엔진]
     end
 
-    subgraph "서비스 연결"
+    subgraph "서비스 및 알림"
         Frontend --> TrendScouter[Trend Scouter]
+        Frontend --> Resend[Resend Email API]
+        Resend --> AdminEmail[info@gonsuit.com]
         Frontend --> FutureService[향후 서비스들...]
     end
 ```
 
 ### 기술 아키텍처 (Technical Stack)
 - **Frontend**: Next.js 14 (App Router) + Tailwind CSS (Vercel 호스팅)
+- **Backend**: Vercel Serverless Functions (API Route)
 - **UI 컴포넌트**: shadcn/ui (Radix UI 기반)
 - **Database/Auth**: Supabase (PostgreSQL & GoTrue)
+- **Email Service**: 
+    - **발신**: Resend (info@gonsuit.com 알림 발송용)
+    - **수신/포워딩**: Cloudflare Email Routing (info@gonsuit.com -> 개인 메일)
 - **AI 뉴스 엔진**: Gemini API / Claude API (요약 및 인사이트 자동화)
 - **결제**: Gumroad (초기) → Stripe / PortOne (수익 검증 후)
 

@@ -15,11 +15,13 @@
 ## 2. 개발 일정 및 마일스톤 (4주)
 
 ### 1주차: 기반 구조 및 핵심 페이지 구축 (Foundation)
-- [ ] **프로젝트 초기화**: Next.js 14 (App Router) + Tailwind CSS 세팅, Vercel 연동.
-- [ ] **Supabase 연동**: `newsletter_subscribers`, `ai_news`, `resources` 테이블 스키마 설계 및 생성.
-- [ ] **홈페이지 (`/`)**: 비전 섹션, 서비스 카드 목록, 최근 빌딩 스토리 레이아웃 구현.
+- [x] **프로젝트 초기화**: Next.js 14 (App Router) + Tailwind CSS 세팅, Vercel 연동.
+- [x] **Supabase 연동**: `newsletter_subscribers`, `contacts` 등 테이블 스키마 설계 및 생성.
+- [x] **홈페이지 (`/`)**: 비전 섹션, 서비스 카드 목록, Build in Public 문구 적용.
+- [x] **문의 페이지 (`/contact`)**: 협업 문의 폼 구현, Supabase 저장 및 Resend 메일 알림 연동.
+- [x] **메일 시스템 구축**: Cloudflare Email Routing + Resend 도메인 인증 완료.
 - [ ] **서비스 목록 (`/services`)**: 운영 중 서비스 카드 UI (상태 뱃지 포함).
-- [ ] **About 페이지 (`/about`)**: gonsuit 철학 및 운영 방식 소개.
+- [ ] **About 페이지 (`/about`)**: 고앤슈트 철학 및 운영 방식 소개.
 - [ ] **개인정보처리방침 (`/privacy`)**: 공용 방침 페이지 + Trend Scouter 추가 고지 섹션.
 
 ### 2주차: 콘텐츠 & 수익 기능 구현 (Monetization)
@@ -72,6 +74,17 @@ summary       text   -- AI 생성 한국어 요약
 insight       text   -- 한국 창업가 관점 인사이트
 published_at  timestamp
 created_at    timestamp default now()
+```
+
+**`contacts` (협업 문의)**
+```sql
+id            uuid primary key default uuid_generate_v4()
+name          text not null
+email         text not null
+category      text not null
+subject       text not null
+message       text not null
+created_at    timestamp with time zone default now()
 ```
 
 **`resources`**

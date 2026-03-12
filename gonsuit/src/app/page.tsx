@@ -22,7 +22,7 @@ const services = [
       "글로벌 비즈니스 트렌드를 실시간 수집·분석하여 한국 시장에 최적화된 기회 리포트를 제공합니다.",
     status: "운영중",
     statusColor: "bg-emerald-100 text-emerald-700",
-    href: "https://trendscouter.gonsuit.com",
+    href: "https://trendscouter.go-suit.com",
     icon: TrendingUp,
     tags: ["트렌드 분석", "AI 인사이트", "SaaS"],
   },
@@ -52,8 +52,8 @@ const services = [
 const stories = [
   {
     date: "2026.03.09",
-    title: "gonsuit.com 허브 사이트 오픈",
-    desc: "마이크로 SaaS들의 신뢰 허브를 구축했습니다. Build in Public으로 모든 과정을 공개합니다.",
+    title: "고앤슈트 (Go & Suit) 메인 허브 오픈",
+    desc: "상상을 현실로 만드는 기술력의 산실, 고앤슈트 공식 허브를 구축했습니다.",
     tag: "론칭",
     tagColor: "bg-indigo-100 text-indigo-700",
   },
@@ -169,7 +169,7 @@ export default function Home() {
 
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
-                href="#services"
+                href="/contact"
                 className="flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-sm transition-opacity hover:opacity-90"
               >
                 개발 상품 보기
