@@ -7,12 +7,10 @@ import {
   BookOpen,
   Newspaper,
   Mail,
-  ExternalLink,
-  Github,
-  Twitter,
   ChevronRight,
-  Languages,
 } from "lucide-react";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 // ── 서비스 데이터 ──────────────────────────────────────────
 const services = [
@@ -96,48 +94,7 @@ const resources = [
 export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* ── Navigation ─────────────────────────────────── */}
-      <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-sm">
-        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-          <Link href="/" className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-              <Zap className="h-4 w-4 text-primary-foreground" />
-            </div>
-            <span className="text-lg font-bold tracking-tight">고앤슈트</span>
-          </Link>
-
-          <nav className="hidden items-center gap-8 md:flex">
-            {[
-              { label: "개발 상품", href: "#services" },
-              { label: "Lab", href: "/lab" },
-              { label: "Resources", href: "#resources" },
-              { label: "About", href: "/about" },
-            ].map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-
-          <div className="flex items-center gap-4">
-            <button className="hidden items-center gap-2 rounded-lg border border-border px-3 py-1.5 text-sm font-medium transition-colors hover:bg-muted md:flex">
-              <Languages className="h-4 w-4" />
-              <span>KR / EN</span>
-            </button>
-            <Link
-              href="/contact"
-              className="flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
-            >
-              <Mail className="h-4 w-4" />
-              문의하기
-            </Link>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       <main>
         {/* ── Hero ───────────────────────────────────────── */}
@@ -169,14 +126,14 @@ export default function Home() {
 
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
-                href="/contact"
+                href="#services"
                 className="flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-sm transition-opacity hover:opacity-90"
               >
                 개발 상품 보기
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
-                href="/about"
+                href="/contact"
                 className="flex items-center gap-2 rounded-lg border border-border px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
               >
                 협업 문의하기
@@ -251,12 +208,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── Building Stories (주석 처리) ──────────────────────
-        <section className="border-b border-border py-20">
-          ...
-        </section>
-        ── */}
-
         {/* ── Resources ────────────────────────────────────── */}
         <section id="resources" className="border-b border-border bg-muted/30 py-20">
           <div className="mx-auto max-w-6xl px-6">
@@ -316,7 +267,7 @@ export default function Home() {
 
             <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
-                href="mailto:contact@go-suit.com"
+                href="/contact"
                 className="flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-8 py-4 text-base font-semibold text-primary-foreground shadow-lg transition-all hover:scale-[1.02] hover:opacity-95 sm:w-auto"
               >
                 상담 신청하기
@@ -334,50 +285,9 @@ export default function Home() {
             </p>
           </div>
         </section>
-
-        {/* ── AI News Preview (주석 처리) ────────────────────────
-        <section className="border-b border-border bg-muted/30 py-16">
-          ...
-        </section>
-        ── */}
       </main>
 
-      {/* ── Footer ──────────────────────────────────────── */}
-      <footer className="border-t border-border py-12">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
-            <div className="flex items-center gap-2">
-              <div className="flex h-7 w-7 items-center justify-center rounded-md bg-primary">
-                <Zap className="h-3.5 w-3.5 text-primary-foreground" />
-              </div>
-              <span className="font-bold">고앤슈트</span>
-              <span className="text-muted-foreground">·</span>
-              <span className="text-sm text-muted-foreground">Business Tech Partner</span>
-            </div>
-
-            <nav className="flex gap-6 text-sm text-muted-foreground">
-              {["개발 상품", "Lab", "Resources", "About", "개인정보처리방침"].map((item) => (
-                <Link key={item} href="#" className="transition-colors hover:text-foreground">
-                  {item}
-                </Link>
-              ))}
-            </nav>
-
-            <div className="flex gap-4">
-              <Link href="#" className="text-muted-foreground transition-colors hover:text-foreground">
-                <Twitter className="h-4 w-4" />
-              </Link>
-              <Link href="#" className="text-muted-foreground transition-colors hover:text-foreground">
-                <Github className="h-4 w-4" />
-              </Link>
-            </div>
-          </div>
-
-          <div className="mt-8 border-t border-border pt-6 text-center text-xs text-muted-foreground">
-            © 2026 고앤슈트. All rights reserved.
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
