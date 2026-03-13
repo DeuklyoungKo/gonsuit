@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { CheckCircle2, Globe, Rocket, Users, Zap, ArrowRight, Mail } from "lucide-react";
@@ -19,7 +20,7 @@ export default function AboutPage() {
               <span className="text-primary">가치 파트너, 고앤슈트</span>
             </h1>
             <p className="mt-8 text-xl leading-relaxed text-muted-foreground">
-              우리는 단순한 '기능 개발'을 넘어 비즈니스의 성공을 위한 '상품'을 정의하고 만듭니다. 
+              우리는 단순한 '기능 개발'을 넘어 비즈니스의 성공을 위한 '상품'을 정의하고 만듭니다.
               기술은 수단일 뿐, 우리의 목표는 고객의 아이디어가 시장에서 작동하게 만드는 것입니다.
             </p>
           </div>
@@ -32,8 +33,8 @@ export default function AboutPage() {
               <div>
                 <h2 className="text-3xl font-bold tracking-tight">Our Philosophy</h2>
                 <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-                  고앤슈트(Go & Suit)는 '실행(Go)'과 '최적화(Suit)'의 합성어입니다. 
-                  고객의 추상적인 아이디어를 구체적인 기술로 즉시 실행하고, 
+                  고앤슈트(Go & Suit)는 '실행(Go)'과 '최적화(Suit)'의 합성어입니다.
+                  고객의 추상적인 아이디어를 구체적인 기술로 즉시 실행하고,
                   그 결과물이 비즈니스 상황에 완벽하게 맞도록 최적화하는 것이 우리의 사명입니다.
                 </p>
                 <div className="mt-10 space-y-6">
@@ -66,11 +67,14 @@ export default function AboutPage() {
                   ))}
                 </div>
               </div>
-              <div className="relative aspect-square md:aspect-auto md:h-[500px] rounded-2xl bg-zinc-100 overflow-hidden flex items-center justify-center border border-border bg-gradient-to-tr from-zinc-200 to-zinc-50">
-                 <div className="text-center p-8">
-                    <Zap className="h-20 w-20 text-primary/20 mx-auto mb-4" />
-                    <span className="text-xl font-bold text-zinc-400">Innovation through Action</span>
-                 </div>
+              <div className="relative aspect-square md:aspect-auto md:h-[500px] rounded-2xl bg-zinc-100 overflow-hidden border border-border">
+                <Image
+                  src="/images/philosophy.png"
+                  alt="Our Philosophy"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-background/40 to-transparent pointer-events-none" />
               </div>
             </div>
           </div>
@@ -114,32 +118,6 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Call to Action */}
-        <section className="py-24">
-          <div className="mx-auto max-w-4xl px-6 text-center">
-             <h2 className="text-4xl font-bold tracking-tight">우리는 함께 성장할 파트너를 찾습니다</h2>
-             <p className="mt-6 text-lg text-muted-foreground">
-               아이디어가 있지만 기술적 구현이 고민이신가요? <br />
-               고앤슈트와 함께라면 2주 안에 시장의 반응을 확인할 수 있습니다.
-             </p>
-             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-               <Link
-                 href="/contact"
-                 className="flex items-center gap-2 rounded-lg bg-primary px-8 py-4 text-base font-semibold text-primary-foreground shadow-lg transition-all hover:opacity-95"
-               >
-                 문의하기
-                 <Mail className="h-5 w-5" />
-               </Link>
-               <Link
-                 href="/#services"
-                 className="flex items-center gap-2 rounded-lg border border-border px-8 py-4 text-base font-semibold text-foreground transition-all hover:bg-muted"
-               >
-                 포트폴리오 보기
-                 <ArrowRight className="h-5 w-5" />
-               </Link>
-             </div>
-          </div>
-        </section>
       </main>
 
       <Footer />
