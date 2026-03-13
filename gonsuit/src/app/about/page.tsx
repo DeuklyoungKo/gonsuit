@@ -87,22 +87,22 @@ export default function AboutPage() {
             <div className="space-y-12">
               {[
                 {
-                  period: "2024 Q4",
+                  period: "2026 Q1",
                   title: "고앤슈트 팀 결성",
                   desc: "AI 및 Full-stack 개발 전문가들이 모여 마이크로 SaaS 특화 개발 팀을 구성했습니다."
                 },
                 {
-                  period: "2025 Q1",
+                  period: "2026 Q1",
                   title: "Trend Scouter 론칭",
                   desc: "자체 개발한 AI 트렌드 분석 솔루션을 통해 시장 기회를 데이터로 증명하기 시작했습니다."
                 },
                 {
-                  period: "2025 Q2 (Current)",
-                  title: "Hub 사이트 구축 및 협업 확장",
+                  period: "2026 Q2 (Current)",
+                  title: "정보스크랩 시스템 고도화",
                   desc: "고앤슈트의 결과물들을 한곳에 모으고, 파트너사들과의 맞춤형 솔루션 개발을 본격화합니다."
                 },
                 {
-                  period: "2025 Q3+",
+                  period: "2026 Q3",
                   title: "Global SaaS Expansion",
                   desc: "검증된 솔루션들을 글로벌 독립 서비스로 분리하여 전 세계 사용자를 대상으로 확장합니다."
                 }
