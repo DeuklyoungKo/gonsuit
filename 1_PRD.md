@@ -3,7 +3,8 @@
 ## 1. 프로젝트 개요 및 목표
 고앤슈트(Go & Suit)는 고객의 상상을 현실로 만드는 기술력 기반의 **마이크로 SaaS 및 AI 솔루션 개발 전문 기업**의 사이트입니다. 단순한 포트폴리오를 넘어, 고앤슈트가 개발한 상품들의 신뢰 허브 역할을 수행하며 비즈니스 솔루션을 제안합니다.
 
-- **핵심 목표**: 기업 브랜드 신뢰도 구축 + 개발 상품(Trend Scouter 등) 소개 및 세일즈 + 글로벌 확장성 확보.
+- **도메인**: `https://gonsuit.com`
+- **핵심 목표**: 기업 브랜드 신뢰도 구축 + 개발 상품(Trend Intelligence 등) 소개 및 세일즈 + 글로벌 확장성 확보.
 - **정체성**: "상상을 기술로 현실화하는, 비즈니스 가치 창출 기술 파트너"
 - **운영 원칙**: 국내 고객 중심의 신뢰도 확보 → 영문 대응을 통한 글로벌 확장 준비 → 고도화된 솔루션 제안.
 
@@ -27,7 +28,7 @@
 
 ### 페이지 구조
 ```
-고앤슈트 (go-suit.com)
+고앤슈트 (gonsuit.com)
 ├── /            → 비전 + 주요 개발 상품 라인업 + 협업 문의 (Build in Public)
 ├── /contact     → 협업 및 서비스 문의 (Supabase + Resend 연동)
 ├── /products    → 개발 상품 상세 목록 (상태: 운영/준비중)
@@ -43,35 +44,22 @@
 | Services | 운영 중인 서비스 카드 (상태 뱃지: 운영중 / 베타 / 준비중) |
 | Building Stories | Build in Public 타임라인 (날짜 · 제목 · 태그 · 설명) |
 | Resources | PDF 가이드 상품 카드 (가격 · 출시 예정 뱃지) |
-| Newsletter | 이메일 구독 폼 |
-| AI News Preview | Beta 배너 + 뉴스 페이지 링크 |
 
 ### 자체 수익 채널
 1. **PDF 가이드 판매**: "0원으로 마이크로 SaaS 만드는 법" 등 실전 가이드 (단건 $5~$15)
-2. **뉴스레터 구독**: 무료 구독 → 프리미엄 전환 (추후)
-3. **AI 뉴스 서비스**: Beta 운영 후 별도 서비스 분리 및 수익화
-
-### AI 뉴스 기능 분리 기준 (사전 정의)
-| 지표 | 현재 | 분리 기준 |
-|------|------|-----------|
-| 월 방문자 | - | 1,000명 이상 |
-| 뉴스레터 구독 | 0명 | 100명 이상 |
-| 평균 체류 시간 | - | 2분 이상 |
-
-위 지표 중 2개 이상 충족 시 별도 서비스(`ainews.gonsuit.com` 또는 독립 도메인)로 분리.
+2. **트렌드 분석 리포트 (추후 고려)**: 현재 운영 중인 Trend Intelligence와 연계한 프리미엄 리포트 판매.
 
 ---
 
 ## 4. 수익화 및 성장 전략
 
-- **단기**: PDF 가이드 Gumroad 연동 → 수동 결제로 즉시 수익 검증
-- **중기**: 뉴스레터 구독자 축적 → 프리미엄 구독 전환 테스트
-- **장기**: AI 뉴스 서비스 분리 + 멘토링/컨설팅 패키지 도입
+- **단기**: 브랜드 신뢰도 구축 및 포트폴리오(기존 서비스)를 통한 유기적 트래픽 유입 확보.
+- **중기**: PDF 가이드 Gumroad 연동 → 수동 결제로 즉시 수익 검증.
+- **장기**: 멘토링/컨설팅 패키지 도입 및 프리미엄 비즈니스 리포트 판매.
 
 ### 리텐션 전략
-- 정기적인 빌딩 스토리 업데이트로 재방문 유도
-- 뉴스레터로 커뮤니티 기능 대체 (초기 커뮤니티 게시판 미도입)
-- 커뮤니티 도입은 뉴스레터 구독자 300명 달성 후 재검토
+- 정기적인 빌딩 스토리 업데이트로 재방문 유도.
+- 기술 블로그(/lab)를 통한 SEO 최적화 및 검색 트래픽 지속적인 유입.
 
 ---
 
@@ -84,16 +72,10 @@ flowchart TD
 
     subgraph "콘텐츠 & 수익"
         Resources[PDF 가이드] --> Gumroad[Gumroad / 자체결제]
-        Newsletter[뉴스레터 구독폼] --> Supabase
-    end
-
-    subgraph "AI 뉴스 (Beta)"
-        NewsScraper[뉴스 스크래퍼] --> Supabase
-        NewsScraper <--> AIEngine[AI 요약 엔진]
     end
 
     subgraph "서비스 및 알림"
-        Frontend --> TrendScouter[Trend Scouter]
+        Frontend --> TrendScouter[Trend Intelligence]
         Frontend --> Resend[Resend Email API]
         Resend --> AdminEmail["info@gonsuit.com"]
         Frontend --> FutureService[향후 서비스들...]
@@ -108,7 +90,6 @@ flowchart TD
 - **Email Service**: 
     - **발신**: Resend (info@gonsuit.com 알림 발송용)
     - **수신/포워딩**: Cloudflare Email Routing (info@gonsuit.com -> 개인 메일)
-- **AI 뉴스 엔진**: Gemini API / Claude API (요약 및 인사이트 자동화)
 - **결제**: Gumroad (초기) → Stripe / PortOne (수익 검증 후)
 
 ### UI 디자인 시스템

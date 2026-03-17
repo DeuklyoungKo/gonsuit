@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "고앤슈트 (Go & Suit) — 비즈니스 테크 파트너",
     description: "상상을 기술로 현실화하는 고앤슈트의 개발 상품 및 솔루션 소개",
-    url: "https://go-suit.com",
+    url: "https://gonsuit.com",
     siteName: "고앤슈트",
     locale: "ko_KR",
     type: "website",

@@ -8,6 +8,10 @@ import {
   Newspaper,
   Mail,
   ChevronRight,
+  Video,
+  Share2,
+  SearchCode,
+  MessageSquare,
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -15,34 +19,54 @@ import Footer from "@/components/Footer";
 // ── 서비스 데이터 ──────────────────────────────────────────
 const services = [
   {
-    name: "Trend Scouter",
+    name: "Trend Intelligence",
     description:
       "글로벌 비즈니스 트렌드를 실시간 수집·분석하여 한국 시장에 최적화된 기회 리포트를 제공합니다.",
     status: "운영중",
     statusColor: "bg-emerald-100 text-emerald-700",
-    href: "https://trendscouter.go-suit.com",
+    href: "https://trend.gonsuit.com",
     icon: TrendingUp,
     tags: ["트렌드 분석", "AI 인사이트", "SaaS"],
   },
   {
-    name: "AI News Engine",
+    name: "자동 바이럴 영상 제작",
     description:
-      "대규모 언어 모델을 활용하여 방대한 테크 뉴스를 실시간 요약하고 비즈니스 인사이트를 도출합니다.",
-    status: "Beta",
-    statusColor: "bg-indigo-100 text-indigo-700",
+      "핵심 키워드와 원문만으로 소셜 미디어에 최적화된 쇼츠 및 바이럴 영상을 자동으로 생성합니다.",
+    status: "준비중",
+    statusColor: "bg-zinc-100 text-zinc-600",
     href: "#",
-    icon: Newspaper,
-    tags: ["AI 요약", "비즈니스 지능", "자동화"],
+    icon: Video,
+    tags: ["AI 쇼츠", "영상 자동화", "마케팅"],
   },
   {
-    name: "Custom SaaS Builder",
+    name: "자동 SNS 홍보 시스템",
     description:
-      "고객의 아이디어를 빠르게 수익화할 수 있는 맞춤형 마이크로 SaaS 및 웹 솔루션을 개발합니다.",
-    status: "상담가능",
-    statusColor: "bg-amber-100 text-amber-700",
+      "플랫폼별 맞춤형 문구와 인포그래픽을 생성하여 유튜브, SNS, 블로그에 자동으로 배포합니다.",
+    status: "준비중",
+    statusColor: "bg-zinc-100 text-zinc-600",
     href: "#",
-    icon: Zap,
-    tags: ["맞춤형 개발", "Fast MVP", "자동화"],
+    icon: Share2,
+    tags: ["자동 포스팅", "인포그래픽", "마케팅"],
+  },
+  {
+    name: "사이트 최적화 엔진",
+    description:
+      "사이트 성능 진단부터 SEO 블로그 개선안까지, 비즈니스 지표를 높이기 위한 최적화 가이드를 제공합니다.",
+    status: "준비중",
+    statusColor: "bg-zinc-100 text-zinc-600",
+    href: "#",
+    icon: SearchCode,
+    tags: ["사이트 진단", "SEO 최적화", "성능 분석"],
+  },
+  {
+    name: "자동 피드백 정리 프로그램",
+    description:
+      "흩어져 있는 고객의 피드백과 반응을 AI가 실시간으로 분석하여 핵심 인사이트를 도출합니다.",
+    status: "준비중",
+    statusColor: "bg-zinc-100 text-zinc-600",
+    href: "#",
+    icon: MessageSquare,
+    tags: ["피드백 분석", "인사이트", "CS 자동화"],
   },
 ];
 
@@ -57,7 +81,7 @@ const stories = [
   },
   {
     date: "2026.03.01",
-    title: "Trend Scouter — 99개 트렌드 분석 완료",
+    title: "Trend Intelligence — 99개 트렌드 분석 완료",
     desc: "Reddit, Product Hunt, Indie Hackers에서 수집한 99개 트렌드 전수 분석 및 한국형 GTM 전략 자동 생성.",
     tag: "마일스톤",
     tagColor: "bg-emerald-100 text-emerald-700",
