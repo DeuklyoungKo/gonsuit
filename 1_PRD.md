@@ -78,7 +78,7 @@
 ## 5. 서버 구성도
 
 ```mermaid
-graph TD
+flowchart TD
     User([사용자]) <--> Frontend[Next.js Frontend]
     Frontend <--> Supabase[(Supabase DB/Auth)]
 
@@ -95,7 +95,7 @@ graph TD
     subgraph "서비스 및 알림"
         Frontend --> TrendScouter[Trend Scouter]
         Frontend --> Resend[Resend Email API]
-        Resend --> AdminEmail[info@gonsuit.com]
+        Resend --> AdminEmail["info@gonsuit.com"]
         Frontend --> FutureService[향후 서비스들...]
     end
 ```
