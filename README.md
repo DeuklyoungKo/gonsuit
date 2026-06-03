@@ -14,7 +14,7 @@ cd gonsuit
 ### 2. 패키지 설치
 ```bash
 npm install
-``` 
+```
 
 ### 3. 로컬 서버 실행
 ```bash
