@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import { Zap, Twitter, Github } from "lucide-react";
+import { trackMenuClick } from "@/lib/gtag";
 
 export default function Footer() {
   return (
@@ -23,7 +26,12 @@ export default function Footer() {
               { label: "About", href: "/about" },
               { label: "개인정보처리방침", href: "/privacy" },
             ].map((item) => (
-              <Link key={item.label} href={item.href} className="transition-colors hover:text-foreground">
+              <Link
+                key={item.label}
+                href={item.href}
+                onClick={() => trackMenuClick(`Footer — ${item.label}`)}
+                className="transition-colors hover:text-foreground"
+              >
                 {item.label}
               </Link>
             ))}

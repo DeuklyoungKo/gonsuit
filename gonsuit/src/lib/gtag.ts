@@ -33,3 +33,23 @@ export const trackContactSubmit = (category: string) => {
     });
   }
 };
+
+// CTA 버튼 클릭 추적
+export const trackCtaClick = (buttonName: string, location: string) => {
+  if (typeof window !== "undefined" && window.gtag) {
+    window.gtag("event", "cta_click", {
+      button_name: buttonName,
+      location: location,
+    });
+  }
+};
+
+// 외부 링크 클릭 추적
+export const trackExternalLinkClick = (linkName: string, url: string) => {
+  if (typeof window !== "undefined" && window.gtag) {
+    window.gtag("event", "external_link_click", {
+      link_name: linkName,
+      url: url,
+    });
+  }
+};

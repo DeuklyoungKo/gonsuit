@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import {
-  ArrowRight,
   Globe,
   Mail,
   Rocket,
@@ -13,6 +11,7 @@ import {
   TrendingUp,
   Code2,
 } from "lucide-react";
+import AboutCta from "@/components/AboutCta";
 
 export const metadata: Metadata = {
   title: "About — 고앤슈트 (Go & Suit)",
@@ -221,21 +220,7 @@ export default function AboutPage() {
               <br />
               고앤슈트 팀이 여러분의 아이디어를 현실로 만들어 드립니다.
             </p>
-            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Link
-                href="/contact"
-                className="flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-sm transition-opacity hover:opacity-90"
-              >
-                협업 문의하기
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link
-                href="/#services"
-                className="flex items-center gap-2 rounded-lg border border-border px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
-              >
-                개발 상품 보기
-              </Link>
-            </div>
+            <AboutCta />
           </div>
         </section>
       </main>
