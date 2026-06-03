@@ -275,6 +275,32 @@ AI 검색 엔진이 답변 소스로 활용할 수 있도록 콘텐츠를 작성
 
 ---
 
+## Git 커밋 규칙 ⚠️ 중요
+
+**Claude는 절대 git commit 및 git push를 직접 실행하지 않는다.**
+
+### 배경
+Vercel Hobby 플랜 + Private 레포 환경에서 Claude가 커밋을 실행하면,
+커밋 작성자가 프로젝트 소유자와 다른 계정으로 인식되어 Vercel 배포가 차단된다.
+
+> "The deployment was blocked because the commit author did not have contributing access to the project on Vercel."
+
+### 규칙
+- 코드 수정 작업 완료 후 **커밋 메시지 초안만 제안**한다.
+- 실제 `git add`, `git commit`, `git push` 는 **사용자가 직접 실행**한다.
+- 빌드 검증(`npm run build`)은 Claude가 실행해도 무방하다.
+
+### 커밋 메시지 제안 형식
+작업 완료 후 아래 형식으로 커밋 메시지를 제안한다:
+```
+feat: 기능 추가 내용 요약
+
+- 변경 파일 1: 설명
+- 변경 파일 2: 설명
+```
+
+---
+
 ## 참조 문서
 
 - `1_PRD.md` — 제품 요구사항 정의서
