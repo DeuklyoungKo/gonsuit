@@ -89,7 +89,7 @@ export default function PrivacyPage() {
 
           <section className="mt-16 border-t border-border pt-8 text-sm text-muted-foreground">
             <p>본 방침은 {lastUpdated}부터 시행됩니다.</p>
-            <p className="mt-2">연관 서비스: Trend Intelligence</p>
+            <p className="mt-2">연관 서비스: Trend Scouter</p>
           </section>
         </div>
       </main>

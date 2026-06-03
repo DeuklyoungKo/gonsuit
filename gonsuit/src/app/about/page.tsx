@@ -44,7 +44,7 @@ const roadmap = [
   {
     period: "2026 Q1",
     status: "done",
-    title: "고앤슈트 창업 & Trend Intelligence 론칭",
+    title: "고앤슈트 창업 & Trend Scouter 론칭",
     desc: "AI 트렌드 분석 솔루션을 통해 시장의 니즈를 데이터로 파악하는 여정을 시작했습니다.",
   },
   {

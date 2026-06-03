@@ -22,7 +22,7 @@
 - [x] **메일 시스템 구축**: Cloudflare Email Routing + Resend 도메인 인증 완료.
 - [ ] **서비스 목록 (`/services`)**: 운영 중 서비스 카드 UI (상태 뱃지 포함).
 - [ ] **About 페이지 (`/about`)**: 고앤슈트 철학 및 운영 방식 소개.
-- [ ] **개인정보처리방침 (`/privacy`)**: 공용 방침 페이지 + Trend Intelligence 추가 고지 섹션.
+- [ ] **개인정보처리방침 (`/privacy`)**: 공용 방침 페이지 + Trend Scouter 추가 고지 섹션.
 
 ### 2주차: 콘텐츠 & 수익 기능 구현 (Monetization & Content)
 - [ ] **Resources 페이지 (`/resources`)**: PDF 가이드 상품 카드 UI, Gumroad 외부 링크 연동.
