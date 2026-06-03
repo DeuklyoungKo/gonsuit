@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { trackProductClick } from "@/lib/gtag";
 import {
   ArrowRight,
   TrendingUp,
@@ -198,6 +199,7 @@ export default function Home() {
                   href={svc.href}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackProductClick(svc.name, svc.status)}
                   className="group relative flex flex-col rounded-xl border border-border bg-card p-6 shadow-sm transition-all hover:border-primary/40 hover:shadow-md"
                 >
                   <div className="mb-4 flex items-start justify-between">

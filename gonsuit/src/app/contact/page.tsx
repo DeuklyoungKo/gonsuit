@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Mail, ArrowLeft, Send, CheckCircle2 } from "lucide-react";
+import { trackContactSubmit } from "@/lib/gtag";
 
 export default function ContactPage() {
     const [isSubmitted, setIsSubmitted] = useState(false);
@@ -35,6 +36,7 @@ export default function ContactPage() {
             });
 
             if (response.ok) {
+                trackContactSubmit(data.category as string);
                 setIsSubmitted(true);
             } else {
                 alert("알 수 없는 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.");
