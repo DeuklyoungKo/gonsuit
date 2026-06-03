@@ -1,7 +1,30 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Search, ChevronRight, Newspaper, Code, Lightbulb, Clock } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Lab — 기술 인사이트 블로그",
+  description:
+    "마이크로 SaaS 개발, AI 활용, 바이브코딩 등 고앤슈트가 실전에서 얻은 기술 인사이트와 개발 노하우를 공유합니다.",
+  alternates: {
+    canonical: "https://gonsuit.com/lab",
+  },
+  openGraph: {
+    title: "Lab — 고앤슈트 기술 인사이트 블로그",
+    description:
+      "마이크로 SaaS 개발, AI 활용, 바이브코딩 등 고앤슈트가 실전에서 얻은 기술 인사이트와 개발 노하우를 공유합니다.",
+    url: "https://gonsuit.com/lab",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Lab — 고앤슈트 기술 인사이트 블로그",
+    description:
+      "마이크로 SaaS 개발, AI 활용, 바이브코딩 등 고앤슈트가 실전에서 얻은 기술 인사이트와 개발 노하우를 공유합니다.",
+  },
+};
 
 const posts = [
   {

@@ -14,9 +14,25 @@ import {
 import AboutCta from "@/components/AboutCta";
 
 export const metadata: Metadata = {
-  title: "About — 고앤슈트 (Go & Suit)",
+  title: "About — 고앤슈트 소개",
   description:
     "고앤슈트는 상상을 기술로 현실화하는 마이크로 SaaS · AI 솔루션 전문 기업입니다. 우리의 철학, 팀, 그리고 성장 로드맵을 소개합니다.",
+  alternates: {
+    canonical: "https://gonsuit.com/about",
+  },
+  openGraph: {
+    title: "About — 고앤슈트 소개",
+    description:
+      "고앤슈트는 상상을 기술로 현실화하는 마이크로 SaaS · AI 솔루션 전문 기업입니다. 우리의 철학, 팀, 그리고 성장 로드맵을 소개합니다.",
+    url: "https://gonsuit.com/about",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About — 고앤슈트 소개",
+    description:
+      "고앤슈트는 상상을 기술로 현실화하는 마이크로 SaaS · AI 솔루션 전문 기업입니다. 우리의 철학, 팀, 그리고 성장 로드맵을 소개합니다.",
+  },
 };
 
 const principles = [

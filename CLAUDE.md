@@ -40,10 +40,13 @@ gonsuit/                  ← Next.js 프로젝트 루트
 │   │   ├── lab/page.tsx      ← 기술 블로그
 │   │   ├── resources/page.tsx← PDF 가이드 상품
 │   │   ├── privacy/page.tsx  ← 개인정보처리방침
+│   │   ├── sitemap.ts        ← 자동 sitemap.xml 생성
+│   │   ├── robots.ts         ← 자동 robots.txt 생성
 │   │   └── api/contact/      ← 문의 API Route
 │   ├── components/
 │   │   ├── Header.tsx        ← 공통 헤더 (네비게이션)
-│   │   └── Footer.tsx        ← 공통 푸터
+│   │   ├── Footer.tsx        ← 공통 푸터
+│   │   └── AboutCta.tsx      ← About CTA 버튼 (클라이언트 컴포넌트)
 │   └── lib/
 │       ├── gtag.ts           ← GA4 이벤트 추적 유틸리티
 │       ├── supabase.ts       ← Supabase 클라이언트
@@ -134,6 +137,118 @@ export const trackCtaClick = (buttonName: string, location: string) => {
 - **실시간 확인**: [analytics.google.com](https://analytics.google.com) → 보고서 → 실시간
 - **이벤트 조회**: 보고서 → 참여 → 이벤트
 - **측정 ID**: `G-WF5QHV9GXV`
+
+---
+
+## SEO / AEO 규칙 ⚠️ 필수
+
+새 페이지를 추가하거나 기존 페이지를 수정할 때 아래 규칙을 **반드시** 준수한다.
+
+### 1. 페이지별 메타데이터 필수 항목
+
+모든 페이지(`page.tsx`)에는 아래 항목을 포함한 `metadata` 를 export 해야 한다.
+
+```typescript
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "페이지 제목 — 고앤슈트",       // 50~60자 이내
+  description: "페이지 설명",            // 120~160자 이내, 핵심 키워드 포함
+  alternates: {
+    canonical: "https://gonsuit.com/페이지경로", // 중복 URL 방지
+  },
+  openGraph: {
+    title: "페이지 제목",
+    description: "페이지 설명",
+    url: "https://gonsuit.com/페이지경로",
+    type: "website",                     // 블로그 포스트는 "article"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "페이지 제목",
+    description: "페이지 설명",
+  },
+};
+```
+
+> `layout.tsx`의 `title.template: "%s | 고앤슈트"` 가 자동 적용되므로
+> 각 페이지의 `title`은 페이지 고유 이름만 작성해도 된다. (예: `"About — 고앤슈트 소개"`)
+
+---
+
+### 2. 구조화 데이터 (JSON-LD / Schema.org) — AEO 핵심
+
+AI 검색 엔진(ChatGPT, Perplexity, Google SGE 등)이 콘텐츠를 정확히 이해하도록 구조화 데이터를 추가한다.
+
+| 페이지 유형 | 적용할 Schema 타입 |
+|---|---|
+| 홈 (`/`) | `Organization` + `WebSite` ← layout.tsx에 적용 완료 |
+| 블로그 포스트 (`/lab/[slug]`) | `Article` + `BreadcrumbList` |
+| 상품/서비스 (`/resources`) | `Product` 또는 `Offer` |
+| FAQ 섹션 | `FAQPage` |
+| 회사 소개 (`/about`) | `AboutPage` + `Organization` |
+
+**블로그 포스트 JSON-LD 예시:**
+```typescript
+// /lab/[slug]/page.tsx
+<Script id="json-ld-article" type="application/ld+json" strategy="beforeInteractive">
+  {JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.description,
+    author: { "@type": "Organization", name: "고앤슈트" },
+    publisher: { "@id": "https://gonsuit.com/#organization" },
+    datePublished: post.date,
+    url: `https://gonsuit.com/lab/${post.slug}`,
+  })}
+</Script>
+```
+
+---
+
+### 3. AEO (Answer Engine Optimization) 작성 원칙
+
+AI 검색 엔진이 답변 소스로 활용할 수 있도록 콘텐츠를 작성한다.
+
+- **직접적인 답변 우선**: 질문에 대한 답을 첫 문장에 명확히 제시한다.
+- **정의형 문장 사용**: "고앤슈트는 ~하는 기업입니다" 형식으로 엔티티를 명확히 정의한다.
+- **FAQ 구조 활용**: 자주 묻는 질문은 `<details>/<summary>` 또는 명시적 Q&A 포맷으로 작성하고 `FAQPage` 스키마를 추가한다.
+- **숫자와 사실 포함**: "2주 내 MVP 개발", "99개 트렌드 분석" 등 구체적 수치를 명시한다.
+- **내부 링크 연결**: 관련 페이지를 텍스트 앵커로 연결해 엔티티 관계를 명확히 한다.
+
+---
+
+### 4. sitemap / robots
+
+- `src/app/sitemap.ts` — 새 페이지 추가 시 반드시 sitemap에 URL 항목을 추가한다.
+- `src/app/robots.ts` — API 경로(`/api/*`)는 크롤링 차단 유지.
+- 생성 결과 확인: `https://gonsuit.com/sitemap.xml`, `https://gonsuit.com/robots.txt`
+
+---
+
+### 5. 이미지 SEO
+
+- 모든 `<Image>` 컴포넌트에 `alt` 속성 필수 (키워드 포함, 설명적으로 작성).
+- OG 이미지는 `1200×630px` 권장. `/public/images/og-*.png` 에 저장.
+- 이미지 파일명은 영문 소문자 + 하이픈 사용 (예: `og-home.png`, `philosophy.png`).
+
+---
+
+### 6. SEO 체크리스트 (페이지 추가/수정 시 확인)
+
+```
+□ title 50~60자 이내, 핵심 키워드 포함
+□ description 120~160자 이내
+□ canonical URL 설정
+□ OG 태그 (title, description, url, type)
+□ Twitter Card 태그
+□ 해당 페이지 JSON-LD 스키마 추가
+□ sitemap.ts 에 URL 추가
+□ 모든 이미지에 alt 속성
+□ h1 태그 페이지당 1개만 사용
+□ 내부 링크 최소 1개 이상 연결
+```
 
 ---
 

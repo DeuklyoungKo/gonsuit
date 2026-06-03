@@ -1,7 +1,30 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { BookOpen, Key, Layout, Download, ShoppingCart, ExternalLink } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Resources — 개발 가이드 & 템플릿",
+  description:
+    "고앤슈트의 실전 개발 노하우를 담은 PDF 가이드와 템플릿. 마이크로 SaaS 구축, 바이브코딩 스타터킷 등 즉시 활용 가능한 기술 자산을 제공합니다.",
+  alternates: {
+    canonical: "https://gonsuit.com/resources",
+  },
+  openGraph: {
+    title: "Resources — 고앤슈트 개발 가이드 & 템플릿",
+    description:
+      "고앤슈트의 실전 개발 노하우를 담은 PDF 가이드와 템플릿. 마이크로 SaaS 구축, 바이브코딩 스타터킷 등 즉시 활용 가능한 기술 자산을 제공합니다.",
+    url: "https://gonsuit.com/resources",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Resources — 고앤슈트 개발 가이드 & 템플릿",
+    description:
+      "고앤슈트의 실전 개발 노하우를 담은 PDF 가이드와 템플릿. 마이크로 SaaS 구축, 바이브코딩 스타터킷 등 즉시 활용 가능한 기술 자산을 제공합니다.",
+  },
+};
 
 const products = [
   {
