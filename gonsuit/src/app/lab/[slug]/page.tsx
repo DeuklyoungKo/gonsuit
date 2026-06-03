@@ -113,16 +113,21 @@ export default function PostPage({ params }: Props) {
 
         {/* 본문 */}
         <article
-          className="prose prose-zinc max-w-none
-            prose-headings:font-bold prose-headings:tracking-tight
-            prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4
-            prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
-            prose-p:text-base prose-p:leading-relaxed prose-p:text-foreground prose-p:my-4
-            prose-ul:my-4 prose-li:text-foreground prose-li:leading-relaxed
-            prose-strong:text-foreground
-            prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-primary/5
-            prose-blockquote:px-6 prose-blockquote:py-4 prose-blockquote:rounded-r-lg
-            prose-blockquote:text-foreground prose-blockquote:not-italic prose-blockquote:my-6"
+          className="
+            prose prose-zinc max-w-none
+            prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-foreground
+            prose-h2:text-2xl prose-h2:mt-14 prose-h2:mb-5 prose-h2:pb-3 prose-h2:border-b prose-h2:border-border
+            prose-h3:text-lg prose-h3:mt-10 prose-h3:mb-3
+            prose-p:text-base prose-p:leading-[1.9] prose-p:text-foreground prose-p:my-5
+            prose-ul:my-5 prose-ul:pl-6
+            prose-li:text-foreground prose-li:leading-relaxed prose-li:my-1.5 prose-li:marker:text-primary
+            prose-strong:text-foreground prose-strong:font-semibold
+            prose-blockquote:not-italic prose-blockquote:my-8
+            prose-blockquote:border-l-4 prose-blockquote:border-primary
+            prose-blockquote:bg-primary/5 prose-blockquote:rounded-r-xl
+            prose-blockquote:px-6 prose-blockquote:py-4
+            prose-blockquote:text-foreground prose-blockquote:font-medium
+          "
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
 
