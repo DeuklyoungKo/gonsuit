@@ -11,7 +11,6 @@ export default function Header() {
   const navItems = [
     { label: "개발 상품", href: "/#services" },
     { label: "Lab", href: "/lab" },
-    { label: "Resources", href: "/resources" },
     { label: "About", href: "/about" },
   ];
 
