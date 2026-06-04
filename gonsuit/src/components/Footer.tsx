@@ -19,7 +19,6 @@ export default function Footer() {
             {[
               { label: "개발 상품", href: "/#services" },
               { label: "Lab", href: "/lab" },
-              { label: "Resources", href: "/resources" },
               { label: "About", href: "/about" },
               { label: "개인정보처리방침", href: "/privacy" },
             ].map((item) => (

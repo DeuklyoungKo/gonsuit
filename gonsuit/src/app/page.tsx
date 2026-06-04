@@ -4,8 +4,6 @@ import {
   TrendingUp,
   Zap,
   Globe,
-  BookOpen,
-  Newspaper,
   Mail,
   ChevronRight,
   Video,
@@ -95,25 +93,6 @@ const stories = [
   },
 ];
 
-// ── 리소스 데이터 ──────────────────────────────────────────
-const resources = [
-  {
-    title: "0원으로 마이크로 SaaS 만드는 법",
-    desc: "Vercel, Supabase, Cloudflare Workers로 완전 무료 인프라를 구축하는 실전 가이드",
-    price: "$9",
-    badge: "PDF 가이드",
-    badgeColor: "bg-indigo-100 text-indigo-700",
-    comingSoon: true,
-  },
-  {
-    title: "바이브코딩 스타터킷",
-    desc: "AI와 함께 하루 만에 MVP를 만드는 프롬프트 모음 + 실전 워크플로우",
-    price: "$5",
-    badge: "템플릿",
-    badgeColor: "bg-violet-100 text-violet-700",
-    comingSoon: true,
-  },
-];
 
 export default function Home() {
   return (
@@ -232,47 +211,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── Resources ────────────────────────────────────── */}
-        <section id="resources" className="border-b border-border bg-muted/30 py-20">
-          <div className="mx-auto max-w-6xl px-6">
-            <div className="mb-12 text-center">
-              <h2 className="text-3xl font-bold tracking-tight">Technical Assets</h2>
-              <p className="mt-3 text-muted-foreground">
-                고앤슈트의 기술 노하우가 담긴 실전 개발 가이드
-              </p>
-            </div>
-
-            <div className="grid gap-6 md:grid-cols-2">
-              {resources.map((res, i) => (
-                <div
-                  key={i}
-                  className="relative flex flex-col rounded-xl border border-border bg-card p-6 shadow-sm"
-                >
-                  {res.comingSoon && (
-                    <div className="absolute right-4 top-4 rounded-full bg-zinc-100 px-2.5 py-0.5 text-xs text-zinc-500">
-                      준비중
-                    </div>
-                  )}
-                  <span className={`inline-flex w-fit rounded-full px-2.5 py-0.5 text-xs font-medium ${res.badgeColor}`}>
-                    {res.badge}
-                  </span>
-                  <h3 className="mt-3 text-lg font-semibold">{res.title}</h3>
-                  <p className="mt-2 flex-1 text-sm text-muted-foreground">{res.desc}</p>
-                  <div className="mt-4 flex items-center justify-between">
-                    <span className="text-xl font-bold text-foreground">{res.price}</span>
-                    <button
-                      disabled
-                      className="flex items-center gap-2 rounded-lg bg-primary/10 px-4 py-2 text-sm font-medium text-primary opacity-60"
-                    >
-                      <BookOpen className="h-4 w-4" />
-                      문의하기
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* ── Contact Section ────────────────────────────────── */}
         <section id="contact" className="border-b border-border py-24">
