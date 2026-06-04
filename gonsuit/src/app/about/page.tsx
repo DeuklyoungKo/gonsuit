@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import {
-  ArrowRight,
   Globe,
   Mail,
   Rocket,
@@ -13,11 +11,28 @@ import {
   TrendingUp,
   Code2,
 } from "lucide-react";
+import AboutCta from "@/components/AboutCta";
 
 export const metadata: Metadata = {
-  title: "About — 고앤슈트 (Go & Suit)",
+  title: "About — 고앤슈트 소개",
   description:
     "고앤슈트는 상상을 기술로 현실화하는 마이크로 SaaS · AI 솔루션 전문 기업입니다. 우리의 철학, 팀, 그리고 성장 로드맵을 소개합니다.",
+  alternates: {
+    canonical: "https://gonsuit.com/about",
+  },
+  openGraph: {
+    title: "About — 고앤슈트 소개",
+    description:
+      "고앤슈트는 상상을 기술로 현실화하는 마이크로 SaaS · AI 솔루션 전문 기업입니다. 우리의 철학, 팀, 그리고 성장 로드맵을 소개합니다.",
+    url: "https://gonsuit.com/about",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About — 고앤슈트 소개",
+    description:
+      "고앤슈트는 상상을 기술로 현실화하는 마이크로 SaaS · AI 솔루션 전문 기업입니다. 우리의 철학, 팀, 그리고 성장 로드맵을 소개합니다.",
+  },
 };
 
 const principles = [
@@ -44,7 +59,7 @@ const roadmap = [
   {
     period: "2026 Q1",
     status: "done",
-    title: "고앤슈트 창업 & Trend Intelligence 론칭",
+    title: "고앤슈트 창업 & Trend Scouter 론칭",
     desc: "AI 트렌드 분석 솔루션을 통해 시장의 니즈를 데이터로 파악하는 여정을 시작했습니다.",
   },
   {
@@ -221,21 +236,7 @@ export default function AboutPage() {
               <br />
               고앤슈트 팀이 여러분의 아이디어를 현실로 만들어 드립니다.
             </p>
-            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Link
-                href="/contact"
-                className="flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-sm transition-opacity hover:opacity-90"
-              >
-                협업 문의하기
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link
-                href="/#services"
-                className="flex items-center gap-2 rounded-lg border border-border px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
-              >
-                개발 상품 보기
-              </Link>
-            </div>
+            <AboutCta />
           </div>
         </section>
       </main>

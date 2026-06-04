@@ -4,7 +4,7 @@
 고앤슈트(Go & Suit)는 고객의 상상을 현실로 만드는 기술력 기반의 **마이크로 SaaS 및 AI 솔루션 개발 전문 기업**의 사이트입니다. 단순한 포트폴리오를 넘어, 고앤슈트가 개발한 상품들의 신뢰 허브 역할을 수행하며 비즈니스 솔루션을 제안합니다.
 
 - **도메인**: `https://gonsuit.com`
-- **핵심 목표**: 기업 브랜드 신뢰도 구축 + 개발 상품(Trend Intelligence 등) 소개 및 세일즈 + 글로벌 확장성 확보.
+- **핵심 목표**: 기업 브랜드 신뢰도 구축 + 개발 상품(Trend Scouter 등) 소개 및 세일즈 + 글로벌 확장성 확보.
 - **정체성**: "상상을 기술로 현실화하는, 비즈니스 가치 창출 기술 파트너"
 - **운영 원칙**: 국내 고객 중심의 신뢰도 확보 → 영문 대응을 통한 글로벌 확장 준비 → 고도화된 솔루션 제안.
 
@@ -47,7 +47,7 @@
 
 ### 자체 수익 채널
 1. **PDF 가이드 판매**: "0원으로 마이크로 SaaS 만드는 법" 등 실전 가이드 (단건 $5~$15)
-2. **트렌드 분석 리포트 (추후 고려)**: 현재 운영 중인 Trend Intelligence와 연계한 프리미엄 리포트 판매.
+2. **트렌드 분석 리포트 (추후 고려)**: 현재 운영 중인 Trend Scouter와 연계한 프리미엄 리포트 판매.
 
 ---
 
@@ -75,7 +75,7 @@ flowchart TD
     end
 
     subgraph "서비스 및 알림"
-        Frontend --> TrendScouter[Trend Intelligence]
+        Frontend --> TrendScouter[Trend Scouter]
         Frontend --> Resend[Resend Email API]
         Resend --> AdminEmail["info@gonsuit.com"]
         Frontend --> FutureService[향후 서비스들...]

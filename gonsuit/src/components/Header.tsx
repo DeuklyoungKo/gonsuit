@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Zap, Mail, Languages } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { trackMenuClick } from "@/lib/gtag";
 
 export default function Header() {
   const pathname = usePathname();
@@ -28,9 +29,10 @@ export default function Header() {
             <Link
               key={item.label}
               href={item.href}
+              onClick={() => trackMenuClick(item.label)}
               className={`text-sm font-medium transition-colors hover:text-foreground ${
-                pathname === item.href 
-                  ? "text-foreground" 
+                pathname === item.href
+                  ? "text-foreground"
                   : "text-muted-foreground"
               }`}
             >
@@ -46,6 +48,7 @@ export default function Header() {
           </button>
           <Link
             href="/contact"
+            onClick={() => trackMenuClick("문의하기")}
             className="flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
           >
             <Mail className="h-4 w-4" />

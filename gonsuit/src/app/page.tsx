@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { trackProductClick } from "@/lib/gtag";
 import {
   ArrowRight,
   TrendingUp,
@@ -17,7 +20,7 @@ import Footer from "@/components/Footer";
 // ── 서비스 데이터 ──────────────────────────────────────────
 const services = [
   {
-    name: "Trend Intelligence",
+    name: "Trend Scouter",
     description:
       "글로벌 비즈니스 트렌드를 실시간 수집·분석하여 한국 시장에 최적화된 기회 리포트를 제공합니다.",
     status: "운영중",
@@ -79,7 +82,7 @@ const stories = [
   },
   {
     date: "2026.03.01",
-    title: "Trend Intelligence — 99개 트렌드 분석 완료",
+    title: "Trend Scouter — 99개 트렌드 분석 완료",
     desc: "Reddit, Product Hunt, Indie Hackers에서 수집한 99개 트렌드 전수 분석 및 한국형 GTM 전략 자동 생성.",
     tag: "마일스톤",
     tagColor: "bg-emerald-100 text-emerald-700",
@@ -175,6 +178,9 @@ export default function Home() {
                 <Link
                   key={svc.name}
                   href={svc.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackProductClick(svc.name, svc.status)}
                   className="group relative flex flex-col rounded-xl border border-border bg-card p-6 shadow-sm transition-all hover:border-primary/40 hover:shadow-md"
                 >
                   <div className="mb-4 flex items-start justify-between">
