@@ -67,7 +67,13 @@ export default function PrivacyPage() {
           <section className="mb-10">
             <h2 className="text-xl font-bold mb-4">5. 광고 서비스 제공 (Google AdMob)</h2>
             <p className="text-muted-foreground leading-relaxed">
-              고앤슈트의 앱(TextReader 등)은 광고 서비스 제공을 위해 Google AdMob을 사용합니다. 이 과정에서 기기의 광고 식별자(Android Advertising ID)가 수집될 수 있으며, 이는 맞춤형 광고 제공 및 광고 성과 측정 목적으로만 활용됩니다.
+              고앤슈트의 아래 앱은 광고 서비스 제공을 위해 Google AdMob을 사용합니다. 이 과정에서 기기의 광고 식별자(Android Advertising ID)가 수집될 수 있으며, 이는 맞춤형 광고 제공 및 광고 성과 측정 목적으로만 활용됩니다.
+            </p>
+            <ul className="list-disc pl-6 mt-3 mb-3 text-muted-foreground space-y-1">
+              <li><strong>글소리</strong> — 노안 친화형 텍스트 리더 앱 (Android)</li>
+              <li><strong>WordTap</strong> — Android 앱</li>
+            </ul>
+            <p className="text-muted-foreground leading-relaxed">
             </p>
             <ul className="list-disc pl-6 mt-3 text-muted-foreground space-y-1">
               <li>수집 주체: Google LLC (Google AdMob)</li>
@@ -116,7 +122,7 @@ export default function PrivacyPage() {
 
           <section className="mt-16 border-t border-border pt-8 text-sm text-muted-foreground">
             <p>본 방침은 {lastUpdated}부터 시행됩니다.</p>
-            <p className="mt-2">연관 서비스: Trend Scouter, TextReader</p>
+            <p className="mt-2">연관 서비스: Trend Scouter, 글소리, WordTap</p>
           </section>
         </div>
       </main>
