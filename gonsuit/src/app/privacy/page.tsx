@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 };
 
 export default function PrivacyPage() {
-  const lastUpdated = "2026.03.17";
+  const lastUpdated = "2026.06.06";
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -30,6 +30,7 @@ export default function PrivacyPage() {
               <li>고객 문의 및 상담 서비스 제공</li>
               <li>서비스 이용에 따른 본인확인 및 알림 발송</li>
               <li>신규 서비스 개발 및 맞춤 서비스 제공</li>
+              <li>광고 서비스 제공 (Google AdMob을 통한 앱 내 광고 노출)</li>
             </ul>
           </section>
 
@@ -41,6 +42,7 @@ export default function PrivacyPage() {
             <ul className="list-disc pl-6 mt-2 text-muted-foreground space-y-1">
               <li>필수항목: 이름, 이메일 주소, 문의 내용</li>
               <li>수집방법: 홈페이지 내 문의하기 폼(Contact Form)</li>
+              <li>광고 식별자: Android Advertising ID(ADID) — 앱 내 광고 서비스 제공 목적으로 Google AdMob에 의해 자동 수집될 수 있습니다.</li>
             </ul>
           </section>
 
@@ -63,21 +65,46 @@ export default function PrivacyPage() {
           </section>
 
           <section className="mb-10">
-            <h2 className="text-xl font-bold mb-4">5. 정보주체의 권리·의무 및 그 행사방법</h2>
+            <h2 className="text-xl font-bold mb-4">5. 광고 서비스 제공 (Google AdMob)</h2>
+            <p className="text-muted-foreground leading-relaxed">
+              고앤슈트의 앱(TextReader 등)은 광고 서비스 제공을 위해 Google AdMob을 사용합니다. 이 과정에서 기기의 광고 식별자(Android Advertising ID)가 수집될 수 있으며, 이는 맞춤형 광고 제공 및 광고 성과 측정 목적으로만 활용됩니다.
+            </p>
+            <ul className="list-disc pl-6 mt-3 text-muted-foreground space-y-1">
+              <li>수집 주체: Google LLC (Google AdMob)</li>
+              <li>수집 항목: Android Advertising ID (ADID), 앱 사용 정보, 기기 정보</li>
+              <li>이용 목적: 맞춤형 광고 노출, 광고 효과 측정</li>
+              <li>보유 기간: Google의 개인정보처리방침에 따름</li>
+            </ul>
+            <p className="text-muted-foreground leading-relaxed mt-3">
+              Google의 개인정보 처리 방식에 대한 자세한 내용은{" "}
+              <a
+                href="https://policies.google.com/privacy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:underline"
+              >
+                Google 개인정보처리방침
+              </a>
+              을 참조하시기 바랍니다. 광고 개인화 설정은 기기의 [설정 → Google → 광고] 메뉴에서 변경하거나 비활성화할 수 있습니다.
+            </p>
+          </section>
+
+          <section className="mb-10">
+            <h2 className="text-xl font-bold mb-4">6. 정보주체의 권리·의무 및 그 행사방법</h2>
             <p className="text-muted-foreground leading-relaxed">
               정보주체는 고앤슈트에 대해 언제든지 개인정보 열람·정정·삭제·처리정지 요구 등의 권리를 행사할 수 있습니다. 권리 행사는 이메일(info@gonsuit.com)을 통해 하실 수 있으며, 고앤슈트는 이에 대해 지체 없이 조치하겠습니다.
             </p>
           </section>
 
           <section className="mb-10">
-            <h2 className="text-xl font-bold mb-4">6. 개인정보의 파기절차 및 파기방법</h2>
+            <h2 className="text-xl font-bold mb-4">7. 개인정보의 파기절차 및 파기방법</h2>
             <p className="text-muted-foreground leading-relaxed">
               고앤슈트는 개인정보 보유기간의 경과, 처리목적 달성 등 개인정보가 불필요하게 되었을 때에는 지체 없이 해당 개인정보를 파기합니다. 전자적 파일 형태의 정보는 기록을 재생할 수 없는 기술적 방법을 사용하여 파기합니다.
             </p>
           </section>
 
           <section className="mb-10">
-            <h2 className="text-xl font-bold mb-4">7. 개인정보 보호책임자</h2>
+            <h2 className="text-xl font-bold mb-4">8. 개인정보 보호책임자</h2>
             <p className="text-muted-foreground leading-relaxed">
               고앤슈트는 개인정보 처리에 관한 업무를 총괄해서 책임지고, 개인정보 처리와 관련한 정보주체의 불만처리 및 피해구제 등을 위하여 아래와 같이 개인정보 보호책임자를 지정하고 있습니다.
             </p>
@@ -89,7 +116,7 @@ export default function PrivacyPage() {
 
           <section className="mt-16 border-t border-border pt-8 text-sm text-muted-foreground">
             <p>본 방침은 {lastUpdated}부터 시행됩니다.</p>
-            <p className="mt-2">연관 서비스: Trend Scouter</p>
+            <p className="mt-2">연관 서비스: Trend Scouter, TextReader</p>
           </section>
         </div>
       </main>
