@@ -13,12 +13,23 @@ import {
   Share2,
   SearchCode,
   MessageSquare,
+  BookOpen,
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 // ── 서비스 데이터 ──────────────────────────────────────────
 const services = [
+  {
+    name: "글소리",
+    description:
+      "txt 파일을 불러와 크게 읽고 들을 수 있는 노안 친화형 텍스트 리더 앱. TTS 음성 재생, 폰트 크기 조절, 다크모드 지원.",
+    status: "출시예정",
+    statusColor: "bg-amber-100 text-amber-700",
+    href: "/products/gulsori",
+    icon: BookOpen,
+    tags: ["Android 앱", "TTS", "노안 친화"],
+  },
   {
     name: "Trend Scouter",
     description:
@@ -174,12 +185,13 @@ export default function Home() {
             </div>
 
             <div className="grid gap-6 md:grid-cols-3">
-              {services.map((svc) => (
+              {services.map((svc) => {
+                const isExternal = svc.href.startsWith("http");
+                return (
                 <Link
                   key={svc.name}
                   href={svc.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                   onClick={() => trackProductClick(svc.name, svc.status)}
                   className="group relative flex flex-col rounded-xl border border-border bg-card p-6 shadow-sm transition-all hover:border-primary/40 hover:shadow-md"
                 >
@@ -212,7 +224,8 @@ export default function Home() {
                     바로가기 <ChevronRight className="h-3 w-3" />
                   </div>
                 </Link>
-              ))}
+                );
+              })}
             </div>
           </div>
         </section>
