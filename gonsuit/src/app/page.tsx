@@ -32,6 +32,17 @@ const services = [
     tags: ["Android 앱", "TTS", "노안 친화"],
   },
   {
+    name: "WordTap",
+    description:
+      "영어 문장을 읽다가 모르는 단어나 문법이 있으면 탭 한 번으로 AI가 한국어로 해설. 단순 번역이 아닌 '왜 이렇게 쓰였는지' 구조를 알려주는 영어 학습 앱.",
+    status: "출시예정",
+    statusColor: "bg-blue-100 text-blue-700",
+    href: "/products/wordtap",
+    icon: null,
+    imageSrc: "/images/wordtap-icon.png",
+    tags: ["Android 앱", "AI 문법 해설", "영어 학습"],
+  },
+  {
     name: "Trend Scouter",
     description:
       "글로벌 비즈니스 트렌드를 실시간 수집·분석하여 한국 시장에 최적화된 기회 리포트를 제공합니다.",
