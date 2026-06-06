@@ -4,11 +4,14 @@ import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "개인정보처리방침 — 고앤슈트 (Go & Suit)",
-  description: "고앤슈트의 개인정보처리방침입니다. 고객의 소중한 정보를 보호하기 위한 정책을 안내해 드립니다.",
+  description: "고앤슈트의 개인정보처리방침입니다. 고객의 소중한 정보를 보호하기 위한 정책과 AI 서비스 및 광고 서비스 관련 처리 내용을 안내합니다.",
+  alternates: {
+    canonical: "https://gonsuit.com/privacy",
+  },
 };
 
 export default function PrivacyPage() {
-  const lastUpdated = "2026.06.06";
+  const lastUpdated = "2026.06.07";
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -31,6 +34,7 @@ export default function PrivacyPage() {
               <li>서비스 이용에 따른 본인확인 및 알림 발송</li>
               <li>신규 서비스 개발 및 맞춤 서비스 제공</li>
               <li>광고 서비스 제공 (Google AdMob을 통한 앱 내 광고 노출)</li>
+              <li>AI 서비스 제공 (WordTap 앱의 단어·문장 AI 설명 생성 — Groq AI API 활용)</li>
             </ul>
           </section>
 
@@ -43,6 +47,7 @@ export default function PrivacyPage() {
               <li>필수항목: 이름, 이메일 주소, 문의 내용</li>
               <li>수집방법: 홈페이지 내 문의하기 폼(Contact Form)</li>
               <li>광고 식별자: Android Advertising ID(ADID) — 앱 내 광고 서비스 제공 목적으로 Google AdMob에 의해 자동 수집될 수 있습니다.</li>
+              <li>사용자 선택 텍스트: WordTap 앱에서 단어·문장을 탭할 때 해당 텍스트가 AI 설명 생성 목적으로 Groq Inc. 서버로 전송됩니다. (응답 생성 후 즉시 파기, 저장 없음)</li>
             </ul>
           </section>
 
@@ -96,21 +101,90 @@ export default function PrivacyPage() {
           </section>
 
           <section className="mb-10">
-            <h2 className="text-xl font-bold mb-4">6. 정보주체의 권리·의무 및 그 행사방법</h2>
+            <h2 className="text-xl font-bold mb-4">6. AI 서비스 제공 (Groq AI API)</h2>
+            <p className="text-muted-foreground leading-relaxed">
+              고앤슈트의 <strong>WordTap</strong> 앱은 단어·문장 탭 시 AI 기반 설명을 제공하기 위해 Groq AI API를 사용합니다.
+              이 과정에서 사용자가 선택한 텍스트가 Groq Inc.(미국)의 서버로 전송됩니다.
+            </p>
+            <ul className="list-disc pl-6 mt-3 text-muted-foreground space-y-1">
+              <li><strong>처리 주체</strong>: Groq Inc. (미국)</li>
+              <li><strong>전송 데이터</strong>: 사용자가 앱 내에서 선택(탭)한 단어 또는 문장 텍스트</li>
+              <li><strong>이용 목적</strong>: AI 기반 단어·문장 설명 생성</li>
+              <li><strong>보유 기간</strong>: AI 응답 생성 후 즉시 파기 (별도 저장 없음)</li>
+            </ul>
+            <p className="text-muted-foreground leading-relaxed mt-3">
+              Groq의 개인정보 처리 방식에 대한 자세한 내용은{" "}
+              <a
+                href="https://groq.com/privacy-policy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:underline"
+              >
+                Groq 개인정보처리방침
+              </a>
+              을 참조하시기 바랍니다.
+            </p>
+          </section>
+
+          <section className="mb-10">
+            <h2 className="text-xl font-bold mb-4">7. 개인정보의 국외 이전</h2>
+            <p className="text-muted-foreground leading-relaxed">
+              고앤슈트는 서비스 제공을 위해 아래와 같이 개인정보를 국외로 이전합니다.
+              이전 전 정보주체에게 아래 사항을 고지하며, 이전을 원하지 않는 경우 해당 기능 사용을 중단하실 수 있습니다.
+            </p>
+            <div className="mt-4 overflow-x-auto">
+              <table className="w-full text-sm text-muted-foreground border border-border rounded-lg">
+                <thead>
+                  <tr className="bg-muted/50">
+                    <th className="text-left px-4 py-2 font-semibold text-foreground border-b border-border">항목</th>
+                    <th className="text-left px-4 py-2 font-semibold text-foreground border-b border-border">내용</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b border-border">
+                    <td className="px-4 py-2 font-medium">이전받는 자</td>
+                    <td className="px-4 py-2">Groq Inc.</td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="px-4 py-2 font-medium">이전 국가</td>
+                    <td className="px-4 py-2">미국 (United States)</td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="px-4 py-2 font-medium">이전 목적</td>
+                    <td className="px-4 py-2">AI 단어·문장 설명 생성 (WordTap 앱)</td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="px-4 py-2 font-medium">이전 항목</td>
+                    <td className="px-4 py-2">사용자가 선택한 텍스트 (단어·문장)</td>
+                  </tr>
+                  <tr>
+                    <td className="px-4 py-2 font-medium">보유·이용 기간</td>
+                    <td className="px-4 py-2">AI 응답 생성 후 즉시 파기</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="text-muted-foreground leading-relaxed mt-3 text-sm">
+              ※ 국외 이전에 동의하지 않는 경우, WordTap 앱의 AI 설명 기능 사용을 중단하시면 됩니다.
+            </p>
+          </section>
+
+          <section className="mb-10">
+            <h2 className="text-xl font-bold mb-4">8. 정보주체의 권리·의무 및 그 행사방법</h2>
             <p className="text-muted-foreground leading-relaxed">
               정보주체는 고앤슈트에 대해 언제든지 개인정보 열람·정정·삭제·처리정지 요구 등의 권리를 행사할 수 있습니다. 권리 행사는 이메일(info@gonsuit.com)을 통해 하실 수 있으며, 고앤슈트는 이에 대해 지체 없이 조치하겠습니다.
             </p>
           </section>
 
           <section className="mb-10">
-            <h2 className="text-xl font-bold mb-4">7. 개인정보의 파기절차 및 파기방법</h2>
+            <h2 className="text-xl font-bold mb-4">9. 개인정보의 파기절차 및 파기방법</h2>
             <p className="text-muted-foreground leading-relaxed">
               고앤슈트는 개인정보 보유기간의 경과, 처리목적 달성 등 개인정보가 불필요하게 되었을 때에는 지체 없이 해당 개인정보를 파기합니다. 전자적 파일 형태의 정보는 기록을 재생할 수 없는 기술적 방법을 사용하여 파기합니다.
             </p>
           </section>
 
           <section className="mb-10">
-            <h2 className="text-xl font-bold mb-4">8. 개인정보 보호책임자</h2>
+            <h2 className="text-xl font-bold mb-4">10. 개인정보 보호책임자</h2>
             <p className="text-muted-foreground leading-relaxed">
               고앤슈트는 개인정보 처리에 관한 업무를 총괄해서 책임지고, 개인정보 처리와 관련한 정보주체의 불만처리 및 피해구제 등을 위하여 아래와 같이 개인정보 보호책임자를 지정하고 있습니다.
             </p>
