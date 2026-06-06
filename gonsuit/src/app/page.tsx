@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { trackProductClick } from "@/lib/gtag";
 import {
   ArrowRight,
@@ -13,7 +14,6 @@ import {
   Share2,
   SearchCode,
   MessageSquare,
-  BookOpen,
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -27,7 +27,8 @@ const services = [
     status: "출시예정",
     statusColor: "bg-amber-100 text-amber-700",
     href: "/products/gulsori",
-    icon: BookOpen,
+    icon: null,
+    imageSrc: "/images/gulsori-icon.png",
     tags: ["Android 앱", "TTS", "노안 친화"],
   },
   {
@@ -38,6 +39,7 @@ const services = [
     statusColor: "bg-emerald-100 text-emerald-700",
     href: "https://trend.gonsuit.com",
     icon: TrendingUp,
+    imageSrc: null,
     tags: ["트렌드 분석", "AI 인사이트", "SaaS"],
   },
   {
@@ -48,6 +50,7 @@ const services = [
     statusColor: "bg-zinc-100 text-zinc-600",
     href: "#",
     icon: Video,
+    imageSrc: null,
     tags: ["AI 쇼츠", "영상 자동화", "마케팅"],
   },
   {
@@ -58,6 +61,7 @@ const services = [
     statusColor: "bg-zinc-100 text-zinc-600",
     href: "#",
     icon: Share2,
+    imageSrc: null,
     tags: ["자동 포스팅", "인포그래픽", "마케팅"],
   },
   {
@@ -68,6 +72,7 @@ const services = [
     statusColor: "bg-zinc-100 text-zinc-600",
     href: "#",
     icon: SearchCode,
+    imageSrc: null,
     tags: ["사이트 진단", "SEO 최적화", "성능 분석"],
   },
   {
@@ -78,6 +83,7 @@ const services = [
     statusColor: "bg-zinc-100 text-zinc-600",
     href: "#",
     icon: MessageSquare,
+    imageSrc: null,
     tags: ["피드백 분석", "인사이트", "CS 자동화"],
   },
 ];
@@ -196,8 +202,18 @@ export default function Home() {
                   className="group relative flex flex-col rounded-xl border border-border bg-card p-6 shadow-sm transition-all hover:border-primary/40 hover:shadow-md"
                 >
                   <div className="mb-4 flex items-start justify-between">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
-                      <svc.icon className="h-5 w-5 text-primary" />
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg overflow-hidden bg-primary/10">
+                      {svc.imageSrc ? (
+                        <Image
+                          src={svc.imageSrc}
+                          alt={`${svc.name} 아이콘`}
+                          width={40}
+                          height={40}
+                          className="h-10 w-10 rounded-lg object-cover"
+                        />
+                      ) : (
+                        svc.icon && <svc.icon className="h-5 w-5 text-primary" />
+                      )}
                     </div>
                     <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${svc.statusColor}`}>
                       {svc.status}

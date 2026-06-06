@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import Script from "next/script";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -132,8 +133,14 @@ export default function GulsoriPage() {
 
             <div className="flex flex-col items-start gap-8 md:flex-row md:items-center">
               {/* 앱 아이콘 영역 */}
-              <div className="flex h-24 w-24 shrink-0 items-center justify-center rounded-3xl bg-amber-100 shadow-lg">
-                <BookOpen className="h-12 w-12 text-amber-600" />
+              <div className="h-24 w-24 shrink-0 overflow-hidden rounded-3xl shadow-lg">
+                <Image
+                  src="/images/gulsori-icon.png"
+                  alt="글소리 앱 아이콘"
+                  width={96}
+                  height={96}
+                  className="h-full w-full object-cover"
+                />
               </div>
 
               <div>
