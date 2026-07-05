@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default function PrivacyPage() {
-  const lastUpdated = "2026.06.07";
+  const lastUpdated = "2026.07.05";
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -70,22 +70,31 @@ export default function PrivacyPage() {
           </section>
 
           <section className="mb-10">
-            <h2 className="text-xl font-bold mb-4">5. 광고 서비스 제공 (Google AdMob)</h2>
+            <h2 className="text-xl font-bold mb-4">5. 광고 및 분석 서비스 (Google AdMob · Firebase Analytics)</h2>
             <p className="text-muted-foreground leading-relaxed">
-              고앤슈트의 아래 앱은 광고 서비스 제공을 위해 Google AdMob을 사용합니다. 이 과정에서 기기의 광고 식별자(Android Advertising ID)가 수집될 수 있으며, 이는 맞춤형 광고 제공 및 광고 성과 측정 목적으로만 활용됩니다.
+              고앤슈트의 아래 앱은 광고 서비스 제공 및 서비스 개선을 위한 익명 사용 통계 분석을 위해 Google AdMob과 Firebase Analytics(Google Analytics)를 사용합니다.
             </p>
             <ul className="list-disc pl-6 mt-3 mb-3 text-muted-foreground space-y-1">
               <li><strong>글소리</strong> — 노안 친화형 텍스트 리더 앱 (Android)</li>
-              <li><strong>WordTap</strong> — Android 앱</li>
+              <li><strong>WordTap</strong> — AI 문법 해설 영어 학습 앱 (Android)</li>
             </ul>
-            <p className="text-muted-foreground leading-relaxed">
-            </p>
-            <ul className="list-disc pl-6 mt-3 text-muted-foreground space-y-1">
+
+            <p className="text-muted-foreground leading-relaxed mt-4 font-medium text-foreground">[광고] Google AdMob</p>
+            <ul className="list-disc pl-6 mt-2 text-muted-foreground space-y-1">
               <li>수집 주체: Google LLC (Google AdMob)</li>
               <li>수집 항목: Android Advertising ID (ADID), 앱 사용 정보, 기기 정보</li>
               <li>이용 목적: 맞춤형 광고 노출, 광고 효과 측정</li>
               <li>보유 기간: Google의 개인정보처리방침에 따름</li>
             </ul>
+
+            <p className="text-muted-foreground leading-relaxed mt-4 font-medium text-foreground">[분석 도구] Firebase Analytics (Google Analytics)</p>
+            <ul className="list-disc pl-6 mt-2 text-muted-foreground space-y-1">
+              <li>수집 주체: Google LLC (Firebase / Google Analytics)</li>
+              <li>수집 항목: 앱 인스턴스 ID, 앱 이용 이벤트(파일 열람·TTS 재생 등 익명 사용 통계), 대략적 기기·OS 정보</li>
+              <li>이용 목적: 서비스 이용 패턴 분석 및 개선 (리텐션 측정)</li>
+              <li>보유 기간: Google의 개인정보처리방침에 따름</li>
+            </ul>
+
             <p className="text-muted-foreground leading-relaxed mt-3">
               Google의 개인정보 처리 방식에 대한 자세한 내용은{" "}
               <a
@@ -96,8 +105,12 @@ export default function PrivacyPage() {
               >
                 Google 개인정보처리방침
               </a>
-              을 참조하시기 바랍니다. 광고 개인화 설정은 기기의 [설정 → Google → 광고] 메뉴에서 변경하거나 비활성화할 수 있습니다.
+              을 참조하시기 바랍니다.
             </p>
+            <ul className="list-disc pl-6 mt-3 text-muted-foreground space-y-1">
+              <li><strong>맞춤형 광고 거부</strong>: 기기의 [설정 → Google → 광고] 메뉴에서 광고 개인 최적화를 선택 해제하거나 광고 ID를 재설정할 수 있습니다.</li>
+              <li><strong>사용 통계 수집 거부</strong>: 기기의 [설정 → Google → 광고]에서 &apos;광고 개인 최적화 선택 해제&apos;를 적용하거나, 앱을 삭제하면 수집이 중단됩니다.</li>
+            </ul>
           </section>
 
           <section className="mb-10">
@@ -136,36 +149,40 @@ export default function PrivacyPage() {
               <table className="w-full text-sm text-muted-foreground border border-border rounded-lg">
                 <thead>
                   <tr className="bg-muted/50">
-                    <th className="text-left px-4 py-2 font-semibold text-foreground border-b border-border">항목</th>
-                    <th className="text-left px-4 py-2 font-semibold text-foreground border-b border-border">내용</th>
+                    <th className="text-left px-4 py-2 font-semibold text-foreground border-b border-border">이전받는 자</th>
+                    <th className="text-left px-4 py-2 font-semibold text-foreground border-b border-border">이전 국가</th>
+                    <th className="text-left px-4 py-2 font-semibold text-foreground border-b border-border">이전 항목</th>
+                    <th className="text-left px-4 py-2 font-semibold text-foreground border-b border-border">이전 목적</th>
+                    <th className="text-left px-4 py-2 font-semibold text-foreground border-b border-border">보유·이용 기간</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr className="border-b border-border">
-                    <td className="px-4 py-2 font-medium">이전받는 자</td>
-                    <td className="px-4 py-2">Groq Inc.</td>
-                  </tr>
-                  <tr className="border-b border-border">
-                    <td className="px-4 py-2 font-medium">이전 국가</td>
-                    <td className="px-4 py-2">미국 (United States)</td>
-                  </tr>
-                  <tr className="border-b border-border">
-                    <td className="px-4 py-2 font-medium">이전 목적</td>
-                    <td className="px-4 py-2">AI 단어·문장 설명 생성 (WordTap 앱)</td>
-                  </tr>
-                  <tr className="border-b border-border">
-                    <td className="px-4 py-2 font-medium">이전 항목</td>
+                    <td className="px-4 py-2 font-medium">Groq Inc.</td>
+                    <td className="px-4 py-2">미국</td>
                     <td className="px-4 py-2">사용자가 선택한 텍스트 (단어·문장)</td>
+                    <td className="px-4 py-2">AI 단어·문장 설명 생성 (WordTap)</td>
+                    <td className="px-4 py-2">AI 응답 생성 후 즉시 파기</td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="px-4 py-2 font-medium">Google LLC (AdMob)</td>
+                    <td className="px-4 py-2">미국</td>
+                    <td className="px-4 py-2">광고 식별자(ADID), 앱 사용·기기 정보</td>
+                    <td className="px-4 py-2">맞춤형 광고 노출 및 성과 측정</td>
+                    <td className="px-4 py-2">Google 개인정보처리방침에 따름</td>
                   </tr>
                   <tr>
-                    <td className="px-4 py-2 font-medium">보유·이용 기간</td>
-                    <td className="px-4 py-2">AI 응답 생성 후 즉시 파기</td>
+                    <td className="px-4 py-2 font-medium">Google LLC (Firebase / Google Analytics)</td>
+                    <td className="px-4 py-2">미국</td>
+                    <td className="px-4 py-2">앱 인스턴스 ID, 익명 사용 이벤트, 기기·OS 정보</td>
+                    <td className="px-4 py-2">앱 사용 통계 분석 및 서비스 개선</td>
+                    <td className="px-4 py-2">Google 개인정보처리방침에 따름</td>
                   </tr>
                 </tbody>
               </table>
             </div>
             <p className="text-muted-foreground leading-relaxed mt-3 text-sm">
-              ※ 국외 이전에 동의하지 않는 경우, WordTap 앱의 AI 설명 기능 사용을 중단하시면 됩니다.
+              ※ 국외 이전에 동의하지 않는 경우, WordTap 앱의 AI 설명 기능 사용을 중단하거나(Groq), 기기의 광고·분석 설정에서 개인 최적화를 해제하실 수 있습니다(Google).
             </p>
           </section>
 
