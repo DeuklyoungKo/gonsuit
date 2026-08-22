@@ -11,52 +11,63 @@ import {
   Type,
   Moon,
   Bookmark,
+  Radio,
   Smartphone,
   CheckCircle2,
   Star,
   Users,
   Mail,
+  Download,
 } from "lucide-react";
 
+const PLAY_STORE_URL =
+  "https://play.google.com/store/apps/details?id=com.gonsuit.geulsori";
+
 export const metadata: Metadata = {
-  title: "글소리 — 노안 친화형 텍스트 리더 앱",
+  title: "글소리 — 큰글씨 TTS 텍스트 리더 앱",
   description:
-    "txt 파일을 쉽게 불러와 크게 읽고 들을 수 있는 노안 친화형 텍스트 리더 앱. TTS 음성 재생, 5단계 폰트 조절, 다크모드 지원. Google Play 출시 예정.",
+    "txt·EPUB 파일을 크게 읽고 TTS로 들을 수 있는 노안 친화형 텍스트 리더 앱. 큰 글씨 5단계, 백그라운드 음성 재생, 한글 인코딩 자동 감지, 다크모드 지원. Google Play에서 무료 다운로드.",
   alternates: {
     canonical: "https://gonsuit.com/products/gulsori",
   },
   openGraph: {
-    title: "글소리 — 노안 친화형 텍스트 리더 앱",
+    title: "글소리 — 큰글씨 TTS 텍스트 리더 앱",
     description:
-      "txt 파일을 쉽게 불러와 크게 읽고 들을 수 있는 노안 친화형 텍스트 리더 앱. TTS 음성 재생, 5단계 폰트 조절, 다크모드 지원.",
+      "txt·EPUB 파일을 크게 읽고 TTS로 들을 수 있는 노안 친화형 텍스트 리더 앱. Google Play에서 무료 다운로드.",
     url: "https://gonsuit.com/products/gulsori",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "글소리 — 노안 친화형 텍스트 리더 앱",
+    title: "글소리 — 큰글씨 TTS 텍스트 리더 앱",
     description:
-      "txt 파일을 쉽게 불러와 크게 읽고 들을 수 있는 노안 친화형 텍스트 리더 앱.",
+      "txt·EPUB 파일을 크게 읽고 TTS로 들을 수 있는 노안 친화형 텍스트 리더 앱. Google Play 출시.",
   },
 };
 
 const features = [
   {
     icon: BookOpen,
-    title: "간편한 파일 열기",
-    desc: "파일 탐색기에서 .txt 파일을 선택하면 바로 읽기 시작. 마지막으로 열었던 파일은 앱 실행 시 바로 이어읽기 가능.",
+    title: "TXT · EPUB 파일 열기",
+    desc: "파일 탐색기에서 .txt 또는 .epub 파일을 선택하면 바로 읽기 시작. 한글 인코딩(UTF-8·EUC-KR)을 자동 감지해 글자 깨짐 없이 표시합니다.",
     color: "bg-indigo-50 text-indigo-600",
   },
   {
     icon: Headphones,
-    title: "TTS 음성 재생",
-    desc: "재생·일시정지·정지는 물론, 0.75~1.5배 속도 조절과 문장 앞뒤 이동까지. 이어폰·블루투스 완전 지원.",
+    title: "TTS 음성 낭독",
+    desc: "재생·일시정지·정지는 물론 속도 조절과 문장 앞뒤 이동까지. 이어폰·블루투스를 완전 지원합니다.",
     color: "bg-violet-50 text-violet-600",
   },
   {
+    icon: Radio,
+    title: "백그라운드 재생",
+    desc: "앱을 닫거나 화면을 꺼도 TTS 낭독이 계속됩니다. 다른 앱을 쓰면서, 이동 중에도 귀로 계속 들을 수 있습니다.",
+    color: "bg-sky-50 text-sky-600",
+  },
+  {
     icon: Type,
-    title: "5단계 폰트 크기",
-    desc: "16·20·24·28·32px 5단계 조절. 기본값 22px로 노안도 편하게. 줄 간격 1.6 고정으로 가독성 최우선.",
+    title: "5단계 큰 글씨",
+    desc: "16·20·24·28·32px 5단계 조절. 노안에 맞춘 넉넉한 기본 글씨와 줄 간격으로 가독성을 최우선했습니다.",
     color: "bg-amber-50 text-amber-600",
   },
   {
@@ -71,12 +82,6 @@ const features = [
     desc: "마지막 읽은 위치가 자동 저장되어 앱 재실행 시 이어읽기. 수동 책갈피로 원하는 위치 즉시 저장.",
     color: "bg-emerald-50 text-emerald-600",
   },
-  {
-    icon: Smartphone,
-    title: "완전 오프라인 동작",
-    desc: "인터넷 없이 모든 핵심 기능 사용 가능. Android 8.0 이상 지원으로 구형 기기도 호환.",
-    color: "bg-rose-50 text-rose-600",
-  },
 ];
 
 const targets = [
@@ -86,22 +91,31 @@ const targets = [
 ];
 
 const roadmap = [
-  { phase: "1차 MVP", status: "current", items: ["TXT 파일 읽기", "TTS 재생", "폰트·테마 조절", "책갈피", "AdMob 배너"] },
-  { phase: "2차 정식", status: "upcoming", items: ["EPUB·PDF 지원", "다중 책갈피", "서재 화면", "전면 광고", "수면 타이머"] },
+  { phase: "1차 출시", status: "done", items: ["TXT·EPUB 파일 읽기", "TTS 백그라운드 재생", "한글 인코딩 자동 감지", "폰트·테마 조절", "책갈피 & 위치 저장", "AdMob 배너"] },
+  { phase: "2차 정식", status: "upcoming", items: ["PDF 지원", "다중 책갈피", "서재 화면", "수면 타이머", "속도 프리셋"] },
   { phase: "3차 고도화", status: "upcoming", items: ["클라우드 동기화", "형광펜·메모", "구독 모델(광고 제거)", "홈 위젯"] },
 ];
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  name: "글소리",
+  name: "글소리 - 큰글씨 TTS 텍스트 리더",
   operatingSystem: "Android",
   applicationCategory: "UtilitiesApplication",
   description:
-    "txt 파일을 쉽게 불러와 크게 읽고 들을 수 있는 노안 친화형 텍스트 리더 앱.",
+    "txt·EPUB 파일을 크게 읽고 TTS로 들을 수 있는 노안 친화형 텍스트 리더 앱.",
   offers: { "@type": "Offer", price: "0", priceCurrency: "KRW" },
   author: { "@id": "https://gonsuit.com/#organization" },
   url: "https://gonsuit.com/products/gulsori",
+  downloadUrl: PLAY_STORE_URL,
+  installUrl: PLAY_STORE_URL,
+  // ⚠️ 평점(aggregateRating)은 Google Play에 실제 평점이 표시된 후에만 추가할 것.
+  //    허위·임의 값은 리치 결과 거부 및 수동 조치 대상. 실제 값 확인 후 아래 주석 해제:
+  // aggregateRating: {
+  //   "@type": "AggregateRating",
+  //   ratingValue: "4.8",   // Play Store 실제 평균 별점
+  //   ratingCount: "25",    // Play Store 실제 평가 개수
+  // },
 };
 
 export default function GulsoriPage() {
@@ -146,15 +160,15 @@ export default function GulsoriPage() {
               <div>
                 <div className="flex items-center gap-3">
                   <h1 className="text-4xl font-bold tracking-tight md:text-5xl">글소리</h1>
-                  <span className="rounded-full bg-amber-100 px-3 py-1 text-sm font-semibold text-amber-700">
-                    출시예정
+                  <span className="rounded-full bg-emerald-100 px-3 py-1 text-sm font-semibold text-emerald-700">
+                    운영중
                   </span>
                 </div>
                 <p className="mt-3 text-xl text-muted-foreground">
-                  노안 친화형 텍스트 리더 앱
+                  큰글씨 TTS 텍스트 리더 앱
                 </p>
                 <p className="mt-4 max-w-xl leading-relaxed text-muted-foreground">
-                  txt 파일을 불러와 크게 읽고, 들을 수 있는 Android 앱입니다.
+                  txt·EPUB 파일을 불러와 크게 읽고, 들을 수 있는 Android 앱입니다.
                   파일 선택 → 읽기 → 듣기, 3단계로 끝나는 단순함이 핵심입니다.
                 </p>
 
@@ -174,18 +188,21 @@ export default function GulsoriPage() {
                 </div>
 
                 <div className="mt-8 flex flex-wrap gap-3">
-                  <button
-                    disabled
-                    className="flex cursor-not-allowed items-center gap-2 rounded-xl bg-primary/40 px-6 py-3 text-sm font-semibold text-primary-foreground opacity-60"
+                  <a
+                    href={PLAY_STORE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-sm transition-opacity hover:opacity-90"
                   >
-                    Google Play 출시 예정
-                  </button>
+                    <Download className="h-4 w-4" />
+                    Google Play에서 다운로드
+                  </a>
                   <Link
                     href="/contact"
                     className="flex items-center gap-2 rounded-xl border border-border px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
                   >
                     <Mail className="h-4 w-4" />
-                    사전 알림 신청
+                    협업 문의
                   </Link>
                 </div>
               </div>
@@ -250,27 +267,27 @@ export default function GulsoriPage() {
             <div className="space-y-6">
               {roadmap.map((r) => (
                 <div key={r.phase} className={`rounded-2xl border p-6 ${
-                  r.status === "current"
-                    ? "border-amber-300 bg-amber-50"
+                  r.status === "done"
+                    ? "border-emerald-300 bg-emerald-50"
                     : "border-border bg-card"
                 }`}>
                   <div className="flex items-center gap-3 mb-4">
                     <span className={`rounded-full px-3 py-1 text-sm font-bold ${
-                      r.status === "current"
-                        ? "bg-amber-200 text-amber-800"
+                      r.status === "done"
+                        ? "bg-emerald-200 text-emerald-800"
                         : "bg-muted text-muted-foreground"
                     }`}>
                       {r.phase}
                     </span>
-                    {r.status === "current" && (
-                      <span className="text-sm font-medium text-amber-700">● 개발 진행중</span>
+                    {r.status === "done" && (
+                      <span className="text-sm font-medium text-emerald-700">✓ 출시 완료</span>
                     )}
                   </div>
                   <ul className="grid gap-2 sm:grid-cols-2">
                     {r.items.map((item) => (
                       <li key={item} className="flex items-center gap-2 text-sm text-muted-foreground">
                         <CheckCircle2 className={`h-4 w-4 shrink-0 ${
-                          r.status === "current" ? "text-amber-500" : "text-muted-foreground/40"
+                          r.status === "done" ? "text-emerald-500" : "text-muted-foreground/40"
                         }`} />
                         {item}
                       </li>
@@ -285,18 +302,20 @@ export default function GulsoriPage() {
         {/* ── CTA ──────────────────────────────────────── */}
         <section className="py-24">
           <div className="mx-auto max-w-2xl px-6 text-center">
-            <h2 className="text-3xl font-bold tracking-tight">출시 소식을 가장 먼저 받아보세요</h2>
+            <h2 className="text-3xl font-bold tracking-tight">지금 바로 글소리를 만나보세요</h2>
             <p className="mt-4 text-muted-foreground">
-              글소리 출시 알림 및 베타 테스터 모집에 관심이 있으시면 문의해 주세요.
+              Google Play에서 무료로 다운로드하실 수 있습니다. 사용 후 소중한 리뷰도 남겨주세요.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Link
-                href="/contact"
+              <a
+                href={PLAY_STORE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-2 rounded-xl bg-primary px-8 py-4 text-sm font-semibold text-primary-foreground shadow-lg transition-opacity hover:opacity-90"
               >
-                <Mail className="h-4 w-4" />
-                출시 알림 신청
-              </Link>
+                <Download className="h-4 w-4" />
+                Google Play에서 다운로드
+              </a>
               <Link
                 href="/#services"
                 className="flex items-center gap-2 rounded-xl border border-border px-8 py-4 text-sm font-semibold text-foreground transition-colors hover:bg-muted"

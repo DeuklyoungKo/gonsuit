@@ -1,12 +1,17 @@
 # PRD (Product Requirement Document) - 고앤슈트 (Go & Suit)
 
+> **이 문서의 범위**: 제품이 **왜/무엇**인가(정체성·포지셔닝·요구사항·수익 방향)만 다룬다.
+> 기술 스택·디렉토리·페이지 구조·개발 상품의 **현재 상태**는 `CLAUDE.md`가 단일 진실원(SSOT)이다. 중복 기술 금지.
+
 ## 1. 프로젝트 개요 및 목표
 고앤슈트(Go & Suit)는 고객의 상상을 현실로 만드는 기술력 기반의 **마이크로 SaaS 및 AI 솔루션 개발 전문 기업**의 사이트입니다. 단순한 포트폴리오를 넘어, 고앤슈트가 개발한 상품들의 신뢰 허브 역할을 수행하며 비즈니스 솔루션을 제안합니다.
 
 - **도메인**: `https://gonsuit.com`
-- **핵심 목표**: 기업 브랜드 신뢰도 구축 + 개발 상품(Trend Scouter 등) 소개 및 세일즈 + 글로벌 확장성 확보.
+- **핵심 목표**: 기업 브랜드 신뢰도 구축 + 개발 상품(글소리·WordTap·Trend Scouter 등) 소개 및 세일즈 + 글로벌 확장성 확보.
 - **정체성**: "상상을 기술로 현실화하는, 비즈니스 가치 창출 기술 파트너"
 - **운영 원칙**: 국내 고객 중심의 신뢰도 확보 → 영문 대응을 통한 글로벌 확장 준비 → 고도화된 솔루션 제안.
+
+> 개발 상품별 현재 출시 상태·패키지·Play Store 링크는 `CLAUDE.md > 개발 상품(앱) 현황` 참조.
 
 ## 1.1 글로벌 대응 전략 (i18n)
 - **전략**: Bilingual(국문/영문) 구조 채택.
@@ -26,36 +31,29 @@
 
 ## 3. 핵심 콘텐츠 및 기능 구성
 
-### 페이지 구조
-```
-고앤슈트 (gonsuit.com)
-├── /            → 비전 + 주요 개발 상품 라인업 + 협업 문의 (Build in Public)
-├── /contact     → 협업 및 서비스 문의 (Supabase + Resend 연동)
-├── /products    → 개발 상품 상세 목록 (상태: 운영/준비중)
-├── /lab         → 기술 블로그 (고앤슈트의 기술 인사이트)
-├── /about       → 고앤슈트의 철학, 팀, 로드맵
-└── /privacy     → 공용 개인정보처리방침
-```
+> 실제 페이지 경로·디렉토리·구현 상태는 `CLAUDE.md`가 소유한다. 아래는 **콘텐츠 의도**만 기술한다.
 
-### 홈페이지 구성 섹션 (구현 완료)
-| 섹션 | 내용 |
-|------|------|
-| Hero | 슬로건 + 핵심 지표(서비스 수, 분석 트렌드 수, MVP 기간) + CTA 버튼 2개 |
-| Services | 운영 중인 서비스 카드 (상태 뱃지: 운영중 / 베타 / 준비중) |
-| Building Stories | Build in Public 타임라인 (날짜 · 제목 · 태그 · 설명) |
-| Resources | PDF 가이드 상품 카드 (가격 · 출시 예정 뱃지) |
+### 콘텐츠 축(요구사항)
+- **홈**: 비전 + 개발 상품 라인업(상태 뱃지: 운영중/출시예정/준비중) + Build in Public 빌딩 스토리 + 협업 문의 CTA.
+- **개발 상품 상세**: 자체 개발 앱(글소리·WordTap 등)마다 독립 상세 페이지로 신뢰·세일즈 채널 확보.
+- **협업 문의**: Supabase 저장 + Resend 알림.
+- **기술 블로그(Lab)**: AI·SaaS 인사이트로 SEO 트래픽 유입.
+- **개인정보처리방침**: 회사 공용 + 앱별(광고·AI·국외이전) 고지.
 
 ### 자체 수익 채널
-1. **PDF 가이드 판매**: "0원으로 마이크로 SaaS 만드는 법" 등 실전 가이드 (단건 $5~$15)
-2. **트렌드 분석 리포트 (추후 고려)**: 현재 운영 중인 Trend Scouter와 연계한 프리미엄 리포트 판매.
+1. **개발 앱 광고 수익**: 글소리·WordTap 등 Google AdMob 기반 무료 앱.
+2. **SaaS 구독**: Trend Scouter 등 유료 전환.
+3. **트렌드 분석 리포트 (추후 고려)**: Trend Scouter 연계 프리미엄 리포트.
+
+> ~~PDF 가이드(Gumroad) 판매~~ 는 초기 검토 후 보류. `/resources` 페이지 제거됨(→ `/lab` 리다이렉트).
 
 ---
 
 ## 4. 수익화 및 성장 전략
 
-- **단기**: 브랜드 신뢰도 구축 및 포트폴리오(기존 서비스)를 통한 유기적 트래픽 유입 확보.
-- **중기**: PDF 가이드 Gumroad 연동 → 수동 결제로 즉시 수익 검증.
-- **장기**: 멘토링/컨설팅 패키지 도입 및 프리미엄 비즈니스 리포트 판매.
+- **단기**: 브랜드 신뢰도 구축 + 개발 앱(글소리·WordTap) 다운로드·광고 수익 확보.
+- **중기**: Trend Scouter 유료 전환 및 앱 라인업 확장.
+- **장기**: 멘토링/컨설팅 패키지, 프리미엄 비즈니스 리포트, 자동화 솔루션 B2B화(→ `3_LRP.md`).
 
 ### 리텐션 전략
 - 정기적인 빌딩 스토리 업데이트로 재방문 유도.
@@ -63,65 +61,27 @@
 
 ---
 
-## 5. 서버 구성도
+## 5. 서버 구성도 (개념)
 
 ```mermaid
 flowchart TD
     User([사용자]) <--> Frontend[Next.js Frontend]
     Frontend <--> Supabase[(Supabase DB/Auth)]
 
-    subgraph "콘텐츠 & 수익"
-        Resources[PDF 가이드] --> Gumroad[Gumroad / 자체결제]
-    end
-
     subgraph "서비스 및 알림"
-        Frontend --> TrendScouter[Trend Scouter]
+        Frontend --> Products["개발 상품 상세<br/>(글소리·WordTap·Trend Scouter)"]
         Frontend --> Resend[Resend Email API]
         Resend --> AdminEmail["info@gonsuit.com"]
-        Frontend --> FutureService[향후 서비스들...]
+    end
+
+    subgraph "개발 앱 (외부)"
+        AndroidApp[Android 앱] --> AdMob[Google AdMob]
+        AndroidApp --> AI["AI API (Groq 등)"]
     end
 ```
 
-### 기술 아키텍처 (Technical Stack)
-- **Frontend**: Next.js 14 (App Router) + Tailwind CSS (Vercel 호스팅)
-- **Backend**: Vercel Serverless Functions (API Route)
-- **UI 컴포넌트**: shadcn/ui (Radix UI 기반)
-- **Database/Auth**: Supabase (PostgreSQL & GoTrue)
-- **Email Service**: 
-    - **발신**: Resend (info@gonsuit.com 알림 발송용)
-    - **수신/포워딩**: Cloudflare Email Routing (info@gonsuit.com -> 개인 메일)
-- **결제**: Gumroad (초기) → Stripe / PortOne (수익 검증 후)
-
-### UI 디자인 시스템
-shadcn/ui `https://ui.shadcn.com/create?preset=ac8UbVQ` 기준으로 적용.
-
-| 항목 | 선택값 | 비고 |
-|------|--------|------|
-| Style | Maia | 미니멀·모던 레이아웃 |
-| Base Color | Zinc | 세련된 그레이톤, 테크 느낌 |
-| Theme | Indigo | 신뢰감·전문성, AI/테크 서비스 최적 |
-| Font | Inter | 가독성 최고, 테크 스타트업 표준 |
-| Radius | 0.625rem | 부드러운 모서리 |
-
-### 프로젝트 디렉토리 구조
-```
-gonsuit/                        ← 웹루트 (E:\Work_Gon\260309_gonsuit\gonsuit)
-├── src/
-│   ├── app/
-│   │   ├── globals.css         ← shadcn CSS 변수 (Light / Dark 모드)
-│   │   ├── layout.tsx          ← Inter 폰트 + 공통 메타데이터
-│   │   └── page.tsx            ← 홈페이지 (6개 섹션 구현)
-│   ├── components/
-│   │   └── ui/                 ← shadcn 컴포넌트 추가 위치
-│   └── lib/
-│       └── utils.ts            ← cn() 유틸 함수
-├── public/                     ← 정적 에셋
-├── package.json
-├── tailwind.config.js
-├── next.config.js
-└── tsconfig.json
-```
+> 기술 스택·UI 디자인 시스템(shadcn Maia/Zinc/Indigo/Inter)·디렉토리 구조·환경변수는 **`CLAUDE.md`가 단일 진실원**이다. 여기서 중복 기술하지 않는다. (웹루트 경로: `D:\Work_Gon\260312_gonsuit\gonsuit`)
 
 ---
 
-*참조 및 연동: [2.PDP.md](./2_PDP.md)*
+*연동 문서: 현재 구현·상품 상태 → `CLAUDE.md` / 장기 전략 → `3_LRP.md` / 런칭 기록 → `2_PDP.md`*

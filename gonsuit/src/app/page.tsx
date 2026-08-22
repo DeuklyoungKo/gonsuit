@@ -23,9 +23,9 @@ const services = [
   {
     name: "글소리",
     description:
-      "txt 파일을 불러와 크게 읽고 들을 수 있는 노안 친화형 텍스트 리더 앱. TTS 음성 재생, 폰트 크기 조절, 다크모드 지원.",
-    status: "출시예정",
-    statusColor: "bg-amber-100 text-amber-700",
+      "txt·EPUB 파일을 불러와 크게 읽고 들을 수 있는 노안 친화형 텍스트 리더 앱. TTS 백그라운드 음성 재생, 큰 글씨 5단계, 다크모드 지원.",
+    status: "운영중",
+    statusColor: "bg-emerald-100 text-emerald-700",
     href: "/products/gulsori",
     icon: null,
     imageSrc: "/images/gulsori-icon.png",

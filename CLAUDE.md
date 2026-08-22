@@ -58,13 +58,46 @@ gonsuit/                  ← Next.js 프로젝트 루트
 ## 페이지 구조
 
 ```
-/            → 비전 + 개발 상품 라인업 + 빌딩 스토리 + 협업 문의 CTA
-/contact     → 협업 및 서비스 문의 폼
-/lab         → 기술 블로그 (AI·SaaS 인사이트)
-/resources   → PDF 가이드 상품 카드
-/about       → 고앤슈트 철학, 팀, 로드맵
-/privacy     → 개인정보처리방침
+/                    → 비전 + 개발 상품 라인업 + 빌딩 스토리 + 협업 문의 CTA
+/contact             → 협업 및 서비스 문의 폼
+/lab                 → 기술 블로그 (AI·SaaS 인사이트)
+/lab/[slug]          → 블로그 상세 (SSG)
+/about               → 고앤슈트 철학, 팀, 로드맵
+/privacy             → 개인정보처리방침
+/products/gulsori    → 글소리 앱 상세
+/products/wordtap    → WordTap 앱 상세
 ```
+
+> `/resources` 페이지는 제거됨 (모든 항목 Coming soon 상태였음). `next.config.js`에서 `/resources → /lab` 308 리다이렉트 유지.
+
+---
+
+## 개발 상품(앱) 현황 ⚠️ 작업 전 확인
+
+새 상품을 추가하거나 상태를 변경할 때, 아래 표와 각 상세 페이지(`src/app/products/*/page.tsx`)·홈 카드(`src/app/page.tsx`)·`sitemap.ts`·`privacy/page.tsx`를 함께 갱신한다.
+
+| 앱 | 상태 | 패키지 ID | Play Store | 상세 페이지 | 아이콘 |
+|---|---|---|---|---|---|
+| **글소리** (큰글씨 TTS 텍스트 리더) | **운영중** (2026 정식 출시) | `com.gonsuit.geulsori` | [링크](https://play.google.com/store/apps/details?id=com.gonsuit.geulsori) | `/products/gulsori` | `/images/gulsori-icon.png` |
+| **WordTap** (AI 문법 해설 영어 학습) | 출시예정 | `com.wordtap.app` (예정) | — | `/products/wordtap` | `/images/wordtap-icon.png` |
+| **Trend Scouter** | 운영중 | (웹 SaaS) | — | `https://trend.gonsuit.com` (외부) | 아이콘(lucide) |
+
+**상태 배지 색상 규칙** (홈 카드 + 상세 Hero 공통):
+- `운영중` → `bg-emerald-100 text-emerald-700`
+- `출시예정` → `bg-amber-100`(글소리류) / `bg-blue-100`(WordTap류)
+- `준비중` → `bg-zinc-100 text-zinc-600`
+
+**글소리 실제 출시 기능** (Play Store 등록 기준 — 상세 페이지와 일치 유지):
+TXT·**EPUB** 파일 읽기 / TTS **백그라운드 재생**(앱 닫아도 재생) / **한글 인코딩 자동 감지(UTF-8·EUC-KR)** / 큰 글씨 5단계(16~32px) / 배경 테마 3종 / 위치 자동 저장 + 수동 책갈피 / AdMob 배너.
+소스: `D:\Work_Gon\260605_textreader` (설명.txt = Play Store 등록 문구).
+
+**WordTap 소스**: `D:\Work_Gon\260606_WordTap` (Groq AI API 사용 → privacy 6·7조에 국외 이전 고지 반영됨).
+
+### 앱 상세 페이지 JSON-LD — 평점 스키마 정책 ⚠️ 중요
+
+- 앱 상세는 `SoftwareApplication` JSON-LD를 포함하고, 출시된 앱은 `downloadUrl`·`installUrl`에 Play Store URL을 넣는다.
+- **`aggregateRating`(별점)은 Google Play에 실제 평점이 표시된 뒤에만 추가한다.** 데이터 없이 임의·허위 값을 넣으면 Google 구조화 데이터 정책 위반 → 리치 결과 거부 및 수동 조치(패널티) 대상.
+- 글소리 `page.tsx`에는 평점 발생 시 주석만 해제하면 되도록 `aggregateRating` 템플릿을 주석으로 준비해 둠. 실제 평점 확인 후 `ratingValue`·`ratingCount`를 실제 값으로 채운다.
 
 ---
 
@@ -301,8 +334,28 @@ feat: 기능 추가 내용 요약
 
 ---
 
+## 문서 관리 체계 ⚠️ 필수
+
+작업 컴퓨터가 바뀌어도 AI가 항상 참고할 수 있도록, **모든 기준 문서는 git으로 추적되는 저장소 파일**로 관리한다. (로컬 `.claude/memory`는 해당 PC에만 존재하므로 크로스 머신 기준이 될 수 없다.)
+
+**계층 구조 — 한 사실은 한 곳에만 (SSOT):**
+
+| 문서 | 역할 | 소유하는 정보 | 성격 |
+|---|---|---|---|
+| **CLAUDE.md** (이 문서) | **운영 단일 진실원 + 허브**. AI가 매 세션 자동 로드 | 기술 스택, 디렉토리 구조, 페이지 구조, **개발 상품 현황**, GA4/SEO 규칙, 코딩 컨벤션, 커밋 규칙 = **현재값** | 현재형·간결·실행지향 |
+| `1_PRD.md` | 제품 요구사항 정의서 | 제품이 **왜/무엇** — 정체성, 포지셔닝, 요구사항, 수익 방향 | 방향성(durable) |
+| `3_LRP.md` | 장기 로드맵 | 장기 전략·비전 (Phase 1~3) | 비전 |
+| `2_PDP.md` | 개발 계획서 (4주 런칭) | ✅ **1차 런칭 완료 — 아카이브(동결)**. 이후 작업은 CLAUDE.md가 관리 | 과거 기록 |
+
+**규칙:**
+- **"현재값"(스택·구조·상품 상태·규칙)은 CLAUDE.md만 소유한다.** PRD/LRP는 이를 반복하지 말고 "현재 구현은 CLAUDE.md 참조"로 링크한다. (중복 = 드리프트의 원인)
+- 페이지·상품·상태를 바꾸면 **CLAUDE.md를 먼저 갱신**한다. PRD/LRP는 "왜/방향"이 바뀔 때만 손댄다.
+- 완료된 계획 문서(2_PDP)는 살아있는 척 두지 말고 상단에 완료 표기 후 동결한다.
+
+---
+
 ## 참조 문서
 
-- `1_PRD.md` — 제품 요구사항 정의서
-- `2_PDP.md` — 개발 계획서
-- `3_LRP.md` — 장기 로드맵
+- `1_PRD.md` — 제품 요구사항 정의서 (왜/무엇)
+- `2_PDP.md` — 개발 계획서 (1차 런칭 완료, 아카이브)
+- `3_LRP.md` — 장기 로드맵 (전략/비전)

@@ -1,6 +1,9 @@
 # gonsuit.com 프로젝트 개발 계획서 (Project Development Plan)
 
-이 문서는 gonsuit.com 허브 사이트를 4주 안에 개발하고 운영 가능한 상태로 출시하기 위한 상세 로드맵을 정의합니다.
+> ## ✅ 1차 런칭 완료 — 아카이브(동결) 문서
+> 이 문서는 gonsuit.com 초기 4주 런칭 계획의 **완료 기록**입니다. 사이트는 출시되어 운영 중입니다.
+> **이후의 진행중/예정 작업과 현재 상태는 `CLAUDE.md`가 관리합니다.** 이 문서는 히스토리 참조용으로만 두며, 새 작업 계획을 여기에 추가하지 않습니다.
+> (아래 체크리스트의 미완료 `[ ]` 항목 중 일부는 방향이 바뀌어 폐기되었습니다 — 예: `/resources` PDF 판매 → 제거.)
 
 ---
 
@@ -20,24 +23,24 @@
 - [x] **홈페이지 (`/`)**: 비전 섹션, 서비스 카드 목록, Build in Public 문구 적용.
 - [x] **문의 페이지 (`/contact`)**: 협업 문의 폼 구현, Supabase 저장 및 Resend 메일 알림 연동.
 - [x] **메일 시스템 구축**: Cloudflare Email Routing + Resend 도메인 인증 완료.
-- [ ] **서비스 목록 (`/services`)**: 운영 중 서비스 카드 UI (상태 뱃지 포함).
-- [ ] **About 페이지 (`/about`)**: 고앤슈트 철학 및 운영 방식 소개.
-- [ ] **개인정보처리방침 (`/privacy`)**: 공용 방침 페이지 + Trend Scouter 추가 고지 섹션.
+- [x] **홈 서비스 카드**: 운영 중 개발 상품 카드 UI (상태 뱃지 포함). (별도 `/services` 대신 홈 `#services` 섹션으로 구현)
+- [x] **About 페이지 (`/about`)**: 고앤슈트 철학 및 운영 방식 소개.
+- [x] **개인정보처리방침 (`/privacy`)**: 공용 방침 + 앱별(AdMob·Groq AI·국외이전) 고지 섹션.
 
 ### 2주차: 콘텐츠 & 수익 기능 구현 (Monetization & Content)
-- [ ] **Resources 페이지 (`/resources`)**: PDF 가이드 상품 카드 UI, Gumroad 외부 링크 연동.
-- [ ] **Lab 페이지 (`/lab`)**: 바이브코딩 팁 블로그 목록 및 상세 페이지 (`/lab/[slug]`) 구현.
-- [ ] **첫 번째 PDF 가이드 콘텐츠**: "0원으로 마이크로 SaaS 만드는 법" 초안 작성 및 Gumroad 등록.
+- [~] ~~**Resources 페이지 (`/resources`)**: PDF 가이드 + Gumroad~~ → **폐기·제거** (`/lab` 리다이렉트). 수익 축을 개발 앱 광고로 전환.
+- [x] **Lab 페이지 (`/lab`)**: 블로그 목록 및 상세 페이지 (`/lab/[slug]`) SSG 구현.
+- [~] ~~첫 PDF 가이드 콘텐츠~~ → 폐기 (Resources 제거).
 
 ### 3주차: 빠른 런칭 및 운영 안정화 (SEO & Launch)
-- [ ] **SEO 최적화**: `sitemap.xml`, `robots.txt`, OG 태그, 홈 및 필수 페이지별 메타데이터 설정.
-- [ ] **Analytics 연동**: Vercel Analytics 또는 Google Analytics 세팅.
+- [x] **SEO 최적화**: `sitemap.ts`, `robots.ts`, OG 태그, 페이지별 메타데이터, JSON-LD. (상세 규칙은 CLAUDE.md)
+- [x] **Analytics 연동**: Vercel Analytics + Google Analytics 4 (G-WF5QHV9GXV) + GA4 커스텀 이벤트.
 
 ### 4주차: 마감 및 고도화
-- [ ] **반응형 디자인 점검**: 모바일/태블릿 레이아웃 QA.
-- [ ] **퍼포먼스 최적화**: Lighthouse 점수 90점 이상 목표.
-- [ ] **도메인 연결**: gonsuit.com 도메인 Vercel 연결 및 HTTPS 설정 점검.
-- [ ] **소셜 채널 연동**: X(트위터), 인스타그램 등 Build in Public 채널 링크 안내.
+- [x] **도메인 연결**: gonsuit.com Vercel 연결 + Cloudflare DNS(Proxy OFF) + HTTPS.
+- [ ] **반응형 디자인 점검**: 모바일/태블릿 레이아웃 QA. *(상시 개선 항목 — CLAUDE.md로 이관)*
+- [ ] **퍼포먼스 최적화**: Lighthouse 90+ 목표. *(상시 개선 항목 — CLAUDE.md로 이관)*
+- [ ] **소셜 채널 연동**: Build in Public 채널 링크. *(미정 — CLAUDE.md로 이관)*
 
 ---
 
@@ -95,12 +98,13 @@ Resources 페이지 → 상품 카드 클릭 → Gumroad 결제 페이지 → �
 ---
 
 ## 5. 사용자 협조 사항 (User Action Required)
-> [!IMPORTANT]
-> - **도메인 설정**: gonsuit.com 도메인의 Vercel DNS 연결은 1주차 내 완료 필요.
-> - **Gumroad 계정**: PDF 가이드 판매를 위한 Gumroad 계정 사전 생성 필요.
-> - **콘텐츠 방향**: `/lab` 블로그의 첫 3개 포스트 주제 확정 필요 (바이브코딩 팁 중심).
-> - **데이터 관리**: 모든 개발 계획과 진행 상황은 이 문서(`2.PDP.md`)에 중앙 집중화하여 관리.
+> [!NOTE]
+> 아래는 런칭 당시 사용자 협조 요청이었으며, 모두 처리 완료되었습니다 (Gumroad 항목은 Resources 폐기로 무효).
+> - [x] **도메인 설정**: gonsuit.com Vercel + Cloudflare DNS 연결 완료.
+> - [~] ~~Gumroad 계정~~ → Resources 폐기로 불필요.
+> - [x] **콘텐츠 방향**: `/lab` 초기 포스트(바이브코딩 팁 중심) 등록 완료.
+> - **데이터 관리(정정)**: ~~이 문서에 중앙 집중화~~ → **현재 상태·진행 작업의 단일 진실원은 `CLAUDE.md`**. 이 문서는 런칭 아카이브로 동결.
 
 ---
 
-*참조 및 연동: [1.PRD.md](./1_PRD.md)*
+*연동 문서: 현재 구현·상품 상태 → `CLAUDE.md` / 제품 요구사항 → `1_PRD.md` / 장기 전략 → `3_LRP.md`*
