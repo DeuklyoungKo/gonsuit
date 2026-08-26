@@ -80,7 +80,7 @@ flowchart TD
     end
 ```
 
-> 기술 스택·UI 디자인 시스템(shadcn Maia/Zinc/Indigo/Inter)·디렉토리 구조·환경변수는 **`CLAUDE.md`가 단일 진실원**이다. 여기서 중복 기술하지 않는다. (웹루트 경로: `D:\Work_Gon\260312_gonsuit\gonsuit`)
+> 기술 스택·UI 디자인 시스템(shadcn Maia/Zinc/Indigo/Inter)·디렉토리 구조·환경변수는 **`CLAUDE.md`가 단일 진실원**이다. 여기서 중복 기술하지 않는다. (웹루트: 저장소 루트 기준 `gonsuit/`)
 
 ---
 

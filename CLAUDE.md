@@ -11,6 +11,26 @@
 
 ---
 
+## 현재 작업 상태 ⚠️ 세션 시작 시 먼저 확인
+
+> **최종 갱신: 2026-08-26**
+> 이 섹션은 **누적 로그가 아니라 스냅샷**이다. 항상 덮어쓰며, 지나간 이력은 남기지 않는다. (이력은 `git log` 참조)
+
+**사이트 상태**: 출시·운영 중 (1차 런칭 완료 — 상세 기록은 `2_PDP.md` 아카이브)
+
+**진행 중 작업**: 없음
+
+**다음 할 일**
+1. **WordTap Play Store 출시** → 출시 후 위 "개발 상품(앱) 현황" 표의 상태를 `운영중`으로, Play Store 링크·상세 페이지 JSON-LD의 `downloadUrl`/`installUrl` 갱신
+2. **글소리 Play Store 평점 발생 확인** → 발생 시 `products/gulsori/page.tsx`의 `aggregateRating` 주석 해제 후 실제 값 입력
+3. 신규 앱 추가 시 체크리스트: 상세 페이지 · 홈 카드(`page.tsx`) · `sitemap.ts` · `privacy/page.tsx` · 위 상품 표 **5곳 동시 갱신**
+
+**최근 결정 사항**
+- `/resources`(PDF 가이드 판매) 폐기 → `/lab` 308 리다이렉트로 대체
+- 문서 계층을 SSOT 기준으로 분리 (아래 "문서 관리 체계" 참조)
+
+---
+
 ## 기술 스택
 
 | 항목 | 내용 |
@@ -29,28 +49,37 @@
 
 ## 디렉토리 구조
 
+> 모든 경로는 **저장소 루트 기준 상대경로**로 표기한다. (절대경로 금지 — 작업 PC마다 드라이브·폴더명이 달라 크로스 머신에서 깨진다.)
+
 ```
-gonsuit/                  ← Next.js 프로젝트 루트
-├── src/
-│   ├── app/
-│   │   ├── layout.tsx        ← 공통 레이아웃 (GA4 스크립트, Vercel Analytics 포함)
-│   │   ├── page.tsx          ← 홈페이지 (Hero / Services / Stories / Resources / Contact)
-│   │   ├── about/page.tsx    ← 철학 및 로드맵
-│   │   ├── contact/page.tsx  ← 협업 문의 폼 (Supabase + Resend 연동)
-│   │   ├── lab/page.tsx      ← 기술 블로그
-│   │   ├── resources/page.tsx← PDF 가이드 상품
-│   │   ├── privacy/page.tsx  ← 개인정보처리방침
-│   │   ├── sitemap.ts        ← 자동 sitemap.xml 생성
-│   │   ├── robots.ts         ← 자동 robots.txt 생성
-│   │   └── api/contact/      ← 문의 API Route
-│   ├── components/
-│   │   ├── Header.tsx        ← 공통 헤더 (네비게이션)
-│   │   ├── Footer.tsx        ← 공통 푸터
-│   │   └── AboutCta.tsx      ← About CTA 버튼 (클라이언트 컴포넌트)
-│   └── lib/
-│       ├── gtag.ts           ← GA4 이벤트 추적 유틸리티
-│       ├── supabase.ts       ← Supabase 클라이언트
-│       └── utils.ts          ← cn() 유틸 함수
+./                             ← 저장소 루트 (문서 + 웹 프로젝트)
+├── 1_PRD.md / 2_PDP.md / 3_LRP.md / CLAUDE.md
+├── supabase_schema.sql
+└── gonsuit/                   ← Next.js 프로젝트 루트
+    ├── next.config.js         ← /resources → /lab 308 리다이렉트
+    ├── public/images/         ← gulsori-icon.png, wordtap-icon.png, philosophy.png
+    └── src/
+        ├── app/
+        │   ├── layout.tsx             ← 공통 레이아웃 (GA4, Vercel Analytics, Organization/WebSite JSON-LD)
+        │   ├── page.tsx               ← 홈 (Hero / 개발 상품 카드 / Stories / Contact CTA)
+        │   ├── about/page.tsx         ← 철학 및 로드맵
+        │   ├── contact/page.tsx       ← 협업 문의 폼 (Supabase + Resend 연동)
+        │   ├── lab/page.tsx           ← 기술 블로그 목록
+        │   ├── lab/[slug]/page.tsx    ← 블로그 상세 (SSG)
+        │   ├── products/gulsori/page.tsx  ← 글소리 앱 상세
+        │   ├── products/wordtap/page.tsx  ← WordTap 앱 상세
+        │   ├── privacy/page.tsx       ← 개인정보처리방침
+        │   ├── sitemap.ts             ← 자동 sitemap.xml 생성
+        │   ├── robots.ts              ← 자동 robots.txt 생성
+        │   └── api/contact/route.ts   ← 문의 API Route
+        ├── components/
+        │   ├── Header.tsx        ← 공통 헤더 (네비게이션)
+        │   ├── Footer.tsx        ← 공통 푸터
+        │   └── AboutCta.tsx      ← About CTA 버튼 (클라이언트 컴포넌트)
+        └── lib/
+            ├── gtag.ts           ← GA4 이벤트 추적 유틸리티
+            ├── supabase.ts       ← Supabase 클라이언트
+            └── utils.ts          ← cn() 유틸 함수
 ```
 
 ---
@@ -79,7 +108,7 @@ gonsuit/                  ← Next.js 프로젝트 루트
 | 앱 | 상태 | 패키지 ID | Play Store | 상세 페이지 | 아이콘 |
 |---|---|---|---|---|---|
 | **글소리** (큰글씨 TTS 텍스트 리더) | **운영중** (2026 정식 출시) | `com.gonsuit.geulsori` | [링크](https://play.google.com/store/apps/details?id=com.gonsuit.geulsori) | `/products/gulsori` | `/images/gulsori-icon.png` |
-| **WordTap** (AI 문법 해설 영어 학습) | 출시예정 | `com.wordtap.app` (예정) | — | `/products/wordtap` | `/images/wordtap-icon.png` |
+| **WordTap** (AI 문법 해설 영어 학습) | 출시예정 | `com.gonsuit.wordtap` | — | `/products/wordtap` | `/images/wordtap-icon.png` |
 | **Trend Scouter** | 운영중 | (웹 SaaS) | — | `https://trend.gonsuit.com` (외부) | 아이콘(lucide) |
 
 **상태 배지 색상 규칙** (홈 카드 + 상세 Hero 공통):
@@ -89,9 +118,14 @@ gonsuit/                  ← Next.js 프로젝트 루트
 
 **글소리 실제 출시 기능** (Play Store 등록 기준 — 상세 페이지와 일치 유지):
 TXT·**EPUB** 파일 읽기 / TTS **백그라운드 재생**(앱 닫아도 재생) / **한글 인코딩 자동 감지(UTF-8·EUC-KR)** / 큰 글씨 5단계(16~32px) / 배경 테마 3종 / 위치 자동 저장 + 수동 책갈피 / AdMob 배너.
-소스: `D:\Work_Gon\260605_textreader` (설명.txt = Play Store 등록 문구).
+**앱 소스 위치** (이 저장소 **외부**, 저장소 루트 기준 상대경로 — 같은 작업 폴더 아래 형제 디렉토리):
 
-**WordTap 소스**: `D:\Work_Gon\260606_WordTap` (Groq AI API 사용 → privacy 6·7조에 국외 이전 고지 반영됨).
+| 앱 | 소스 경로 | 비고 |
+|---|---|---|
+| 글소리 | `../260604_textreader/textreader/` | `../260604_textreader/설명.txt` = Play Store 등록 문구 |
+| WordTap | `../260813_wordtap/source/WordTap/` | Groq AI API 사용 → privacy 6·7조에 국외 이전 고지 반영됨 |
+
+> 형제 폴더가 없는 PC에서는 위 경로가 존재하지 않을 수 있다. 그 경우 앱 소스 확인이 필요한 작업은 보류하고 사용자에게 위치를 확인한다.
 
 ### 앱 상세 페이지 JSON-LD — 평점 스키마 정책 ⚠️ 중요
 
@@ -217,7 +251,7 @@ AI 검색 엔진(ChatGPT, Perplexity, Google SGE 등)이 콘텐츠를 정확히 
 |---|---|
 | 홈 (`/`) | `Organization` + `WebSite` ← layout.tsx에 적용 완료 |
 | 블로그 포스트 (`/lab/[slug]`) | `Article` + `BreadcrumbList` |
-| 상품/서비스 (`/resources`) | `Product` 또는 `Offer` |
+| 앱 상세 (`/products/[app]`) | `SoftwareApplication` (평점 정책은 위 "개발 상품(앱) 현황" 참조) |
 | FAQ 섹션 | `FAQPage` |
 | 회사 소개 (`/about`) | `AboutPage` + `Organization` |
 
@@ -351,6 +385,14 @@ feat: 기능 추가 내용 요약
 - **"현재값"(스택·구조·상품 상태·규칙)은 CLAUDE.md만 소유한다.** PRD/LRP는 이를 반복하지 말고 "현재 구현은 CLAUDE.md 참조"로 링크한다. (중복 = 드리프트의 원인)
 - 페이지·상품·상태를 바꾸면 **CLAUDE.md를 먼저 갱신**한다. PRD/LRP는 "왜/방향"이 바뀔 때만 손댄다.
 - 완료된 계획 문서(2_PDP)는 살아있는 척 두지 말고 상단에 완료 표기 후 동결한다.
+- **갱신 트리거**: 작업 완료 후 커밋 메시지를 제안할 때, CLAUDE.md 상단 **"현재 작업 상태"**(최종 갱신일·다음 할 일)와 변경된 현재값(페이지·상품 표)을 **같은 커밋에 함께 포함**한다. "나중에 정리"는 반드시 누락된다.
+- **"현재 작업 상태"는 스냅샷이다.** 완료된 항목은 지우고 덮어쓴다. 이력을 쌓지 않는다 — 이력은 `git log`가 이미 갖고 있고, 중복은 곧 드리프트다.
+
+**경로 표기 규칙 ⚠️ (크로스 머신 필수):**
+- 모든 문서의 경로는 **저장소 루트 기준 상대경로**로만 적는다. `D:\...`, `E:\...` 같은 절대경로 **금지** — 작업 PC마다 드라이브·폴더명이 달라 그대로 깨진다.
+  - 저장소 내부: `gonsuit/src/app/page.tsx`
+  - 저장소 외부(형제 프로젝트): `../260604_textreader/textreader/`
+- 외부 경로를 적을 때는 **그 PC에 없을 수 있음**을 함께 표기하고, 없으면 사용자에게 위치를 확인한다.
 
 ---
 
