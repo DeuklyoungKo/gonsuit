@@ -46,9 +46,12 @@
 
 ## 3. 상세 구현 계획 (Implementation Details)
 
-### 네비게이션 구조
+> ⚠️ 아래는 **런칭 당시 원안 기록**이다(동결). 이후 변경된 실제 상태는 `CLAUDE.md`가 소유한다.
+> 특히 **`Resources`(PDF 판매)와 `resources` 테이블은 폐기·미사용**이며, 실제 네비게이션은 `서비스 · Lab · About`이다.
+
+### 네비게이션 구조 (원안)
 ```
-[gonsuit.com]  서비스  Lab  Resources  About
+[gonsuit.com]  서비스  Lab  Resources  About    ← Resources는 폐기됨(현재 없음)
 ```
 
 ### Supabase 테이블 스키마
