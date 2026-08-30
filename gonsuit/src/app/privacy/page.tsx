@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default function PrivacyPage() {
-  const lastUpdated = "2026.07.05";
+  const lastUpdated = "2026.08.31";
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -47,7 +47,8 @@ export default function PrivacyPage() {
               <li>필수항목: 이름, 이메일 주소, 문의 내용</li>
               <li>수집방법: 홈페이지 내 문의하기 폼(Contact Form)</li>
               <li>광고 식별자: Android Advertising ID(ADID) — 앱 내 광고 서비스 제공 목적으로 Google AdMob에 의해 자동 수집될 수 있습니다.</li>
-              <li>사용자 선택 텍스트: WordTap 앱에서 단어·문장을 탭할 때 해당 텍스트가 AI 설명 생성 목적으로 Groq Inc. 서버로 전송됩니다. (응답 생성 후 즉시 파기, 저장 없음)</li>
+              <li>AI 해설 요청 데이터: WordTap 앱에서 이용자가 선택한 영어 문장·단어가 AI 해설 생성을 위해 당사가 운영하는 프록시 서버(Cloudflare Workers)를 거쳐 AI 처리 사업자(Groq)로 전송됩니다. 해당 텍스트는 해설 생성 목적으로만 사용되며 당사 서버에 저장하지 않습니다.</li>
+              <li>임의 식별자(UUID): WordTap 앱 설치 시 생성되는 임의의 식별자가 AI 해설 요청과 함께 전송되며, 이는 요청 빈도 제한(rate limiting) 목적으로만 사용되고 개인을 식별하지 않습니다.</li>
             </ul>
           </section>
 
@@ -65,8 +66,41 @@ export default function PrivacyPage() {
           <section className="mb-10">
             <h2 className="text-xl font-bold mb-4">4. 개인정보의 제3자 제공</h2>
             <p className="text-muted-foreground leading-relaxed">
-              고앤슈트는 정보주체의 개인정보를 제1조(개인정보의 처리 목적)에서 명시한 범위 내에서만 처리하며, 정보주체의 동의, 법률의 특별한 규정 등 개인정보 보호법 제17조 및 제18조에 해당하는 경우에만 개인정보를 제3자에게 제공합니다.
+              고앤슈트는 정보주체의 개인정보를 제1조(개인정보의 처리 목적)에서 명시한 범위 내에서만 처리하며, 정보주체의 동의, 법률의 특별한 규정 등 개인정보 보호법 제17조 및 제18조에 해당하는 경우에만 개인정보를 제3자에게 제공합니다. WordTap 앱의 AI 해설 및 광고 기능 제공을 위해 아래와 같이 개인정보가 제3자에게 제공(처리위탁 포함)됩니다.
             </p>
+            <div className="mt-4 overflow-x-auto">
+              <table className="w-full text-sm text-muted-foreground border border-border rounded-lg">
+                <thead>
+                  <tr className="bg-muted/50">
+                    <th className="text-left px-4 py-2 font-semibold text-foreground border-b border-border">사업자</th>
+                    <th className="text-left px-4 py-2 font-semibold text-foreground border-b border-border">제공 항목</th>
+                    <th className="text-left px-4 py-2 font-semibold text-foreground border-b border-border">목적</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b border-border">
+                    <td className="px-4 py-2 font-medium">Groq, Inc.</td>
+                    <td className="px-4 py-2">선택한 영어 문장·단어</td>
+                    <td className="px-4 py-2">AI 문법 해설 생성</td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="px-4 py-2 font-medium">Cloudflare, Inc.</td>
+                    <td className="px-4 py-2">요청 데이터 중계</td>
+                    <td className="px-4 py-2">프록시 서버 운영</td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="px-4 py-2 font-medium">Google (AdMob)</td>
+                    <td className="px-4 py-2">광고 식별자</td>
+                    <td className="px-4 py-2">광고 제공</td>
+                  </tr>
+                  <tr>
+                    <td className="px-4 py-2 font-medium">Google (Gemini)</td>
+                    <td className="px-4 py-2">선택한 문장</td>
+                    <td className="px-4 py-2">이용자가 본인 API 키를 등록한 경우에만 (아래 6조 참조)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </section>
 
           <section className="mb-10">
@@ -114,19 +148,21 @@ export default function PrivacyPage() {
           </section>
 
           <section className="mb-10">
-            <h2 className="text-xl font-bold mb-4">6. AI 서비스 제공 (Groq AI API)</h2>
+            <h2 className="text-xl font-bold mb-4">6. AI 서비스 제공 (WordTap)</h2>
             <p className="text-muted-foreground leading-relaxed">
-              고앤슈트의 <strong>WordTap</strong> 앱은 단어·문장 탭 시 AI 기반 설명을 제공하기 위해 Groq AI API를 사용합니다.
-              이 과정에서 사용자가 선택한 텍스트가 Groq Inc.(미국)의 서버로 전송됩니다.
+              고앤슈트의 <strong>WordTap</strong> 앱은 단어·문장 선택 시 AI 기반 문법 해설을 제공합니다.
+              기본적으로 이용자가 선택한 텍스트는 당사가 운영하는 프록시 서버(Cloudflare Workers)를 거쳐 AI 처리 사업자(Groq)로 전송됩니다.
             </p>
-            <ul className="list-disc pl-6 mt-3 text-muted-foreground space-y-1">
-              <li><strong>처리 주체</strong>: Groq Inc. (미국)</li>
-              <li><strong>전송 데이터</strong>: 사용자가 앱 내에서 선택(탭)한 단어 또는 문장 텍스트</li>
-              <li><strong>이용 목적</strong>: AI 기반 단어·문장 설명 생성</li>
-              <li><strong>보유 기간</strong>: AI 응답 생성 후 즉시 파기 (별도 저장 없음)</li>
+
+            <p className="text-muted-foreground leading-relaxed mt-4 font-medium text-foreground">[기본] 당사 프록시 → Groq</p>
+            <ul className="list-disc pl-6 mt-2 text-muted-foreground space-y-1">
+              <li><strong>처리 경로</strong>: 앱 → 당사 프록시 서버(Cloudflare Workers, 미국) → Groq Inc.(미국)</li>
+              <li><strong>전송 데이터</strong>: 이용자가 선택한 단어·문장 텍스트, 요청 빈도 제한용 임의 식별자(UUID)</li>
+              <li><strong>이용 목적</strong>: AI 문법 해설 생성 (UUID는 요청 빈도 제한 목적으로만 사용, 개인 식별 안 함)</li>
+              <li><strong>보유 기간</strong>: 해설 생성 목적으로만 사용, 당사 서버에 저장하지 않음</li>
             </ul>
-            <p className="text-muted-foreground leading-relaxed mt-3">
-              Groq의 개인정보 처리 방식에 대한 자세한 내용은{" "}
+            <p className="text-muted-foreground leading-relaxed mt-2 text-sm">
+              Groq의 처리 방식은{" "}
               <a
                 href="https://groq.com/privacy-policy"
                 target="_blank"
@@ -137,6 +173,24 @@ export default function PrivacyPage() {
               </a>
               을 참조하시기 바랍니다.
             </p>
+
+            <p className="text-muted-foreground leading-relaxed mt-4 font-medium text-foreground">[선택] 이용자 본인 API 키 사용 시 (Google Gemini)</p>
+            <div className="mt-2 rounded-lg border border-amber-300 bg-amber-50 p-4 dark:bg-amber-950/30">
+              <ul className="list-disc pl-6 text-muted-foreground space-y-1">
+                <li>이용자가 설정에서 본인의 <strong>Google Gemini API 키</strong>를 등록한 경우, 선택한 문장은 당사 프록시를 거치지 않고 <strong>Google로 직접 전송</strong>됩니다.</li>
+                <li>Google Gemini <strong>무료 등급</strong>은 입력 내용을 모델 개선에 사용할 수 있습니다. 이 경우 데이터 처리는{" "}
+                  <a
+                    href="https://policies.google.com/privacy"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:underline"
+                  >
+                    Google의 개인정보처리방침
+                  </a>
+                  을 따릅니다.</li>
+                <li>API 키는 <strong>이용자 기기에만 암호화 저장</strong>되며 당사로 전송되지 않습니다.</li>
+              </ul>
+            </div>
           </section>
 
           <section className="mb-10">
@@ -158,11 +212,25 @@ export default function PrivacyPage() {
                 </thead>
                 <tbody>
                   <tr className="border-b border-border">
+                    <td className="px-4 py-2 font-medium">Cloudflare, Inc.</td>
+                    <td className="px-4 py-2">미국</td>
+                    <td className="px-4 py-2">선택한 텍스트·임의 식별자(UUID) 중계</td>
+                    <td className="px-4 py-2">AI 해설 요청 프록시 서버 운영 (WordTap)</td>
+                    <td className="px-4 py-2">중계 후 미저장 (즉시 파기)</td>
+                  </tr>
+                  <tr className="border-b border-border">
                     <td className="px-4 py-2 font-medium">Groq Inc.</td>
                     <td className="px-4 py-2">미국</td>
                     <td className="px-4 py-2">사용자가 선택한 텍스트 (단어·문장)</td>
                     <td className="px-4 py-2">AI 단어·문장 설명 생성 (WordTap)</td>
                     <td className="px-4 py-2">AI 응답 생성 후 즉시 파기</td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="px-4 py-2 font-medium">Google LLC (Gemini)</td>
+                    <td className="px-4 py-2">미국</td>
+                    <td className="px-4 py-2">사용자가 선택한 문장</td>
+                    <td className="px-4 py-2">AI 해설 생성 — 이용자가 본인 API 키 등록 시에만</td>
+                    <td className="px-4 py-2">Google 개인정보처리방침에 따름</td>
                   </tr>
                   <tr className="border-b border-border">
                     <td className="px-4 py-2 font-medium">Google LLC (AdMob)</td>
@@ -187,21 +255,42 @@ export default function PrivacyPage() {
           </section>
 
           <section className="mb-10">
-            <h2 className="text-xl font-bold mb-4">8. 정보주체의 권리·의무 및 그 행사방법</h2>
+            <h2 className="text-xl font-bold mb-4">8. 오픈소스 및 데이터 출처 고지</h2>
+            <p className="text-muted-foreground leading-relaxed">
+              고앤슈트의 <strong>WordTap</strong> 앱은 사전 기능 제공을 위해 아래의 오픈 데이터를 활용합니다.
+            </p>
+            <ul className="list-disc pl-6 mt-3 text-muted-foreground space-y-1">
+              <li>
+                <strong>사전 데이터</strong>: Wiktionary (
+                <a
+                  href="https://creativecommons.org/licenses/by-sa/4.0/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:underline"
+                >
+                  CC BY-SA 4.0
+                </a>
+                ). 원본 및 이를 가공한 파생 사전 파일은 동일한 CC BY-SA 4.0 라이선스로 제공됩니다.
+              </li>
+            </ul>
+          </section>
+
+          <section className="mb-10">
+            <h2 className="text-xl font-bold mb-4">9. 정보주체의 권리·의무 및 그 행사방법</h2>
             <p className="text-muted-foreground leading-relaxed">
               정보주체는 고앤슈트에 대해 언제든지 개인정보 열람·정정·삭제·처리정지 요구 등의 권리를 행사할 수 있습니다. 권리 행사는 이메일(info@gonsuit.com)을 통해 하실 수 있으며, 고앤슈트는 이에 대해 지체 없이 조치하겠습니다.
             </p>
           </section>
 
           <section className="mb-10">
-            <h2 className="text-xl font-bold mb-4">9. 개인정보의 파기절차 및 파기방법</h2>
+            <h2 className="text-xl font-bold mb-4">10. 개인정보의 파기절차 및 파기방법</h2>
             <p className="text-muted-foreground leading-relaxed">
               고앤슈트는 개인정보 보유기간의 경과, 처리목적 달성 등 개인정보가 불필요하게 되었을 때에는 지체 없이 해당 개인정보를 파기합니다. 전자적 파일 형태의 정보는 기록을 재생할 수 없는 기술적 방법을 사용하여 파기합니다.
             </p>
           </section>
 
           <section className="mb-10">
-            <h2 className="text-xl font-bold mb-4">10. 개인정보 보호책임자</h2>
+            <h2 className="text-xl font-bold mb-4">11. 개인정보 보호책임자</h2>
             <p className="text-muted-foreground leading-relaxed">
               고앤슈트는 개인정보 처리에 관한 업무를 총괄해서 책임지고, 개인정보 처리와 관련한 정보주체의 불만처리 및 피해구제 등을 위하여 아래와 같이 개인정보 보호책임자를 지정하고 있습니다.
             </p>
