@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default function PrivacyPage() {
-  const lastUpdated = "2026.08.31";
+  const lastUpdated = "2026.09.01";
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -35,6 +35,8 @@ export default function PrivacyPage() {
               <li>신규 서비스 개발 및 맞춤 서비스 제공</li>
               <li>광고 서비스 제공 (Google AdMob을 통한 앱 내 광고 노출)</li>
               <li>AI 서비스 제공 (WordTap 앱의 단어·문장 AI 설명 생성 — Groq AI API 활용)</li>
+              <li>서비스 이용 분석 및 개선 (Firebase Analytics를 통한 익명 사용 통계 수집)</li>
+              <li>앱 안정성 개선 (Firebase Crashlytics를 통한 비정상 종료 진단)</li>
             </ul>
           </section>
 
@@ -46,10 +48,19 @@ export default function PrivacyPage() {
             <ul className="list-disc pl-6 mt-2 text-muted-foreground space-y-1">
               <li>필수항목: 이름, 이메일 주소, 문의 내용</li>
               <li>수집방법: 홈페이지 내 문의하기 폼(Contact Form)</li>
-              <li>광고 식별자: Android Advertising ID(ADID) — 앱 내 광고 서비스 제공 목적으로 Google AdMob에 의해 자동 수집될 수 있습니다.</li>
+              <li>광고 식별자 및 대략적 위치: Android Advertising ID(ADID), IP 주소 및 이를 통해 추정되는 대략적 위치(국가·도시 수준) — 앱 내 광고 서비스 제공 목적으로 Google AdMob에 의해 자동 수집될 수 있습니다. 위치 권한이나 GPS를 통한 정확한 위치는 수집하지 않습니다.</li>
               <li>AI 해설 요청 데이터: WordTap 앱에서 이용자가 선택한 영어 문장·단어가 AI 해설 생성을 위해 당사가 운영하는 프록시 서버(Cloudflare Workers)를 거쳐 AI 처리 사업자(Groq)로 전송됩니다. 해당 텍스트는 해설 생성 목적으로만 사용되며 당사 서버에 저장하지 않습니다.</li>
               <li>임의 식별자(UUID): WordTap 앱 설치 시 생성되는 임의의 식별자가 AI 해설 요청과 함께 전송되며, 이는 요청 빈도 제한(rate limiting) 목적으로만 사용되고 개인을 식별하지 않습니다.</li>
+              <li>사용 분석 정보: 앱 인스턴스 ID, 앱 내 상호작용 이벤트(단어 탭, 문법 해설 사용, 화면 조회 등), 대략적 기기·OS 정보 — Firebase Analytics에 의해 자동 수집됩니다.</li>
+              <li>오류 진단 정보: 앱 비정상 종료(크래시) 로그, 오류 발생 시점의 기기 상태 및 스택 트레이스 — Firebase Crashlytics에 의해 자동 수집됩니다.</li>
             </ul>
+            <div className="mt-4 rounded-lg border border-border bg-muted/30 p-4">
+              <p className="text-muted-foreground leading-relaxed text-sm">
+                <strong className="text-foreground">기기 내에만 저장되는 정보</strong> — WordTap의 단어장·학습 기록·앱 설정 및 글소리의 읽기 위치·책갈피·환경설정은
+                <strong> 이용자 기기 내부에만 저장</strong>되며 당사 서버로 전송되지 않습니다. 앱을 삭제하면 함께 제거됩니다.
+                당사는 이용자의 신원과 연동된 개인정보를 서버에 저장하지 않습니다.
+              </p>
+            </div>
           </section>
 
           <section className="mb-10">
@@ -59,6 +70,8 @@ export default function PrivacyPage() {
             </p>
             <ul className="list-disc pl-6 mt-2 text-muted-foreground space-y-1">
               <li>상담 및 문의 대응: 상담 완료 후 1년</li>
+              <li>앱 내 로컬 저장 데이터(단어장·학습 기록·설정 등): 이용자가 앱을 삭제할 때까지 (기기 내 보관, 삭제 시 즉시 파기)</li>
+              <li>사용 분석·오류 진단 정보: Google의 보관 정책에 따름 (Firebase 기본 보관 기간)</li>
               <li>관계 법령 위반에 따른 수사·조사 등이 진행 중인 경우: 해당 수사·조사 종료 시까지</li>
             </ul>
           </section>
@@ -90,8 +103,18 @@ export default function PrivacyPage() {
                   </tr>
                   <tr className="border-b border-border">
                     <td className="px-4 py-2 font-medium">Google (AdMob)</td>
-                    <td className="px-4 py-2">광고 식별자</td>
+                    <td className="px-4 py-2">광고 식별자, IP·대략적 위치</td>
                     <td className="px-4 py-2">광고 제공</td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="px-4 py-2 font-medium">Google (Firebase Analytics)</td>
+                    <td className="px-4 py-2">앱 인스턴스 ID, 이용 이벤트</td>
+                    <td className="px-4 py-2">사용 통계 분석 및 서비스 개선</td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="px-4 py-2 font-medium">Google (Firebase Crashlytics)</td>
+                    <td className="px-4 py-2">크래시 로그, 기기 상태</td>
+                    <td className="px-4 py-2">앱 안정성 진단 및 개선</td>
                   </tr>
                   <tr>
                     <td className="px-4 py-2 font-medium">Google (Gemini)</td>
@@ -104,9 +127,9 @@ export default function PrivacyPage() {
           </section>
 
           <section className="mb-10">
-            <h2 className="text-xl font-bold mb-4">5. 광고 및 분석 서비스 (Google AdMob · Firebase Analytics)</h2>
+            <h2 className="text-xl font-bold mb-4">5. 광고 · 분석 · 오류 진단 서비스 (Google AdMob · Firebase)</h2>
             <p className="text-muted-foreground leading-relaxed">
-              고앤슈트의 아래 앱은 광고 서비스 제공 및 서비스 개선을 위한 익명 사용 통계 분석을 위해 Google AdMob과 Firebase Analytics(Google Analytics)를 사용합니다.
+              고앤슈트의 아래 앱은 광고 서비스 제공, 서비스 개선을 위한 익명 사용 통계 분석, 앱 안정성 확보를 위해 Google AdMob과 Firebase(Analytics · Crashlytics)를 사용합니다.
             </p>
             <ul className="list-disc pl-6 mt-3 mb-3 text-muted-foreground space-y-1">
               <li><strong>글소리</strong> — 노안 친화형 텍스트 리더 앱 (Android)</li>
@@ -116,17 +139,28 @@ export default function PrivacyPage() {
             <p className="text-muted-foreground leading-relaxed mt-4 font-medium text-foreground">[광고] Google AdMob</p>
             <ul className="list-disc pl-6 mt-2 text-muted-foreground space-y-1">
               <li>수집 주체: Google LLC (Google AdMob)</li>
-              <li>수집 항목: Android Advertising ID (ADID), 앱 사용 정보, 기기 정보</li>
-              <li>이용 목적: 맞춤형 광고 노출, 광고 효과 측정</li>
+              <li>수집 항목: Android Advertising ID (ADID), 앱 사용 정보, 기기 정보, IP 주소 및 이를 통해 추정되는 <strong>대략적 위치</strong>(국가·도시 수준)</li>
+              <li>이용 목적: 맞춤형 광고 노출, 광고 효과 측정, 부정 클릭 방지</li>
+              <li>※ 본 앱은 위치 권한을 요구하지 않으며 GPS 등 정확한 위치정보를 수집하지 않습니다. 위 위치는 광고 SDK가 IP 주소로 추정하는 개략적 지역 정보입니다.</li>
               <li>보유 기간: Google의 개인정보처리방침에 따름</li>
             </ul>
 
             <p className="text-muted-foreground leading-relaxed mt-4 font-medium text-foreground">[분석 도구] Firebase Analytics (Google Analytics)</p>
             <ul className="list-disc pl-6 mt-2 text-muted-foreground space-y-1">
               <li>수집 주체: Google LLC (Firebase / Google Analytics)</li>
-              <li>수집 항목: 앱 인스턴스 ID, 앱 이용 이벤트(파일 열람·TTS 재생 등 익명 사용 통계), 대략적 기기·OS 정보</li>
+              <li>수집 항목: 앱 인스턴스 ID, 앱 이용 이벤트, 대략적 기기·OS 정보</li>
+              <li>이벤트 예시: <strong>글소리</strong> — 파일 열람, TTS 재생 / <strong>WordTap</strong> — 단어 탭, 문법 해설 사용, 화면 조회</li>
               <li>이용 목적: 서비스 이용 패턴 분석 및 개선 (리텐션 측정)</li>
               <li>보유 기간: Google의 개인정보처리방침에 따름</li>
+            </ul>
+
+            <p className="text-muted-foreground leading-relaxed mt-4 font-medium text-foreground">[오류 진단] Firebase Crashlytics</p>
+            <ul className="list-disc pl-6 mt-2 text-muted-foreground space-y-1">
+              <li>수집 주체: Google LLC (Firebase Crashlytics)</li>
+              <li>수집 항목: 앱 비정상 종료(크래시) 로그, 스택 트레이스, 오류 발생 시점의 기기·OS 상태, 앱 인스턴스 식별자</li>
+              <li>이용 목적: 오류 원인 파악 및 앱 안정성 개선</li>
+              <li>보유 기간: Google의 개인정보처리방침에 따름</li>
+              <li>이용자가 입력한 학습 내용이나 선택한 텍스트는 크래시 로그에 포함되지 않습니다.</li>
             </ul>
 
             <p className="text-muted-foreground leading-relaxed mt-3">
@@ -235,15 +269,22 @@ export default function PrivacyPage() {
                   <tr className="border-b border-border">
                     <td className="px-4 py-2 font-medium">Google LLC (AdMob)</td>
                     <td className="px-4 py-2">미국</td>
-                    <td className="px-4 py-2">광고 식별자(ADID), 앱 사용·기기 정보</td>
+                    <td className="px-4 py-2">광고 식별자(ADID), 앱 사용·기기 정보, IP 주소 및 추정 대략적 위치</td>
                     <td className="px-4 py-2">맞춤형 광고 노출 및 성과 측정</td>
                     <td className="px-4 py-2">Google 개인정보처리방침에 따름</td>
                   </tr>
-                  <tr>
+                  <tr className="border-b border-border">
                     <td className="px-4 py-2 font-medium">Google LLC (Firebase / Google Analytics)</td>
                     <td className="px-4 py-2">미국</td>
                     <td className="px-4 py-2">앱 인스턴스 ID, 익명 사용 이벤트, 기기·OS 정보</td>
                     <td className="px-4 py-2">앱 사용 통계 분석 및 서비스 개선</td>
+                    <td className="px-4 py-2">Google 개인정보처리방침에 따름</td>
+                  </tr>
+                  <tr>
+                    <td className="px-4 py-2 font-medium">Google LLC (Firebase Crashlytics)</td>
+                    <td className="px-4 py-2">미국</td>
+                    <td className="px-4 py-2">크래시 로그, 스택 트레이스, 기기·OS 상태</td>
+                    <td className="px-4 py-2">오류 진단 및 앱 안정성 개선</td>
                     <td className="px-4 py-2">Google 개인정보처리방침에 따름</td>
                   </tr>
                 </tbody>
