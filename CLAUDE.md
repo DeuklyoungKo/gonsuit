@@ -374,7 +374,7 @@ feat: 기능 추가 내용 요약
 
 ## 문서 관리 체계 ⚠️ 필수
 
-> 📘 **규칙 원문: [`0_DOC_CONVENTION.md`](0_DOC_CONVENTION.md)**
+> 📘 **규칙 원문: https://github.com/DeuklyoungKo/conventions/blob/main/0_DOC_CONVENTION.md**
 > SSOT 원칙 · 갱신 트리거 · 스냅샷 원칙 · 경로 표기 규칙 · Notion↔GitHub 경계 · 안티패턴은
 > **모두 그 문서가 소유한다. 여기서 반복하지 않는다.** (이 프로젝트가 규약의 레퍼런스 구현이다.)
 
@@ -393,7 +393,6 @@ feat: 기능 추가 내용 요약
 
 ## 참조 문서
 
-- `0_DOC_CONVENTION.md` — **문서 관리 규약** (다른 프로젝트 적용 시 이 문서를 따른다)
 - `1_PRD.md` — 제품 요구사항 정의서 (왜/무엇)
 - `2_PDP.md` — 개발 계획서 (1차 런칭 완료, 아카이브)
 - `4_LRP.md` — 장기 로드맵 (전략/비전)
