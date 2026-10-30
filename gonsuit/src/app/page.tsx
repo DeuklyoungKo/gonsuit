@@ -34,9 +34,9 @@ const services = [
   {
     name: "WordTap",
     description:
-      "영어 문장을 읽다가 모르는 단어나 문법이 있으면 탭 한 번으로 AI가 한국어로 해설. 단순 번역이 아닌 '왜 이렇게 쓰였는지' 구조를 알려주는 영어 학습 앱.",
-    status: "출시예정",
-    statusColor: "bg-blue-100 text-blue-700",
+      "영어 문장을 읽다가 모르는 문법이 있으면 드래그 한 번으로 AI가 한국어로 해설. 단순 번역이 아닌 '왜 이렇게 쓰였는지' 구조를 알려주는 영어 학습 앱.",
+    status: "운영중",
+    statusColor: "bg-emerald-100 text-emerald-700",
     href: "/products/wordtap",
     icon: null,
     imageSrc: "/images/wordtap-icon.png",
