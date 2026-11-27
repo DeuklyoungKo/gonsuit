@@ -259,7 +259,7 @@ $env:PATH = [Environment]::GetEnvironmentVariable("PATH","Machine"); $env:PUPPET
 2. [x] `/products/gulsori` (운영중 — JSON-LD 평점 정책 주석 블록 보존 확인) — 완료 2026-11-27
 3. [x] `/lab`, `/lab/[slug]` — 완료 2026-11-27
 4. [x] `/contact` (`"use client"` + 폼 + Supabase/Resend 배선 — 필드 누락이 가장 치명적) — 완료 2026-11-27
-5. [ ] `/privacy` (레이아웃만. 문구 diff가 0이어야 한다)
+5. [x] `/privacy` (레이아웃만. 문구 diff가 0이어야 한다) — 완료 2026-11-27
 6. [ ] `Header.tsx` / `Footer.tsx` (전 페이지 영향 — 개별 페이지가 끝난 뒤에)
 7. [ ] `/` 홈 (가장 가치가 크고 가장 위험하다. 마지막)
 

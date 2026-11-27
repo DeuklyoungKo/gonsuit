@@ -54,7 +54,7 @@ export default function PrivacyPage() {
               <li>사용 분석 정보: 앱 인스턴스 ID, 앱 내 상호작용 이벤트(단어 탭, 문법 해설 사용, 화면 조회 등), 대략적 기기·OS 정보 — Firebase Analytics에 의해 자동 수집됩니다.</li>
               <li>오류 진단 정보: 앱 비정상 종료(크래시) 로그, 오류 발생 시점의 기기 상태 및 스택 트레이스 — Firebase Crashlytics에 의해 자동 수집됩니다.</li>
             </ul>
-            <div className="mt-4 rounded-lg border border-border bg-muted/30 p-4">
+            <div className="mt-4 rounded-lg border border-border bg-[var(--color-paper-2)] p-4">
               <p className="text-muted-foreground leading-relaxed text-sm">
                 <strong className="text-foreground">기기 내에만 저장되는 정보</strong> — WordTap의 단어장·학습 기록·앱 설정 및 글소리의 읽기 위치·책갈피·환경설정은
                 <strong> 이용자 기기 내부에만 저장</strong>되며 당사 서버로 전송되지 않습니다. 앱을 삭제하면 함께 제거됩니다.
@@ -84,7 +84,7 @@ export default function PrivacyPage() {
             <div className="mt-4 overflow-x-auto">
               <table className="w-full text-sm text-muted-foreground border border-border rounded-lg">
                 <thead>
-                  <tr className="bg-muted/50">
+                  <tr className="bg-[var(--color-paper-2)]">
                     <th className="text-left px-4 py-2 font-semibold text-foreground border-b border-border">사업자</th>
                     <th className="text-left px-4 py-2 font-semibold text-foreground border-b border-border">제공 항목</th>
                     <th className="text-left px-4 py-2 font-semibold text-foreground border-b border-border">목적</th>
@@ -127,7 +127,7 @@ export default function PrivacyPage() {
           </section>
 
           <section className="mb-10">
-            <h2 className="text-xl font-bold mb-4">5. 광고 · 분석 · 오류 진단 서비스 (Google AdMob · Firebase)</h2>
+            <h2 className="text-xl font-bold mb-4">5. 광고·분석·오류 진단 서비스 (Google AdMob · Firebase)</h2>
             <p className="text-muted-foreground leading-relaxed">
               고앤슈트의 아래 앱은 광고 서비스 제공, 서비스 개선을 위한 익명 사용 통계 분석, 앱 안정성 확보를 위해 Google AdMob과 Firebase(Analytics · Crashlytics)를 사용합니다.
             </p>
@@ -236,7 +236,7 @@ export default function PrivacyPage() {
             <div className="mt-4 overflow-x-auto">
               <table className="w-full text-sm text-muted-foreground border border-border rounded-lg">
                 <thead>
-                  <tr className="bg-muted/50">
+                  <tr className="bg-[var(--color-paper-2)]">
                     <th className="text-left px-4 py-2 font-semibold text-foreground border-b border-border">이전받는 자</th>
                     <th className="text-left px-4 py-2 font-semibold text-foreground border-b border-border">이전 국가</th>
                     <th className="text-left px-4 py-2 font-semibold text-foreground border-b border-border">이전 항목</th>
