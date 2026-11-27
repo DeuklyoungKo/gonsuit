@@ -90,7 +90,7 @@ const roadmap = [
 
 export default function AboutPage() {
   return (
-    <div data-hallmark="coral" className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground">
       <Header />
 
       <main>
