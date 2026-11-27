@@ -362,7 +362,9 @@ Vercel Hobby 플랜 + Private 레포에서 **커밋 작성자가 프로젝트 �
 
 > "The deployment was blocked because the commit author did not have contributing access to the project on Vercel."
 
-이 저장소의 `user.name`/`user.email`은 `DeuklyoungKo <lunaman1@naver.com>`으로, **누가 `git commit`을 실행하든 작성자는 동일**하다. 따라서 위 차단 조건에 걸리지 않는다.
+실제로는 이 세션에서 만든 커밋의 작성자가 `DeuklyoungKo <41587911+DeuklyoungKo@users.noreply.github.com>`로, 사람이 직접 커밋할 때(`lunaman1@naver.com`)와 **이메일이 다르다.** 다만 앞의 것은 GitHub가 이 계정에 발급한 noreply 주소라 **GitHub 계정으로 정상 인식**된다.
+
+**검증됨 (2026-11-27)**: 그 작성자로 커밋한 `fbd01e3`을 푸시했고 Vercel이 `BLOCKED` 없이 프로덕션 빌드를 시작했다. 즉 위 차단 조건에 걸리지 않는다.
 
 ### 규칙
 - 작업 완료 후 Claude가 커밋하고 푸시한다. 커밋 메시지는 아래 형식을 따르고, 마지막 줄에 `Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>`를 붙인다.
