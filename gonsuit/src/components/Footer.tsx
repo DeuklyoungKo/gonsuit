@@ -6,12 +6,12 @@ import { trackMenuClick } from "@/lib/gtag";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-border py-12">
+    <footer className="border-t border-border py-12 bg-[var(--color-paper)]">
       <div className="mx-auto max-w-6xl px-6">
         <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
           <div className="flex items-center gap-2">
-            <div className="flex h-7 w-7 items-center justify-center rounded-md bg-primary">
-              <Zap className="h-3.5 w-3.5 text-primary-foreground" />
+            <div className="flex h-7 w-7 items-center justify-center rounded-md bg-[var(--color-board)]">
+              <Zap className="h-3.5 w-3.5 text-[var(--color-board-type)]" />
             </div>
             <span className="font-bold">고앤슈트</span>
             <span className="text-muted-foreground">·</span>

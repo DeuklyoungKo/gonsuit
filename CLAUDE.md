@@ -26,7 +26,7 @@
 
 **사이트 상태**: 출시·운영 중 (1차 런칭 완료 — 상세 기록은 `2_PDP.md` 아카이브)
 
-**진행 중 작업**: 디자인 리뉴얼 (Hallmark) — Phase 0~3 완료(테마 Coral, 토큰 전환, 다크모드 제거, /about 파일럿). Phase 4 확산 진행 중: Coral 전역 승격, design.md 잠금, /products/wordtap(4-1)·/products/gulsori(4-2)·/lab(4-3)·/contact(4-4)·/privacy(4-5) 완료 → `5_DESIGN_RENEWAL.md`
+**진행 중 작업**: 디자인 리뉴얼 (Hallmark) — Phase 0~3 완료(테마 Coral, 토큰 전환, 다크모드 제거, /about 파일럿). Phase 4 확산 진행 중: Coral 전역 승격, design.md 잠금, /products/wordtap(4-1)·/products/gulsori(4-2)·/lab(4-3)·/contact(4-4)·/privacy(4-5)·Header/Footer(4-6) 완료 → `5_DESIGN_RENEWAL.md`
 
 **다음 할 일**
 1. **글소리·WordTap Play Store 평점 발생 확인** → 발생 시 각 상세 페이지의 `aggregateRating` 주석 해제 후 실제 값 입력 (WordTap은 2026-10 출시 완료, `downloadUrl`/`installUrl` 반영됨)
@@ -40,7 +40,8 @@
    - **Phase 4-3 `/lab`, `/lab/[slug]` 완료** (restyle) — transition-all 10a 해결, eyebrow 54 제거, tracked-caps 67 해결, Article JSON-LD 보존
    - **Phase 4-4 `/contact` 완료** (restyle) — transition-all 10a 해결, 글래스 헤더 29 제거, 폼 필드 5종 및 GA4 `trackContactSubmit` 100% 보존
    - **Phase 4-5 `/privacy` 완료** (restyle) — 한국어 가운뎃점 맞춤법 정리로 게이트 63 오탐 해결, 토큰 적용, 법적 본문 100% 보존
-   - 다음: Phase 4-6 `Header.tsx` / `Footer.tsx` (전 페이지 공통 컴포넌트)
+   - **Phase 4-6 `Header.tsx` / `Footer.tsx` 완료** (restyle) — 글래스 헤더 29 제거 및 솔리드 서피스 적용, .hm-press 컨트롤, 로고 타일 및 GA4 메뉴 클릭 100% 보존
+   - 다음: Phase 4-7 `/` 홈 (마지막 페이지)
 5. 신규 앱 추가 시 체크리스트: 상세 페이지 · 홈 카드(`page.tsx`) · `sitemap.ts` · `privacy/page.tsx` · 위 상품 표 **5곳 동시 갱신**
 
 **최근 결정 사항**

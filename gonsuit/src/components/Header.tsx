@@ -15,11 +15,11 @@ export default function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-sm">
+    <header className="sticky top-0 z-50 border-b border-border bg-[var(--color-paper)]">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
         <Link href="/" className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-            <Zap className="h-4 w-4 text-primary-foreground" />
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[var(--color-board)]">
+            <Zap className="h-4 w-4 text-[var(--color-board-type)]" />
           </div>
           <span className="text-lg font-bold tracking-tight">고앤슈트</span>
         </Link>
@@ -32,7 +32,7 @@ export default function Header() {
               onClick={() => trackMenuClick(item.label)}
               className={`text-sm font-medium transition-colors hover:text-foreground ${
                 pathname === item.href
-                  ? "text-foreground"
+                  ? "text-foreground font-semibold"
                   : "text-muted-foreground"
               }`}
             >
@@ -42,14 +42,14 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-4">
-          <button className="hidden items-center gap-2 rounded-lg border border-border px-3 py-1.5 text-sm font-medium transition-colors hover:bg-muted md:flex">
+          <button className="hm-press hidden items-center gap-2 px-3 py-1.5 text-xs font-medium md:flex">
             <Languages className="h-4 w-4" />
             <span>KR / EN</span>
           </button>
           <Link
             href="/contact"
             onClick={() => trackMenuClick("문의하기")}
-            className="flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+            className="hm-press hm-press-primary flex items-center gap-2 px-4 py-2 text-sm font-medium"
           >
             <Mail className="h-4 w-4" />
             문의하기
