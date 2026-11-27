@@ -26,18 +26,17 @@
 
 **사이트 상태**: 출시·운영 중 (1차 런칭 완료 — 상세 기록은 `2_PDP.md` 아카이브)
 
-**진행 중 작업**: 디자인 리뉴얼 (Hallmark) — Phase 0~2 완료(테마 Furrow, 토큰 전환, 다크모드 제거). 다음은 `/about` 파일럿 → `5_DESIGN_RENEWAL.md`
+**진행 중 작업**: 디자인 리뉴얼 (Hallmark) — Phase 0~3 완료(테마 Coral, 토큰 전환, 다크모드 제거, /about 파일럿). Phase 4 확산 진행 중: Coral 전역 승격, design.md 잠금, /products/wordtap 완료 (Phase 4-1) → `5_DESIGN_RENEWAL.md`
 
 **다음 할 일**
 1. **글소리·WordTap Play Store 평점 발생 확인** → 발생 시 각 상세 페이지의 `aggregateRating` 주석 해제 후 실제 값 입력 (WordTap은 2026-10 출시 완료, `downloadUrl`/`installUrl` 반영됨)
 2. **Search Console 정리** (정규 호스트를 apex로 뒤집은 후속 작업) — 속성이 `www.gonsuit.com`이면 **도메인 속성**(`gonsuit.com`)으로 바꾸고 사이트맵(`https://gonsuit.com/sitemap.xml`) 재제출
 3. **WordTap Play Store 링크에 GA4 `external_link_click` 누락** (`products/wordtap/page.tsx:210`, `:393`) → GA4 규칙상 외부 링크는 추적 대상인데 빠져 있다
-4. **디자인 리뉴얼(Hallmark)** → `5_DESIGN_RENEWAL.md`. Phase 0~2 완료 (설치·audit·접근성 수정·방향 결정). 테마 **Furrow**, 장르 `modern-minimal`, 본문 Pretendard, `copy: verbatim`, 다크모드 제거 — 전체는 §6
-   - 토큰 (A) 전환 완료 — 색 토큰은 **완전한 색값**(`--primary: hsl(243 75% 59%)`)이고 `tailwind.config.js`는 `color-mix(in oklab, var(--x) calc(<alpha-value> * 100%), transparent)`를 쓴다. ⚠️ `hsl(var(--x))`로 되돌리지 말 것 — 되돌리면 `bg-primary/10` 류 15곳이 깨진다 (§1-1)
-   - 다크모드 제거 완료 (`.dark` 클래스를 붙이는 코드가 애초에 없었다)
-   - **Phase 3 `/about` 파일럿 완료** (restyle) — 핸드오프 §9. 1 FAIL → 0 FAIL, 배선 누락 0건. Coral은 `[data-hallmark="coral"]` 범위로만 적용돼 나머지 7개 페이지는 Indigo 그대로다
-   - 다음: 전면 전환 여부 결정 → 결정 시 범위 블록을 `:root`로 올리고 `base.css` import + 스탬프 추가
-   - ⚠️ `design.md`는 **미리 쓰지 않는다.** 파일럿 scaffold 이후 `tokens.css`로부터 잠근다 (§3 Phase 2)
+4. **디자인 리뉴얼(Hallmark)** → `5_DESIGN_RENEWAL.md`. Phase 0~3 완료. 테마 **Coral**, 장르 `modern-minimal`, 본문 Pretendard, `copy: verbatim`, 다크모드 제거
+   - Coral 전역 승격 완료: `globals.css`의 `:root`로 토큰 승격, `base.css` import, 스탬프 적용 완료
+   - `design.md` 시스템 잠금 완료
+   - **Phase 4-1 `/products/wordtap` 완료** (restyle) — 이모지 30a 제거, 블러 구체 29 제거, 팔레트 클래스 74 제거, JSON-LD·링크·메타데이터 100% 보존
+   - 다음: Phase 4-2 `/products/gulsori` (운영중 — JSON-LD 평점 정책 주석 블록 보존 확인)
 5. 신규 앱 추가 시 체크리스트: 상세 페이지 · 홈 카드(`page.tsx`) · `sitemap.ts` · `privacy/page.tsx` · 위 상품 표 **5곳 동시 갱신**
 
 **최근 결정 사항**

@@ -19,6 +19,8 @@ import {
   Smartphone,
   Zap,
   Download,
+  Briefcase,
+  GraduationCap,
 } from "lucide-react";
 
 const PLAY_STORE_URL =
@@ -51,44 +53,38 @@ const features = [
     icon: MessageSquare,
     title: "AI 문법 해설 ★ 킬러 피처",
     desc: "문장 드래그 선택 → AI가 ① 직역 ② 자연스러운 번역 ③ 핵심 문법 포인트를 한국어로 즉시 해설. 구글 번역에는 없는 '왜 이렇게 쓰였는지' 원리 설명.",
-    color: "bg-blue-50 text-blue-600",
   },
   {
     icon: BookOpen,
     title: "단어 탭 즉시 사전",
     desc: "모르는 단어를 탭 한 번으로 한국어 뜻 + 발음기호 + 품사 + 영어 정의 + 예문을 동시에 확인. 단어장에 바로 저장 가능.",
-    color: "bg-indigo-50 text-indigo-600",
   },
   {
     icon: FileText,
     title: "내 텍스트로 공부",
     desc: "교재가 아닌 내가 읽고 싶은 원서·뉴스·업무 문서로 학습. 텍스트 붙여넣기로 바로 읽고 학습 시작.",
-    color: "bg-violet-50 text-violet-600",
   },
   {
     icon: Moon,
     title: "3가지 읽기 테마",
     desc: "화이트·아이보리·다크모드 3종 지원. 폰트 크기 조절로 눈이 편안한 독서 환경 제공.",
-    color: "bg-zinc-100 text-zinc-600",
   },
   {
     icon: Bookmark,
     title: "나만의 단어장 & 위치 저장",
     desc: "탭한 단어를 단어장에 저장하고 복습. 마지막으로 읽던 위치가 자동 저장되어 앱 재실행 시 이어읽기 가능.",
-    color: "bg-emerald-50 text-emerald-600",
   },
   {
     icon: Wifi,
     title: "무료 AI 해설 (하이브리드)",
     desc: "기본 제공 무료 AI 해설 제공. 하루 무료 사용량 초과 시 본인 Gemini API 키(카드 등록 불필요·무료) 등록으로 무제한 이용 가능.",
-    color: "bg-amber-50 text-amber-600",
   },
 ];
 
 const targets = [
-  { emoji: "💼", label: "20–40대 직장인", desc: "업무 영어 문장을 정확히 이해하고 싶은 분" },
-  { emoji: "📝", label: "시험 준비생", desc: "TOEIC·TOEFL에서 문법 이해가 부족한 분" },
-  { emoji: "📖", label: "영어 원서·뉴스 독자", desc: "원서나 뉴스에 도전하지만 문장 구조가 어려운 분" },
+  { icon: Briefcase, label: "20–40대 직장인", desc: "업무 영어 문장을 정확히 이해하고 싶은 분" },
+  { icon: GraduationCap, label: "시험 준비생", desc: "TOEIC·TOEFL에서 문법 이해가 부족한 분" },
+  { icon: BookOpen, label: "영어 원서·뉴스 독자", desc: "원서나 뉴스에 도전하지만 문장 구조가 어려운 분" },
 ];
 
 const roadmap = [
@@ -145,10 +141,7 @@ export default function WordTapPage() {
 
       <main>
         {/* ── Hero ─────────────────────────────────────── */}
-        <section className="relative overflow-hidden border-b border-border py-24">
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-blue-500/5 via-background to-background" />
-          <div className="pointer-events-none absolute -top-40 left-1/2 h-[500px] w-[700px] -translate-x-1/2 rounded-full bg-blue-400/10 blur-3xl" />
-
+        <section className="relative overflow-hidden border-b border-border bg-[var(--color-paper-2)] py-24">
           <div className="relative mx-auto max-w-4xl px-6">
             <Link
               href="/#services"
@@ -160,7 +153,7 @@ export default function WordTapPage() {
 
             <div className="flex flex-col items-start gap-8 md:flex-row md:items-center">
               {/* 앱 아이콘 */}
-              <div className="h-24 w-24 shrink-0 overflow-hidden rounded-3xl shadow-lg">
+              <div className="h-24 w-24 shrink-0 overflow-hidden rounded-3xl border border-border shadow-md">
                 <Image
                   src="/images/wordtap-icon.png"
                   alt="WordTap 앱 아이콘"
@@ -173,7 +166,7 @@ export default function WordTapPage() {
               <div>
                 <div className="flex items-center gap-3">
                   <h1 className="text-4xl font-bold tracking-tight md:text-5xl">WordTap</h1>
-                  <span className="rounded-full bg-emerald-100 px-3 py-1 text-sm font-semibold text-emerald-700">
+                  <span className="rounded-full bg-[var(--color-board)] px-3 py-1 text-sm font-semibold text-[var(--color-board-type)]">
                     운영중
                   </span>
                 </div>
@@ -210,14 +203,14 @@ export default function WordTapPage() {
                     href={PLAY_STORE_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-sm transition-opacity hover:opacity-90"
+                    className="hm-press hm-press-primary flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold"
                   >
                     <Download className="h-4 w-4" />
                     Google Play에서 다운로드
                   </a>
                   <Link
                     href="/contact"
-                    className="flex items-center gap-2 rounded-xl border border-border px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
+                    className="hm-press flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold"
                   >
                     <Mail className="h-4 w-4" />
                     협업 문의
@@ -229,18 +222,18 @@ export default function WordTapPage() {
         </section>
 
         {/* ── 차별점 배너 ──────────────────────────────── */}
-        <section className="border-b border-border bg-blue-50/50 py-12">
+        <section className="border-b border-border bg-[var(--color-paper)] py-12">
           <div className="mx-auto max-w-4xl px-6">
             <div className="grid gap-6 md:grid-cols-2">
-              <div className="rounded-2xl border border-red-200 bg-white p-6">
-                <p className="text-sm font-semibold text-red-600 mb-2">구글 번역 (기존)</p>
+              <div className="rounded-2xl border border-border bg-card p-6">
+                <p className="text-sm font-semibold text-muted-foreground mb-2">구글 번역 (기존)</p>
                 <p className="text-lg font-bold text-foreground">&quot;이게 무슨 뜻이야?&quot;</p>
                 <p className="mt-2 text-muted-foreground text-sm">→ 뜻만 알려줌. 왜 이 구조인지 모름.</p>
               </div>
-              <div className="rounded-2xl border border-blue-300 bg-blue-50 p-6">
-                <p className="text-sm font-semibold text-blue-600 mb-2">WordTap (차별화)</p>
+              <div className="rounded-2xl border-2 border-[var(--color-board)] bg-[var(--color-paper-2)] p-6">
+                <p className="text-sm font-semibold text-foreground mb-2">WordTap (차별화)</p>
                 <p className="text-lg font-bold text-foreground">&quot;왜 이렇게 쓰인 거야?&quot;</p>
-                <p className="mt-2 text-blue-700 text-sm">→ 구조와 원리를 알려줌. 진짜 학습이 됨.</p>
+                <p className="mt-2 text-foreground text-sm font-medium">→ 구조와 원리를 알려줌. 진짜 학습이 됨.</p>
               </div>
             </div>
           </div>
@@ -261,7 +254,7 @@ export default function WordTapPage() {
                   key={f.title}
                   className="rounded-2xl border border-border bg-card p-6"
                 >
-                  <div className={`mb-4 flex h-12 w-12 items-center justify-center rounded-xl ${f.color}`}>
+                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--color-paper-2)] text-foreground">
                     <f.icon className="h-6 w-6" />
                   </div>
                   <h3 className="text-lg font-semibold">{f.title}</h3>
@@ -273,7 +266,7 @@ export default function WordTapPage() {
         </section>
 
         {/* ── 목표 사용자 ──────────────────────────────── */}
-        <section className="border-b border-border bg-muted/30 py-20">
+        <section className="border-b border-border bg-[var(--color-paper-2)] py-20">
           <div className="mx-auto max-w-4xl px-6">
             <div className="mb-12 text-center">
               <h2 className="text-3xl font-bold tracking-tight">이런 분께 딱 맞습니다</h2>
@@ -287,7 +280,9 @@ export default function WordTapPage() {
                   key={t.label}
                   className="rounded-2xl border border-border bg-card p-8 text-center"
                 >
-                  <div className="mb-4 text-5xl">{t.emoji}</div>
+                  <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-[var(--color-paper-2)] text-foreground">
+                    <t.icon className="h-7 w-7" />
+                  </div>
                   <h3 className="text-lg font-bold">{t.label}</h3>
                   <p className="mt-2 text-sm text-muted-foreground">{t.desc}</p>
                 </div>
@@ -304,15 +299,15 @@ export default function WordTapPage() {
               <p className="mt-3 text-muted-foreground">카드 등록 없이 누구나 무료로 사용 가능합니다</p>
             </div>
             <div className="space-y-4">
-              <div className="flex items-start gap-4 rounded-2xl border border-blue-200 bg-blue-50 p-6">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-600 text-white text-sm font-bold">1</div>
+              <div className="flex items-start gap-4 rounded-2xl border border-border bg-card p-6">
+                <div className="hm-fig flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--color-board)] text-[var(--color-board-type)] text-sm font-bold">1</div>
                 <div>
                   <p className="font-semibold text-foreground">기본: 개발자 제공 Groq 키 (무료)</p>
                   <p className="mt-1 text-sm text-muted-foreground">앱 설치 즉시 AI 해설 사용 가능. 하루 14,400건 여유 있게 제공. 별도 설정 불필요.</p>
                 </div>
               </div>
               <div className="flex items-start gap-4 rounded-2xl border border-border bg-card p-6">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-muted text-muted-foreground text-sm font-bold">2</div>
+                <div className="hm-fig flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--color-paper-2)] text-foreground border border-border text-sm font-bold">2</div>
                 <div>
                   <p className="font-semibold text-foreground">한도 초과 시: 본인 Gemini 키 입력 (역시 무료)</p>
                   <p className="mt-1 text-sm text-muted-foreground">Google 계정만 있으면 AI Studio에서 2분 내 무료 발급. 카드 등록 불필요. 개인당 하루 1,500건 무제한 사용.</p>
@@ -323,7 +318,7 @@ export default function WordTapPage() {
         </section>
 
         {/* ── 출시 로드맵 ──────────────────────────────── */}
-        <section className="border-b border-border bg-muted/30 py-20">
+        <section className="border-b border-border bg-[var(--color-paper-2)] py-20">
           <div className="mx-auto max-w-3xl px-6">
             <div className="mb-12 text-center">
               <h2 className="text-3xl font-bold tracking-tight">출시 로드맵</h2>
@@ -333,30 +328,24 @@ export default function WordTapPage() {
               {roadmap.map((r) => (
                 <div
                   key={r.phase}
-                  className={`rounded-2xl border p-6 ${
-                    r.status === "done"
-                      ? "border-emerald-300 bg-emerald-50"
-                      : r.status === "current"
-                      ? "border-blue-300 bg-blue-50"
-                      : "border-border bg-card"
-                  }`}
+                  className="rounded-2xl border border-border bg-card p-6"
                 >
                   <div className="flex items-center gap-3 mb-4">
                     <span
-                      className={`rounded-full px-3 py-1 text-sm font-bold ${
+                      className={`hm-fig rounded-full px-3 py-1 text-sm font-bold ${
                         r.status === "done"
-                          ? "bg-emerald-200 text-emerald-800"
+                          ? "bg-[var(--color-board)] text-[var(--color-board-type)]"
                           : r.status === "current"
-                          ? "bg-blue-200 text-blue-800"
+                          ? "border border-[var(--color-board)] bg-[var(--color-paper-2)] text-foreground"
                           : "bg-muted text-muted-foreground"
                       }`}
                     >
                       {r.phase}
                     </span>
                     {r.status === "done" ? (
-                      <span className="text-sm font-medium text-emerald-700">✓ 출시 완료</span>
+                      <span className="text-sm font-medium text-foreground">✓ 출시 완료</span>
                     ) : r.status === "current" ? (
-                      <span className="text-sm font-medium text-blue-700">● 개발 진행중</span>
+                      <span className="text-sm font-medium text-foreground">● 개발 진행중</span>
                     ) : null}
                   </div>
                   <ul className="grid gap-2 sm:grid-cols-2">
@@ -365,9 +354,9 @@ export default function WordTapPage() {
                         <CheckCircle2
                           className={`h-4 w-4 shrink-0 ${
                             r.status === "done"
-                              ? "text-emerald-500"
+                              ? "text-foreground"
                               : r.status === "current"
-                              ? "text-blue-500"
+                              ? "text-foreground"
                               : "text-muted-foreground/40"
                           }`}
                         />
@@ -393,14 +382,14 @@ export default function WordTapPage() {
                 href={PLAY_STORE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 rounded-xl bg-primary px-8 py-4 text-sm font-semibold text-primary-foreground shadow-lg transition-opacity hover:opacity-90"
+                className="hm-press hm-press-primary flex items-center justify-center gap-2 px-8 py-4 text-sm font-semibold"
               >
                 <Download className="h-4 w-4" />
                 Google Play에서 다운로드
               </a>
               <Link
                 href="/#services"
-                className="flex items-center gap-2 rounded-xl border border-border px-8 py-4 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
+                className="hm-press flex items-center justify-center gap-2 px-8 py-4 text-sm font-semibold"
               >
                 다른 상품 보기
               </Link>

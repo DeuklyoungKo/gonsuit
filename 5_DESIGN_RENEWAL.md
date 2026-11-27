@@ -255,7 +255,7 @@ $env:PATH = [Environment]::GetEnvironmentVariable("PATH","Machine"); $env:PUPPET
 
 권장 순서 — 위험이 낮은 것부터, 가치가 큰 것을 마지막에:
 
-1. [ ] `/products/wordtap` (JSON-LD 보존을 처음 검증. 출시예정이라 트래픽 영향 작음)
+1. [x] `/products/wordtap` (JSON-LD 보존을 처음 검증. 출시예정이라 트래픽 영향 작음) — 완료 2026-11-27
 2. [ ] `/products/gulsori` (운영중 — JSON-LD 평점 정책 주석 블록 보존 확인)
 3. [ ] `/lab`, `/lab/[slug]`
 4. [ ] `/contact` (`"use client"` + 폼 + Supabase/Resend 배선 — 필드 누락이 가장 치명적)
