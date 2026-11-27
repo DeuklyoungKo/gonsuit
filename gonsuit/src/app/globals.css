@@ -64,12 +64,14 @@
   * {
     @apply border-border;
   }
+
   /* 가로 스크롤 방지. clip은 hidden과 달리 스크롤 컨테이너를 만들지 않아
      Header의 position: sticky가 그대로 동작한다. */
   html,
   body {
     overflow-x: clip;
   }
+
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-kr);
@@ -81,13 +83,16 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+
   /* 키보드 포커스 표시. */
   :focus-visible {
     outline: 2px solid var(--ring);
     outline-offset: 2px;
   }
+
   /* 게이트 27: transform 전환(hover:scale 등)에 reduced-motion 대안. */
   @media (prefers-reduced-motion: reduce) {
+
     *,
     *::before,
     *::after {
@@ -107,9 +112,17 @@
     font-synthesis: none;
     text-wrap: balance;
   }
+
   /* 게이트 78: 섹션 제목이 히어로 제목보다 지나치게 작았다(30px vs 60px) */
-  h2 { font-size: var(--text-section); line-height: 1.06; }
-  h3 { font-size: var(--text-title); line-height: 1.2; }
+  h2 {
+    font-size: var(--text-section);
+    line-height: 1.06;
+  }
+
+  h3 {
+    font-size: var(--text-title);
+    line-height: 1.2;
+  }
 
   /* 숫자·연도는 mono가 재료다 (Coral § Type: Figures in a column) */
   .hm-fig {
@@ -134,20 +147,24 @@
     color: var(--color-print);
     box-shadow: var(--edge-stock), var(--cast-stock);
     transition: box-shadow var(--dur-short) var(--ease-out),
-                transform var(--dur-short) var(--ease-out);
+      transform var(--dur-short) var(--ease-out);
   }
+
   .hm-press:hover {
     transform: translateY(-1px);
     box-shadow: var(--edge-stock), var(--cast-stock-lift);
   }
+
   .hm-press:active {
     transform: translateY(1px);
     box-shadow: var(--press-groove);
   }
+
   .hm-press-primary {
     background: var(--color-board);
     color: var(--color-board-type);
   }
+
   /* 산호색이 쓰이는 단 세 자리: 링크 밑줄, 포커스, 눌린 상태 */
   .hm-link {
     text-decoration: underline;
