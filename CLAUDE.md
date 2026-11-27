@@ -26,13 +26,13 @@
 
 **사이트 상태**: 출시·운영 중 (1차 런칭 완료 — 상세 기록은 `2_PDP.md` 아카이브)
 
-**진행 중 작업**: 디자인 리뉴얼 (Hallmark) — Phase 0~3 완료(테마 Coral, 토큰 전환, 다크모드 제거, /about 파일럿). Phase 4 확산 진행 중: Coral 전역 승격, design.md 잠금, /products/wordtap(4-1)·/products/gulsori(4-2)·/lab(4-3)·/contact(4-4)·/privacy(4-5)·Header/Footer(4-6) 완료 → `5_DESIGN_RENEWAL.md`
+**진행 중 작업**: 디자인 리뉴얼 (Hallmark) — Phase 0~4 전 페이지 확산 완료(테마 Coral, 토큰 전환, 다크모드 제거, 전 8개 페이지 + Header/Footer restyle 적용 완료, sloplint 0 FAIL / 0 WARN). Phase 5 마감 진행 중 → `5_DESIGN_RENEWAL.md`
 
 **다음 할 일**
 1. **글소리·WordTap Play Store 평점 발생 확인** → 발생 시 각 상세 페이지의 `aggregateRating` 주석 해제 후 실제 값 입력 (WordTap은 2026-10 출시 완료, `downloadUrl`/`installUrl` 반영됨)
 2. **Search Console 정리** (정규 호스트를 apex로 뒤집은 후속 작업) — 속성이 `www.gonsuit.com`이면 **도메인 속성**(`gonsuit.com`)으로 바꾸고 사이트맵(`https://gonsuit.com/sitemap.xml`) 재제출
 3. **WordTap Play Store 링크에 GA4 `external_link_click` 누락** (`products/wordtap/page.tsx:210`, `:393`) → GA4 규칙상 외부 링크는 추적 대상인데 빠져 있다
-4. **디자인 리뉴얼(Hallmark)** → `5_DESIGN_RENEWAL.md`. Phase 0~3 완료. 테마 **Coral**, 장르 `modern-minimal`, 본문 Pretendard, `copy: verbatim`, 다크모드 제거
+4. **디자인 리뉴얼(Hallmark)** → `5_DESIGN_RENEWAL.md`. Phase 0~4 완료. 테마 **Coral**, 장르 `modern-minimal`, 본문 Pretendard, `copy: verbatim`, 다크모드 제거
    - Coral 전역 승격 완료: `globals.css`의 `:root`로 토큰 승격, `base.css` import, 스탬프 적용 완료
    - `design.md` 시스템 잠금 완료
    - **Phase 4-1 `/products/wordtap` 완료** (restyle) — 이모지 30a 제거, 블러 구체 29 제거, 팔레트 클래스 74 제거, JSON-LD·링크·메타데이터 100% 보존
@@ -41,7 +41,8 @@
    - **Phase 4-4 `/contact` 완료** (restyle) — transition-all 10a 해결, 글래스 헤더 29 제거, 폼 필드 5종 및 GA4 `trackContactSubmit` 100% 보존
    - **Phase 4-5 `/privacy` 완료** (restyle) — 한국어 가운뎃점 맞춤법 정리로 게이트 63 오탐 해결, 토큰 적용, 법적 본문 100% 보존
    - **Phase 4-6 `Header.tsx` / `Footer.tsx` 완료** (restyle) — 글래스 헤더 29 제거 및 솔리드 서피스 적용, .hm-press 컨트롤, 로고 타일 및 GA4 메뉴 클릭 100% 보존
-   - 다음: Phase 4-7 `/` 홈 (마지막 페이지)
+   - **Phase 4-7 `/` 홈 완료** (restyle) — transition-all 10a 해결, 그라디언트 텍스트 2b 해결, 블러 구체 29 제거, GA4 `trackProductClick` 100% 보존
+   - **전체 결과**: `sloplint` 기준 **0 FAIL, 0 WARN** (게이트 전수 통과)
 5. 신규 앱 추가 시 체크리스트: 상세 페이지 · 홈 카드(`page.tsx`) · `sitemap.ts` · `privacy/page.tsx` · 위 상품 표 **5곳 동시 갱신**
 
 **최근 결정 사항**
