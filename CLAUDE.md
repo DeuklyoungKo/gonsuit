@@ -375,6 +375,10 @@ Vercel Hobby 플랜 + Private 레포에서 **커밋 작성자가 프로젝트 �
 - **푸시 전 `npm run build`를 통과시킨다.** `main` 푸시는 곧바로 gonsuit.com 배포다.
 - **세션 시작 시 `git fetch && git status -sb`로 원격과의 차이를 먼저 확인한다.** 여러 PC에서 작업하므로 로컬이 뒤처져 있을 수 있다. 뒤처졌으면 pull 먼저. (2026-11-27에 한 달 묵은 로컬에서 작업한 사고가 있었다 — `5_DESIGN_RENEWAL.md` §8-8)
 - 되돌리기 어렵거나 범위가 큰 변경(히스토리 재작성, force push, 브랜치 삭제)은 **사용자에게 먼저 확인**한다.
+- **로컬 프로세스는 직접 종료해도 된다** (2026-11-27). dev 서버를 띄웠으면 작업 끝에 정리한다.
+  - ⚠️ `npm run dev`를 중단해도 `next dev` 자식이 포트를 계속 잡고 있어, 다음 실행이 조용히 3001·3002…로 옮겨간다. 그 상태로 `--url http://localhost:3000`을 쓰면 **옛 코드를 검사하게 된다** (`5_DESIGN_RENEWAL.md` §8-7)
+  - 정리: `Get-NetTCPConnection -LocalPort 3000..3009 -State Listen | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force }`
+  - ⚠️ dev 서버가 떠 있는 상태에서 `npm run build`를 돌리면 `.next`가 덮여 dev의 CSS가 404가 된다. 빌드 전에 dev를 멈춘다
 - ⚠️ 배포가 차단되면 위 배경의 작성자 문제일 수 있다. Vercel 대시보드에서 확인한다.
 
 ### 커밋 메시지 형식
