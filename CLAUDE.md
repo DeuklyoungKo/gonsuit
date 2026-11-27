@@ -10,8 +10,8 @@
 단순 포트폴리오가 아닌, 자체 개발 상품의 **신뢰 허브 + 세일즈 채널** 역할을 수행합니다.
 
 - **도메인**: `https://gonsuit.com` (Vercel 배포 / Cloudflare DNS)
-  - **정규 호스트는 apex(`gonsuit.com`)다.** 코드의 `canonical`·OG `url`·JSON-LD·`sitemap.ts`·`metadataBase` 39곳이 모두 apex를 쓴다. `www`는 apex로 308 리다이렉트한다.
-  - ⚠️ 2026-11-27 기준 Vercel 설정이 **반대로** 돼 있다(www가 서빙, apex가 308). 아래 "다음 할 일" 참조
+  - **정규 호스트는 apex(`gonsuit.com`)다.** 코드의 `canonical`·OG `url`·JSON-LD·`sitemap.ts`·`metadataBase` 39곳이 모두 apex를 쓰고, Vercel에서 `www`가 apex로 **308 리다이렉트**한다 (2026-11-27 확인: apex 200 / www 308, 사이트맵 11개 URL 전부 200).
+  - 도메인 설정은 Vercel 프로젝트의 **Domains 탭**에 있다 (Settings 안이 아니다). ⚠️ 방향을 바꿀 때는 **apex 리다이렉트 해제 → www 리다이렉트 추가** 순서로. 반대로 하면 무한 루프가 된다.
 - **브랜드 정체성**: "상상을 기술로 현실화하는, 비즈니스 가치 창출 기술 파트너"
 - **핵심 목표**: 브랜드 신뢰도 구축 → 개발 상품 세일즈 → 글로벌 확장
 
@@ -28,10 +28,7 @@
 
 **다음 할 일**
 1. **글소리·WordTap Play Store 평점 발생 확인** → 발생 시 각 상세 페이지의 `aggregateRating` 주석 해제 후 실제 값 입력 (WordTap은 2026-10 출시 완료, `downloadUrl`/`installUrl` 반영됨)
-2. **⚠️ Vercel 도메인 설정을 apex 서빙으로 뒤집기** (사람이 대시보드에서 — MCP에 수정 API 없음)
-   - 현재: `gonsuit.com` → 308 → `www.gonsuit.com`(서빙). 코드의 canonical 39곳은 전부 apex라 **모든 canonical과 sitemap URL이 리다이렉트되는 주소를 가리킨다**
-   - 바꿀 것: Vercel → gonsuit → Settings → Domains에서 `gonsuit.com`의 리다이렉트를 해제하고, `www.gonsuit.com`에 `gonsuit.com`으로 308 리다이렉트를 건다
-   - 뒤집은 뒤: `curl -sI https://www.gonsuit.com/about`이 308, `https://gonsuit.com/about`이 200이어야 한다. Search Console이 `www` 속성이면 **도메인 속성**으로 바꾸고 사이트맵 재제출
+2. **Search Console 정리** (정규 호스트를 apex로 뒤집은 후속 작업) — 속성이 `www.gonsuit.com`이면 **도메인 속성**(`gonsuit.com`)으로 바꾸고 사이트맵(`https://gonsuit.com/sitemap.xml`) 재제출
 3. **WordTap Play Store 링크에 GA4 `external_link_click` 누락** (`products/wordtap/page.tsx:210`, `:393`) → GA4 규칙상 외부 링크는 추적 대상인데 빠져 있다
 4. **디자인 리뉴얼(Hallmark)** → `5_DESIGN_RENEWAL.md`. Phase 0~2 완료 (설치·audit·접근성 수정·방향 결정). 테마 **Furrow**, 장르 `modern-minimal`, 본문 Pretendard, `copy: verbatim`, 다크모드 제거 — 전체는 §6
    - 토큰 (A) 전환 완료 — 색 토큰은 **완전한 색값**(`--primary: hsl(243 75% 59%)`)이고 `tailwind.config.js`는 `color-mix(in oklab, var(--x) calc(<alpha-value> * 100%), transparent)`를 쓴다. ⚠️ `hsl(var(--x))`로 되돌리지 말 것 — 되돌리면 `bg-primary/10` 류 15곳이 깨진다 (§1-1)
