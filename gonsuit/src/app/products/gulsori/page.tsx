@@ -18,6 +18,7 @@ import {
   Users,
   Mail,
   Download,
+  Glasses,
 } from "lucide-react";
 
 const PLAY_STORE_URL =
@@ -50,44 +51,38 @@ const features = [
     icon: BookOpen,
     title: "TXT · EPUB 파일 열기",
     desc: "파일 탐색기에서 .txt 또는 .epub 파일을 선택하면 바로 읽기 시작. 한글 인코딩(UTF-8·EUC-KR)을 자동 감지해 글자 깨짐 없이 표시합니다.",
-    color: "bg-indigo-50 text-indigo-600",
   },
   {
     icon: Headphones,
     title: "TTS 음성 낭독",
     desc: "재생·일시정지·정지는 물론 속도 조절과 문장 앞뒤 이동까지. 이어폰·블루투스를 완전 지원합니다.",
-    color: "bg-violet-50 text-violet-600",
   },
   {
     icon: Radio,
     title: "백그라운드 재생",
     desc: "앱을 닫거나 화면을 꺼도 TTS 낭독이 계속됩니다. 다른 앱을 쓰면서, 이동 중에도 귀로 계속 들을 수 있습니다.",
-    color: "bg-sky-50 text-sky-600",
   },
   {
     icon: Type,
     title: "5단계 큰 글씨",
     desc: "16·20·24·28·32px 5단계 조절. 노안에 맞춘 넉넉한 기본 글씨와 줄 간격으로 가독성을 최우선했습니다.",
-    color: "bg-amber-50 text-amber-600",
   },
   {
     icon: Moon,
     title: "3가지 배경 테마",
     desc: "흰색·아이보리·다크모드 중 선택. 환경과 눈 상태에 따라 즉시 전환 가능.",
-    color: "bg-zinc-100 text-zinc-600",
   },
   {
     icon: Bookmark,
     title: "책갈피 & 위치 저장",
     desc: "마지막 읽은 위치가 자동 저장되어 앱 재실행 시 이어읽기. 수동 책갈피로 원하는 위치 즉시 저장.",
-    color: "bg-emerald-50 text-emerald-600",
   },
 ];
 
 const targets = [
-  { emoji: "👓", label: "50–70대", desc: "스마트폰 텍스트 읽기가 불편한 노안 사용자" },
-  { emoji: "📖", label: "독서 애호가", desc: "전자책·소설 TXT 파일을 자주 읽는 사용자" },
-  { emoji: "🎧", label: "이동 중 청취", desc: "운전·걷기 중 텍스트를 귀로 듣고 싶은 사용자" },
+  { icon: Glasses, label: "50–70대", desc: "스마트폰 텍스트 읽기가 불편한 노안 사용자" },
+  { icon: BookOpen, label: "독서 애호가", desc: "전자책·소설 TXT 파일을 자주 읽는 사용자" },
+  { icon: Headphones, label: "이동 중 청취", desc: "운전·걷기 중 텍스트를 귀로 듣고 싶은 사용자" },
 ];
 
 const roadmap = [
@@ -132,10 +127,7 @@ export default function GulsoriPage() {
 
       <main>
         {/* ── Hero ─────────────────────────────────────── */}
-        <section className="relative overflow-hidden border-b border-border py-24">
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-amber-500/5 via-background to-background" />
-          <div className="pointer-events-none absolute -top-40 left-1/2 h-[500px] w-[700px] -translate-x-1/2 rounded-full bg-amber-400/10 blur-3xl" />
-
+        <section className="relative overflow-hidden border-b border-border bg-[var(--color-paper-2)] py-24">
           <div className="relative mx-auto max-w-4xl px-6">
             <Link
               href="/#services"
@@ -147,7 +139,7 @@ export default function GulsoriPage() {
 
             <div className="flex flex-col items-start gap-8 md:flex-row md:items-center">
               {/* 앱 아이콘 영역 */}
-              <div className="h-24 w-24 shrink-0 overflow-hidden rounded-3xl shadow-lg">
+              <div className="h-24 w-24 shrink-0 overflow-hidden rounded-3xl border border-border shadow-md">
                 <Image
                   src="/images/gulsori-icon.png"
                   alt="글소리 앱 아이콘"
@@ -160,7 +152,7 @@ export default function GulsoriPage() {
               <div>
                 <div className="flex items-center gap-3">
                   <h1 className="text-4xl font-bold tracking-tight md:text-5xl">글소리</h1>
-                  <span className="rounded-full bg-emerald-100 px-3 py-1 text-sm font-semibold text-emerald-700">
+                  <span className="rounded-full bg-[var(--color-board)] px-3 py-1 text-sm font-semibold text-[var(--color-board-type)]">
                     운영중
                   </span>
                 </div>
@@ -192,14 +184,14 @@ export default function GulsoriPage() {
                     href={PLAY_STORE_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-sm transition-opacity hover:opacity-90"
+                    className="hm-press hm-press-primary flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold"
                   >
                     <Download className="h-4 w-4" />
                     Google Play에서 다운로드
                   </a>
                   <Link
                     href="/contact"
-                    className="flex items-center gap-2 rounded-xl border border-border px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
+                    className="hm-press flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold"
                   >
                     <Mail className="h-4 w-4" />
                     협업 문의
@@ -225,7 +217,7 @@ export default function GulsoriPage() {
                   key={f.title}
                   className="rounded-2xl border border-border bg-card p-6"
                 >
-                  <div className={`mb-4 flex h-12 w-12 items-center justify-center rounded-xl ${f.color}`}>
+                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--color-paper-2)] text-foreground">
                     <f.icon className="h-6 w-6" />
                   </div>
                   <h3 className="text-lg font-semibold">{f.title}</h3>
@@ -237,7 +229,7 @@ export default function GulsoriPage() {
         </section>
 
         {/* ── 목표 사용자 ──────────────────────────────── */}
-        <section className="border-b border-border bg-muted/30 py-20">
+        <section className="border-b border-border bg-[var(--color-paper-2)] py-20">
           <div className="mx-auto max-w-4xl px-6">
             <div className="mb-12 text-center">
               <h2 className="text-3xl font-bold tracking-tight">이런 분께 딱 맞습니다</h2>
@@ -248,7 +240,9 @@ export default function GulsoriPage() {
                   key={t.label}
                   className="rounded-2xl border border-border bg-card p-8 text-center"
                 >
-                  <div className="mb-4 text-5xl">{t.emoji}</div>
+                  <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-[var(--color-paper-2)] text-foreground">
+                    <t.icon className="h-7 w-7" />
+                  </div>
                   <h3 className="text-lg font-bold">{t.label}</h3>
                   <p className="mt-2 text-sm text-muted-foreground">{t.desc}</p>
                 </div>
@@ -266,28 +260,24 @@ export default function GulsoriPage() {
             </div>
             <div className="space-y-6">
               {roadmap.map((r) => (
-                <div key={r.phase} className={`rounded-2xl border p-6 ${
-                  r.status === "done"
-                    ? "border-emerald-300 bg-emerald-50"
-                    : "border-border bg-card"
-                }`}>
+                <div key={r.phase} className="rounded-2xl border border-border bg-card p-6">
                   <div className="flex items-center gap-3 mb-4">
-                    <span className={`rounded-full px-3 py-1 text-sm font-bold ${
+                    <span className={`hm-fig rounded-full px-3 py-1 text-sm font-bold ${
                       r.status === "done"
-                        ? "bg-emerald-200 text-emerald-800"
+                        ? "bg-[var(--color-board)] text-[var(--color-board-type)]"
                         : "bg-muted text-muted-foreground"
                     }`}>
                       {r.phase}
                     </span>
                     {r.status === "done" && (
-                      <span className="text-sm font-medium text-emerald-700">✓ 출시 완료</span>
+                      <span className="text-sm font-medium text-foreground">✓ 출시 완료</span>
                     )}
                   </div>
                   <ul className="grid gap-2 sm:grid-cols-2">
                     {r.items.map((item) => (
                       <li key={item} className="flex items-center gap-2 text-sm text-muted-foreground">
                         <CheckCircle2 className={`h-4 w-4 shrink-0 ${
-                          r.status === "done" ? "text-emerald-500" : "text-muted-foreground/40"
+                          r.status === "done" ? "text-foreground" : "text-muted-foreground/40"
                         }`} />
                         {item}
                       </li>
@@ -311,14 +301,14 @@ export default function GulsoriPage() {
                 href={PLAY_STORE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 rounded-xl bg-primary px-8 py-4 text-sm font-semibold text-primary-foreground shadow-lg transition-opacity hover:opacity-90"
+                className="hm-press hm-press-primary flex items-center justify-center gap-2 px-8 py-4 text-sm font-semibold"
               >
                 <Download className="h-4 w-4" />
                 Google Play에서 다운로드
               </a>
               <Link
                 href="/#services"
-                className="flex items-center gap-2 rounded-xl border border-border px-8 py-4 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
+                className="hm-press flex items-center justify-center gap-2 px-8 py-4 text-sm font-semibold"
               >
                 다른 상품 보기
               </Link>
