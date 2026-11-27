@@ -17,21 +17,28 @@
 
 ## 현재 작업 상태 ⚠️ 세션 시작 시 먼저 확인
 
-> **최종 갱신: 2026-08-26**
+> **최종 갱신: 2026-11-27**
 > 이 섹션은 **누적 로그가 아니라 스냅샷**이다. 항상 덮어쓰며, 지나간 이력은 남기지 않는다. (이력은 `git log` 참조)
 
 **사이트 상태**: 출시·운영 중 (1차 런칭 완료 — 상세 기록은 `2_PDP.md` 아카이브)
 
-**진행 중 작업**: 없음
+**진행 중 작업**: 디자인 리뉴얼 (Hallmark) — Phase 0~2 완료(테마 Furrow, 토큰 전환, 다크모드 제거). 다음은 `/about` 파일럿 → `5_DESIGN_RENEWAL.md`
 
 **다음 할 일**
-1. **WordTap Play Store 출시** → 출시 후 위 "개발 상품(앱) 현황" 표의 상태를 `운영중`으로, Play Store 링크·상세 페이지 JSON-LD의 `downloadUrl`/`installUrl` 갱신
-2. **글소리 Play Store 평점 발생 확인** → 발생 시 `products/gulsori/page.tsx`의 `aggregateRating` 주석 해제 후 실제 값 입력
-3. 신규 앱 추가 시 체크리스트: 상세 페이지 · 홈 카드(`page.tsx`) · `sitemap.ts` · `privacy/page.tsx` · 위 상품 표 **5곳 동시 갱신**
+1. **글소리·WordTap Play Store 평점 발생 확인** → 발생 시 각 상세 페이지의 `aggregateRating` 주석 해제 후 실제 값 입력 (WordTap은 2026-10 출시 완료, `downloadUrl`/`installUrl` 반영됨)
+2. **WordTap Play Store 링크에 GA4 `external_link_click` 누락** (`products/wordtap/page.tsx:210`, `:393`) → GA4 규칙상 외부 링크는 추적 대상인데 빠져 있다
+3. **디자인 리뉴얼(Hallmark)** → `5_DESIGN_RENEWAL.md`. Phase 0~2 완료 (설치·audit·접근성 수정·방향 결정). 테마 **Furrow**, 장르 `modern-minimal`, 본문 Pretendard, `copy: verbatim`, 다크모드 제거 — 전체는 §6
+   - 토큰 (A) 전환 완료 — 색 토큰은 **완전한 색값**(`--primary: hsl(243 75% 59%)`)이고 `tailwind.config.js`는 `color-mix(in oklab, var(--x) calc(<alpha-value> * 100%), transparent)`를 쓴다. ⚠️ `hsl(var(--x))`로 되돌리지 말 것 — 되돌리면 `bg-primary/10` 류 15곳이 깨진다 (§1-1)
+   - 다크모드 제거 완료 (`.dark` 클래스를 붙이는 코드가 애초에 없었다)
+   - 다음: redesign 요청문 준비 → **`/about` 파일럿** (§3 Phase 3)
+   - ⚠️ `design.md`는 **미리 쓰지 않는다.** 파일럿 scaffold 이후 `tokens.css`로부터 잠근다 (§3 Phase 2)
+4. 신규 앱 추가 시 체크리스트: 상세 페이지 · 홈 카드(`page.tsx`) · `sitemap.ts` · `privacy/page.tsx` · 위 상품 표 **5곳 동시 갱신**
 
 **최근 결정 사항**
 - `/resources`(PDF 가이드 판매) 폐기 → `/lab` 308 리다이렉트로 대체
 - 문서 계층을 SSOT 기준으로 분리 (아래 "문서 관리 체계" 참조)
+- Hallmark 디자인 스킬을 **프로젝트 단위**로 설치 (`.claude/skills/hallmark`, 6.8MB) — 기존 vercel-labs 스킬과 같은 방식, 크로스 머신 유지 목적
+- **루트 `.gitignore` 신규 생성** (이전엔 없었다). `.hallmark/`·비밀값 패턴 포함. ⚠️ `.env.local`은 이미 추적 중 — 값은 공개 전제(`NEXT_PUBLIC_*`)지만 `git rm --cached` 권장
 
 ---
 
@@ -40,7 +47,7 @@
 | 항목 | 내용 |
 |---|---|
 | Frontend | Next.js 14 (App Router) + TypeScript |
-| Styling | Tailwind CSS + shadcn/ui (Zinc/Indigo 테마) |
+| Styling | Tailwind CSS + shadcn/ui (Zinc/Indigo 테마). 색 토큰은 **완전한 색값**(`--primary: hsl(243 75% 59%)`)이고 `tailwind.config.js`는 `color-mix` + `<alpha-value>` 사용 — 이유와 되돌림 금지 사유는 `5_DESIGN_RENEWAL.md` §1-1. **다크모드 없음** |
 | Font | Inter |
 | Database | Supabase (PostgreSQL) |
 | Email 발신 | Resend (`info@gonsuit.com`) |
@@ -112,7 +119,7 @@
 | 앱 | 상태 | 패키지 ID | Play Store | 상세 페이지 | 아이콘 |
 |---|---|---|---|---|---|
 | **글소리** (큰글씨 TTS 텍스트 리더) | **운영중** (2026 정식 출시) | `com.gonsuit.geulsori` | [링크](https://play.google.com/store/apps/details?id=com.gonsuit.geulsori) | `/products/gulsori` | `/images/gulsori-icon.png` |
-| **WordTap** (AI 문법 해설 영어 학습) | 출시예정 | `com.gonsuit.wordtap` | — | `/products/wordtap` | `/images/wordtap-icon.png` |
+| **WordTap** (AI 영어 문법 해설) | **운영중** (2026-10 출시) | `com.gonsuit.wordtap` | [링크](https://play.google.com/store/apps/details?id=com.gonsuit.wordtap) | `/products/wordtap` | `/images/wordtap-icon.png` |
 | **Trend Scouter** | 운영중 | (웹 SaaS) | — | `https://trend.gonsuit.com` (외부) | 아이콘(lucide) |
 
 **상태 배지 색상 규칙** (홈 카드 + 상세 Hero 공통):
@@ -348,21 +355,23 @@ AI 검색 엔진이 답변 소스로 활용할 수 있도록 콘텐츠를 작성
 
 ## Git 커밋 규칙 ⚠️ 중요
 
-**Claude는 절대 git commit 및 git push를 직접 실행하지 않는다.**
+**Claude가 `git add`·`commit`·`push`를 직접 실행한다.** (2026-11-27 변경 — 이전에는 금지였다)
 
-### 배경
-Vercel Hobby 플랜 + Private 레포 환경에서 Claude가 커밋을 실행하면,
-커밋 작성자가 프로젝트 소유자와 다른 계정으로 인식되어 Vercel 배포가 차단된다.
+### 배경 — 금지였던 이유와, 지금 푸는 이유
+Vercel Hobby 플랜 + Private 레포에서 **커밋 작성자가 프로젝트 소유자와 다른 계정**이면 배포가 차단된다.
 
 > "The deployment was blocked because the commit author did not have contributing access to the project on Vercel."
 
-### 규칙
-- 코드 수정 작업 완료 후 **커밋 메시지 초안만 제안**한다.
-- 실제 `git add`, `git commit`, `git push` 는 **사용자가 직접 실행**한다.
-- 빌드 검증(`npm run build`)은 Claude가 실행해도 무방하다.
+이 저장소의 `user.name`/`user.email`은 `DeuklyoungKo <lunaman1@naver.com>`으로, **누가 `git commit`을 실행하든 작성자는 동일**하다. 따라서 위 차단 조건에 걸리지 않는다.
 
-### 커밋 메시지 제안 형식
-작업 완료 후 아래 형식으로 커밋 메시지를 제안한다:
+### 규칙
+- 작업 완료 후 Claude가 커밋하고 푸시한다. 커밋 메시지는 아래 형식을 따르고, 마지막 줄에 `Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>`를 붙인다.
+- **푸시 전 `npm run build`를 통과시킨다.** `main` 푸시는 곧바로 gonsuit.com 배포다.
+- **세션 시작 시 `git fetch && git status -sb`로 원격과의 차이를 먼저 확인한다.** 여러 PC에서 작업하므로 로컬이 뒤처져 있을 수 있다. 뒤처졌으면 pull 먼저. (2026-11-27에 한 달 묵은 로컬에서 작업한 사고가 있었다 — `5_DESIGN_RENEWAL.md` §8-8)
+- 되돌리기 어렵거나 범위가 큰 변경(히스토리 재작성, force push, 브랜치 삭제)은 **사용자에게 먼저 확인**한다.
+- ⚠️ 배포가 차단되면 위 배경의 작성자 문제일 수 있다. Vercel 대시보드에서 확인한다.
+
+### 커밋 메시지 형식
 ```
 feat: 기능 추가 내용 요약
 
@@ -396,3 +405,4 @@ feat: 기능 추가 내용 요약
 - `1_PRD.md` — 제품 요구사항 정의서 (왜/무엇)
 - `2_PDP.md` — 개발 계획서 (1차 런칭 완료, 아카이브)
 - `4_LRP.md` — 장기 로드맵 (전략/비전)
+- `5_DESIGN_RENEWAL.md` — Hallmark 기반 디자인 리뉴얼 진행 절차. Phase 0·1 완료(Node·스킬 설치, audit 결과 §8) ⚠️ 다음은 §1 결정(토큰 체계·한글 폰트·다크모드·`copy: verbatim`)

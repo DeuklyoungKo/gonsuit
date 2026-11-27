@@ -23,7 +23,7 @@ export default function PrivacyPage() {
           <p className="mt-4 text-muted-foreground">시행 일자: {lastUpdated}</p>
         </div>
 
-        <div className="prose prose-zinc max-w-none dark:prose-invert">
+        <div className="prose prose-zinc max-w-none">
           <section className="mb-10">
             <h2 className="text-xl font-bold mb-4">1. 개인정보의 처리 목적</h2>
             <p className="text-muted-foreground leading-relaxed">
@@ -209,7 +209,7 @@ export default function PrivacyPage() {
             </p>
 
             <p className="text-muted-foreground leading-relaxed mt-4 font-medium text-foreground">[선택] 이용자 본인 API 키 사용 시 (Google Gemini)</p>
-            <div className="mt-2 rounded-lg border border-amber-300 bg-amber-50 p-4 dark:bg-amber-950/30">
+            <div className="mt-2 rounded-lg border border-amber-300 bg-amber-50 p-4">
               <ul className="list-disc pl-6 text-muted-foreground space-y-1">
                 <li>이용자가 설정에서 본인의 <strong>Google Gemini API 키</strong>를 등록한 경우, 선택한 문장은 당사 프록시를 거치지 않고 <strong>Google로 직접 전송</strong>됩니다.</li>
                 <li>Google Gemini <strong>무료 등급</strong>은 입력 내용을 모델 개선에 사용할 수 있습니다. 이 경우 데이터 처리는{" "}

@@ -233,7 +233,7 @@ export default function WordTapPage() {
           <div className="mx-auto max-w-4xl px-6">
             <div className="grid gap-6 md:grid-cols-2">
               <div className="rounded-2xl border border-red-200 bg-white p-6">
-                <p className="text-sm font-semibold text-red-500 mb-2">구글 번역 (기존)</p>
+                <p className="text-sm font-semibold text-red-600 mb-2">구글 번역 (기존)</p>
                 <p className="text-lg font-bold text-foreground">&quot;이게 무슨 뜻이야?&quot;</p>
                 <p className="mt-2 text-muted-foreground text-sm">→ 뜻만 알려줌. 왜 이 구조인지 모름.</p>
               </div>

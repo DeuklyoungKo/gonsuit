@@ -1,0 +1,17 @@
+# ── 비밀값 ──────────────────────────────────────────────
+# 루트에 .env.local이 이미 추적되고 있다(공개용 NEXT_PUBLIC_* 2개).
+# 추적을 끊으려면: git rm --cached .env.local
+.env
+.env.local
+.env.*.local
+*.pem
+credentials.json
+
+# ── Hallmark 디자인 스킬 산출물 ──────────────────────────
+# 스크린샷·검사 기록·빌드 로그. 커밋하지 않는다.
+.hallmark/
+
+# ── OS · 에디터 ─────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.idea/
