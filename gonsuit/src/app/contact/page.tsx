@@ -52,7 +52,7 @@ export default function ContactPage() {
     if (isSubmitted) {
         return (
             <div className="flex min-h-screen flex-col items-center justify-center px-6 text-center">
-                <div className="flex h-20 w-20 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
+                <div className="flex h-20 w-20 items-center justify-center rounded-full bg-[var(--color-board)] text-[var(--color-board-type)]">
                     <CheckCircle2 className="h-10 w-10" />
                 </div>
                 <h1 className="mt-8 text-3xl font-bold tracking-tight">문의가 접수되었습니다</h1>
@@ -61,7 +61,7 @@ export default function ContactPage() {
                 </p>
                 <Link
                     href="/"
-                    className="mt-10 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+                    className="hm-press hm-press-primary mt-10 inline-flex items-center justify-center px-6 py-3 text-sm font-semibold"
                 >
                     메인으로 돌아가기
                 </Link>
@@ -71,7 +71,7 @@ export default function ContactPage() {
 
     return (
         <div className="min-h-screen bg-background text-foreground">
-            <header className="border-b border-border bg-background/80 backdrop-blur-sm px-6 py-4">
+            <header className="border-b border-border bg-[var(--color-paper)] px-6 py-4">
                 <div className="mx-auto flex max-w-4xl items-center justify-between">
                     <Link
                         href="/"
@@ -87,7 +87,7 @@ export default function ContactPage() {
 
             <main className="mx-auto max-w-2xl px-6 py-16 md:py-24">
                 <div className="mb-12 text-center">
-                    <div className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary mb-6">
+                    <div className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-[var(--color-paper-2)] text-foreground mb-6">
                         <Mail className="h-6 w-6" />
                     </div>
                     <h1 className="text-4xl font-bold tracking-tight">협업 및 서비스 문의</h1>
@@ -105,7 +105,7 @@ export default function ContactPage() {
                                 name="name"
                                 required
                                 placeholder="홍길동 / 고앤슈트"
-                                className="w-full rounded-lg border border-border bg-background px-4 py-2.5 text-sm outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-ring"
+                                className="w-full rounded-md border border-border bg-card px-4 py-2.5 text-sm outline-none transition-colors focus:border-[var(--color-board)] focus:ring-2 focus:ring-[var(--color-focus)]"
                             />
                         </div>
                         <div className="space-y-2">
@@ -116,7 +116,7 @@ export default function ContactPage() {
                                 type="email"
                                 required
                                 placeholder="name@company.com"
-                                className="w-full rounded-lg border border-border bg-background px-4 py-2.5 text-sm outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-ring"
+                                className="w-full rounded-md border border-border bg-card px-4 py-2.5 text-sm outline-none transition-colors focus:border-[var(--color-board)] focus:ring-2 focus:ring-[var(--color-focus)]"
                             />
                         </div>
                     </div>
@@ -127,7 +127,7 @@ export default function ContactPage() {
                             id="category"
                             name="category"
                             required
-                            className="w-full rounded-lg border border-border bg-background px-4 py-2.5 text-sm outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-ring appearance-none"
+                            className="w-full rounded-md border border-border bg-card px-4 py-2.5 text-sm outline-none transition-colors focus:border-[var(--color-board)] focus:ring-2 focus:ring-[var(--color-focus)] appearance-none"
                         >
                             <option value="">항목을 선택해주세요</option>
                             <option value="saas">마이크로 SaaS 도입 문의</option>
@@ -144,7 +144,7 @@ export default function ContactPage() {
                             name="subject"
                             required
                             placeholder="문의 내용을 간략히 요약해주세요"
-                            className="w-full rounded-lg border border-border bg-background px-4 py-2.5 text-sm outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-ring"
+                            className="w-full rounded-md border border-border bg-card px-4 py-2.5 text-sm outline-none transition-colors focus:border-[var(--color-board)] focus:ring-2 focus:ring-[var(--color-focus)]"
                         />
                     </div>
 
@@ -156,14 +156,14 @@ export default function ContactPage() {
                             required
                             rows={6}
                             placeholder="구체적인 필요 사항이나 궁금하신 점을 입력해주세요"
-                            className="w-full rounded-lg border border-border bg-background px-4 py-2.5 text-sm outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-ring resize-none"
+                            className="w-full rounded-md border border-border bg-card px-4 py-2.5 text-sm outline-none transition-colors focus:border-[var(--color-board)] focus:ring-2 focus:ring-[var(--color-focus)] resize-none"
                         />
                     </div>
 
                     <button
                         type="submit"
                         disabled={loading}
-                        className="flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-8 py-4 text-base font-semibold text-primary-foreground shadow-lg transition-all hover:opacity-95 disabled:opacity-50"
+                        className="hm-press hm-press-primary flex w-full items-center justify-center gap-2 px-8 py-4 text-base font-semibold disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed"
                     >
                         {loading ? "전송 중..." : "문의하기"}
                         <Send className="h-4 w-4" />

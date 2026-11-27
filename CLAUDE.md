@@ -26,7 +26,7 @@
 
 **사이트 상태**: 출시·운영 중 (1차 런칭 완료 — 상세 기록은 `2_PDP.md` 아카이브)
 
-**진행 중 작업**: 디자인 리뉴얼 (Hallmark) — Phase 0~3 완료(테마 Coral, 토큰 전환, 다크모드 제거, /about 파일럿). Phase 4 확산 진행 중: Coral 전역 승격, design.md 잠금, /products/wordtap(4-1)·/products/gulsori(4-2)·/lab(4-3) 완료 → `5_DESIGN_RENEWAL.md`
+**진행 중 작업**: 디자인 리뉴얼 (Hallmark) — Phase 0~3 완료(테마 Coral, 토큰 전환, 다크모드 제거, /about 파일럿). Phase 4 확산 진행 중: Coral 전역 승격, design.md 잠금, /products/wordtap(4-1)·/products/gulsori(4-2)·/lab(4-3)·/contact(4-4) 완료 → `5_DESIGN_RENEWAL.md`
 
 **다음 할 일**
 1. **글소리·WordTap Play Store 평점 발생 확인** → 발생 시 각 상세 페이지의 `aggregateRating` 주석 해제 후 실제 값 입력 (WordTap은 2026-10 출시 완료, `downloadUrl`/`installUrl` 반영됨)
@@ -38,7 +38,8 @@
    - **Phase 4-1 `/products/wordtap` 완료** (restyle) — 이모지 30a 제거, 블러 구체 29 제거, 팔레트 클래스 74 제거, JSON-LD·링크·메타데이터 100% 보존
    - **Phase 4-2 `/products/gulsori` 완료** (restyle) — 이모지 30a 제거, 블러 구체 29 제거, 팔레트 클래스 74 제거, JSON-LD(평점 주석 포함)·메타데이터 100% 보존
    - **Phase 4-3 `/lab`, `/lab/[slug]` 완료** (restyle) — transition-all 10a 해결, eyebrow 54 제거, tracked-caps 67 해결, Article JSON-LD 보존
-   - 다음: Phase 4-4 `/contact` ("use client" + 폼 + Supabase/Resend 배선)
+   - **Phase 4-4 `/contact` 완료** (restyle) — transition-all 10a 해결, 글래스 헤더 29 제거, 폼 필드 5종 및 GA4 `trackContactSubmit` 100% 보존
+   - 다음: Phase 4-5 `/privacy` (개인정보처리방침 — 법적 문구 수정 절대 금지, 레이아웃/토큰만)
 5. 신규 앱 추가 시 체크리스트: 상세 페이지 · 홈 카드(`page.tsx`) · `sitemap.ts` · `privacy/page.tsx` · 위 상품 표 **5곳 동시 갱신**
 
 **최근 결정 사항**
