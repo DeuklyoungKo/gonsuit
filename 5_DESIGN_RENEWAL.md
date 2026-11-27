@@ -236,7 +236,7 @@ $env:PATH = [Environment]::GetEnvironmentVariable("PATH","Machine"); $env:PUPPET
   - verify: 빌드 통과 + `sloplint --render` 결과가 **(A) 전환 이전 기준선과 완전히 동일** (21 FAIL / 20 REFLEX / 18 WARN)
   - 남겨 둔 것: `layout.tsx:55`의 `suppressHydrationWarning` — 테마 프로바이더용 잔재로 보이나 다른 이유(브라우저 확장)로도 쓰이므로 건드리지 않았다. `:root`의 `--sidebar-*` 토큰도 다크모드가 아니라 원래 어두운 사이드바용이라 유지
 
-### Phase 3 — 파일럿 1페이지
+### Phase 3 — 파일럿 1페이지 ✅ 완료 2026-11-27 → **핸드오프는 §9**
 
 **`/about`부터 한다.** 247행, metadata 1개 + GA4 2개, JSON-LD 없음 → 폭발 반경이 가장 작으면서 배선 보존 여부를 볼 수 있다.
 
@@ -321,7 +321,8 @@ git diff -U0 -- "*.tsx" | Select-String "track|ld\+json|metadata|canonical"
 | 2026-11-27 | 문구 = **`copy: verbatim` 기본 적용** | 게이트 19(em/en dash)·63(가운뎃점)이 정상적인 한국어 표기와 충돌한다(§1-6, `privacy:130`에서 실제 발생). 19는 Floor라 면제가 불가능하므로 스탬프가 유일한 레버다. 58·69 지적은 note로 받아 사람이 판단 |
 | 2026-11-27 | 장르 = **modern-minimal** (deal은 `editorial`로 돌렸으나 고른 테마의 실제 장르) | `theme.mjs deal --genre editorial` seed `korean-micro-saas-studio-hub-33ed·161d678c·2026-11-27·r0` → 3안 중 Furrow 선택. Furrow의 frontmatter 장르가 `modern-minimal`이므로 이후 `sloplint --genre`도 `modern-minimal`로 돌린다 |
 
-| 2026-11-27 | 테마 = **Furrow** | 3안(Loom·Hedgerow·Furrow) 중 **유일한 소프트웨어 제품 페이지**다. 나머지 둘은 재료가 직물 사진·풍경 사진이라 우리에게 대신 채울 이미지가 없어 게이트 81(빈 그림)·83(사진 벽) 위험이 있다. Furrow는 재료가 "실제 제품 화면"이라 글소리·WordTap 스크린샷과 Trend Scouter 화면이 그대로 재료가 되고, 게이트 84(가짜 제품)가 자연히 해결된다 |
+| 2026-11-27 | 테마 = **Coral** (Furrow에서 변경) | 첫 deal의 프롬프트("micro-SaaS studio hub, 의뢰 받기")가 이 사이트의 성격을 잘못 잡았다. 실제로는 **자사 제품을 알리는 회사 홈페이지**다. 프롬프트를 고쳐 `modern-minimal`로 다시 뽑아(seed `software-company-homepage-showing-1f68·161d678c·2026-11-27·r0`) Blueprint·Coral·Ultraviolet 중 Coral 선택. 이유: ① 액센트를 꽉 채우지 않고 아껴 써서(`코랄은 눌린 상태·링크 밑줄·포커스에만`) **상품 카드 여러 개가 서로 싸우지 않는다** ② 재료가 "제품이 내놓는 것들을 실물처럼" 이라 앱 아이콘·스크린샷이 그대로 쓰인다 ③ 디스플레이가 평범한 그로테스크(General Sans)라 **한글(Pretendard 800)로 자연스럽게 치환된다** — Blueprint(대문자)·Ultraviolet(소문자)은 한글에 없는 라틴 장치라 제목 목소리가 전달되지 않는다 ④ Do-nots에 "종이를 사진으로 쓰지 말 것, CSS로 만들 것"이 있어 사진 에셋이 필요 없다 |
+| ~~2026-11-27~~ | ~~테마 = Furrow~~ (폐기) | 3안(Loom·Hedgerow·Furrow) 중 **유일한 소프트웨어 제품 페이지**다. 나머지 둘은 재료가 직물 사진·풍경 사진이라 우리에게 대신 채울 이미지가 없어 게이트 81(빈 그림)·83(사진 벽) 위험이 있다. Furrow는 재료가 "실제 제품 화면"이라 글소리·WordTap 스크린샷과 Trend Scouter 화면이 그대로 재료가 되고, 게이트 84(가짜 제품)가 자연히 해결된다 |
 | 2026-11-27 | 제목 한글 폰트 = **굵은 한글 산세** (세리프에서 변경) | Furrow의 디스플레이가 Red Hat Display 600 그로테스크다. 위 "제목 한글 세리프" 결정의 목적은 "한글에서도 테마 성격이 드러나게"였고, Furrow는 그 성격을 세리프가 아니라 **종이색·moulded 키·mono 숫자**로 낸다. 따라서 제목은 Pretendard 800 등 굵은 한글 산세로 간다 |
 
 **⚠️ Furrow 적용 시 주의 — 테마 파일을 읽고 확인한 사실**
@@ -496,3 +497,66 @@ node .claude\skills\hallmark\scripts\sloplint.mjs gonsuit\src --genre editorial 
 
 - **WordTap Play Store 링크 2곳에 GA4 `external_link_click`이 없다** (`products/wordtap/page.tsx:210`, `:393`). CLAUDE.md의 GA4 규칙은 외부 링크를 추적 대상으로 명시한다. 출시 앱의 다운로드 전환을 측정하지 못하고 있다 → `CLAUDE.md` "다음 할 일"에 올려 둠
 - 잘 되어 있는 것: `target="_blank" rel="noopener noreferrer"` 적용, `transition-opacity`(게이트 10a 회피), JSON-LD에 `downloadUrl`·`installUrl` 반영, `aggregateRating`은 평점 발생 전이라 넣지 않음 — 프로젝트의 평점 스키마 정책 그대로다
+
+---
+
+## 9. Phase 3 파일럿 핸드오프 — `/about` restyle (2026-11-27)
+
+```
+Redesign · restyle · 1 page (/about) · theme Coral (deal 2/3)
+Before    1 FAIL · 7 REFLEX   (게이트 54 이브로우, 2b 그라디언트 텍스트, 29 블러 구체, 78 섹션 제목)
+After     0 FAIL · 5 REFLEX
+Kept      링크 6/6 · 헤딩 12/12 · 피규어 2/2 · GA4 핸들러 2/2 · metadata 3종
+Changed   시스템만 (색·타입·모서리·그림자·컨트롤). 레이아웃은 그대로
+Dropped   "진행 중" 알약의 시각 텍스트 1건 — 아래 참조
+Compare   .hallmark/compare.html
+```
+
+### 9-1. 적용 방식 — 페이지 범위 한정
+
+전체 사이트가 아니라 **`/about`에만** Coral을 걸었다. 다른 7개 페이지는 Indigo 그대로다.
+
+- `tokens.css`는 전역 import하되 **변수를 정의만** 하므로 다른 페이지에 영향이 없다
+- `base.css`는 **import하지 않았다** — 전역 요소 규칙(h1 크기 등)이라 다른 페이지를 움직인다
+- shadcn 토큰 매핑과 Coral 전용 클래스를 **`[data-hallmark="coral"]` 아래로 범위 한정**하고, `/about`의 루트 div에만 그 속성을 붙였다
+- 확산할 때는 이 블록을 `:root`로 올리고 속성을 지우면 된다
+
+**핵심 결정**: shadcn `--primary`를 **산호색이 아니라 ink board**(`--color-board`)에 매핑했다. Coral의 Do-not이 "코랄은 띠·배경·제목에 쓰지 않는다. 눌린 상태·링크 밑줄·포커스에만"이라고 못 박기 때문이다. `--primary: var(--color-accent)`로 했다면 사이트 전체가 테마 규칙을 위반했을 것이다.
+
+### 9-2. 실제로 바뀐 것
+
+| 전 | 후 | 근거 |
+|---|---|---|
+| 인디고 그라디언트 제목 | 한 가지 잉크, 강조는 무게로 | 게이트 2b |
+| 떠 있는 블러 구체 + 그라디언트 워시 | 종이 단계(paper → paper-2)로 깊이 | 게이트 29 |
+| h3 앞 "진행 중" 알약 | 마커의 산호색 + `aria-label` | 게이트 54 (Floor) |
+| 섹션 제목 30px | `--text-section` (1440에서 약 52px) | 게이트 78 |
+| 꽉 찬 `bg-primary` 버튼 | letterpress 코튼 카드 / ink board | Coral § Controls |
+| 분기 표기 `2026 Q1` | Geist Mono, tabular | Coral § Type |
+| Tailwind 팔레트 직접 사용 6종 | 토큰 | 게이트 74 |
+
+### 9-3. 손으로 잡아야 했던 것 — 도구가 못 잡은 것들
+
+1. **GA4 핸들러를 `--kept`가 지켜주지 않는다.** `--before`가 `handlers: 0`으로 기록했다. `/about`의 GA4는 `components/AboutCta.tsx`에 있어 대상 경로 밖이고, React `onClick`은 인라인 핸들러가 아니라서다. **§1-5의 예측이 그대로 맞았다.** 사람이 확인해야 한다
+2. **한글 단어 중간 줄바꿈.** 제목을 키우자 CTA 제목이 `만들어 / 갈`로 끊겼다. 한글은 하이픈이 없어 기본값이 단어 중간을 끊는다 → `word-break: keep-all`을 범위 블록에 넣었다. 게이트 F26과 49b가 함께 줄었다
+3. **`cotton.svg` / `felt.svg` 누락으로 빌드 실패.** scaffold가 생성한 `tokens.css`가 텍스처 SVG 2개를 참조하는데 스킬이 그 파일을 제공하지 않아 webpack이 멈춘다. 두 변수를 주석 처리했다 — 쓰지 않고, `texture.md`도 "modern-minimal 페이지에 grain을 쓰지 말 것"이라 한다
+4. **게이트 27의 가짜 통과.** `base.css`에 reduced-motion 폴백이 있어 sloplint가 통과로 읽었는데, **그 파일을 import하지 않았으므로 런타임에는 적용되지 않았다.** sloplint는 import 여부를 보지 않고 디렉토리의 CSS를 스캔한다. `globals.css`에 직접 넣어 진짜 통과로 만들었다
+
+### 9-4. 남은 REFLEX 5건 — 레이아웃이라 restyle로는 못 고친다
+
+| 게이트 | 내용 |
+|---|---|
+| 44c | 히어로가 900px 화면에서 636px에 끝남 |
+| 79 | 히어로 마지막 콘텐츠와 다음 섹션 사이 225px 공백 — **블러 구체를 걷어내자 드러난 것** |
+| 77 | Roadmap 섹션이 폭의 57% |
+| 49b | 320px에서 헤더 `개발 상품`이 2줄 |
+| 81 | 518×388 빈 그라디언트 |
+
+전부 `full` 깊이가 settle하는 항목이다. restyle은 레이아웃을 건드리지 않기로 한 약속이므로 남겨 둔다.
+
+### 9-5. 알아 둘 것
+
+- **헤더·푸터가 `/about`에서만 다르게 보인다.** 공통 컴포넌트가 범위 안에 들어가 ink 계열로 렌더된다. 파일럿의 의도된 상태이고, 확산하면 사라진다
+- **폰트 패밀리가 4개**(Inter·Pretendard·General Sans·Geist Mono)다. 파일럿 동안 두 시스템이 공존해서고, 전면 전환 때 Inter가 빠지면 해소된다
+- **스탬프를 아직 넣지 않았다.** 게이트 20이 1 FAIL로 계속 잡힌다. `globals.css`는 아직 사이트 전체의 스타일시트라 Hallmark 빌드라고 선언하면 거짓이 된다. 전면 전환 때 넣는다
+- 전체 사이트 기준 **21 FAIL → 19 FAIL**, REFLEX 20 → 17, WARN 18 → 15

@@ -33,7 +33,8 @@
 4. **디자인 리뉴얼(Hallmark)** → `5_DESIGN_RENEWAL.md`. Phase 0~2 완료 (설치·audit·접근성 수정·방향 결정). 테마 **Furrow**, 장르 `modern-minimal`, 본문 Pretendard, `copy: verbatim`, 다크모드 제거 — 전체는 §6
    - 토큰 (A) 전환 완료 — 색 토큰은 **완전한 색값**(`--primary: hsl(243 75% 59%)`)이고 `tailwind.config.js`는 `color-mix(in oklab, var(--x) calc(<alpha-value> * 100%), transparent)`를 쓴다. ⚠️ `hsl(var(--x))`로 되돌리지 말 것 — 되돌리면 `bg-primary/10` 류 15곳이 깨진다 (§1-1)
    - 다크모드 제거 완료 (`.dark` 클래스를 붙이는 코드가 애초에 없었다)
-   - 다음: redesign 요청문 준비 → **`/about` 파일럿** (§3 Phase 3)
+   - **Phase 3 `/about` 파일럿 완료** (restyle) — 핸드오프 §9. 1 FAIL → 0 FAIL, 배선 누락 0건. Coral은 `[data-hallmark="coral"]` 범위로만 적용돼 나머지 7개 페이지는 Indigo 그대로다
+   - 다음: 전면 전환 여부 결정 → 결정 시 범위 블록을 `:root`로 올리고 `base.css` import + 스탬프 추가
    - ⚠️ `design.md`는 **미리 쓰지 않는다.** 파일럿 scaffold 이후 `tokens.css`로부터 잠근다 (§3 Phase 2)
 5. 신규 앱 추가 시 체크리스트: 상세 페이지 · 홈 카드(`page.tsx`) · `sitemap.ts` · `privacy/page.tsx` · 위 상품 표 **5곳 동시 갱신**
 

@@ -1,4 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+/* ── Hallmark Coral 파일럿 (/about 한정) ─────────────────────────────
+   Tailwind v3에서는 @import가 @tailwind 디렉티브 아래에 있으면 버려진다.
+   반드시 이 위치를 유지할 것. (export-formats.md § Tailwind v4 끝 문단)
+   tokens.css는 변수를 '정의'만 하므로 다른 페이지에 영향이 없다.
+   base.css는 전역 요소 규칙(h1 크기 등)이라 파일럿 단계에서는 가져오지 않는다. */
+@import url('https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap');
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css');
+@import url("./tokens.css");
 
 @tailwind base;
 @tailwind components;
@@ -79,5 +88,118 @@
   :focus-visible {
     outline: 2px solid var(--ring);
     outline-offset: 2px;
+  }
+  /* 게이트 27: transform 전환(hover:scale 등)에 reduced-motion 대안.
+     Hallmark의 base.css에도 같은 규칙이 있으나 그 파일은 아직 import하지
+     않으므로(파일럿 범위) 여기에 직접 둔다. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* ── Hallmark Coral · /about 파일럿 범위 ──────────────────────────────
+   `[data-hallmark="coral"]`를 가진 서브트리에서만 shadcn 토큰이 Coral을
+   가리킨다. 나머지 7개 페이지는 기존 Indigo 그대로다.
+   전체 사이트로 확산할 때 이 블록을 :root로 올리고 속성을 지운다. */
+@layer base {
+  [data-hallmark="coral"] {
+    --background: var(--color-paper);
+    --foreground: var(--color-ink);
+    --card: var(--color-cotton);
+    --card-foreground: var(--color-print);
+    --popover: var(--color-cotton);
+    --popover-foreground: var(--color-print);
+
+    /* Coral의 Do-not: "코랄은 띠·배경·제목에 쓰지 않는다. 눌린 상태·링크
+       밑줄·포커스에만." 그래서 primary는 산호색이 아니라 ink board다. */
+    --primary: var(--color-board);
+    --primary-foreground: var(--color-board-type);
+
+    --secondary: var(--color-paper-2);
+    --secondary-foreground: var(--color-ink-2);
+    --muted: var(--color-paper-2);
+    --muted-foreground: var(--color-muted);
+    /* shadcn의 accent는 hover 표면이라 Hallmark의 --color-accent와 뜻이
+       다르다(export-formats.md § shadcn/ui). 표면 토큰을 가리킨다. */
+    --accent: var(--color-paper-3);
+    --accent-foreground: var(--color-ink);
+    --destructive: var(--color-error);
+    --border: var(--color-rule);
+    --input: var(--color-rule);
+    --ring: var(--color-focus);
+    --radius: var(--radius-card);
+
+    --font-kr: 'Pretendard Variable', 'General Sans', ui-sans-serif, system-ui, sans-serif;
+    font-family: var(--font-kr);
+    background: var(--color-paper);
+    color: var(--color-ink);
+    /* 한글은 하이픈이 없어 기본값이면 단어 중간에서 끊긴다
+       ("만들어갈" → "만들어 / 갈"). 어절 단위로 끊는다. */
+    word-break: keep-all;
+  }
+
+  /* 제목: 한글이 대부분이라 디스플레이는 Pretendard 800이 받고,
+     라틴 단어(Roadmap, Our Philosophy)는 General Sans 600이 받는다. */
+  [data-hallmark="coral"] :is(h1, h2, h3) {
+    font-family: var(--font-kr);
+    font-weight: 800;
+    letter-spacing: var(--tracking-display);
+    font-synthesis: none;
+    text-wrap: balance;
+  }
+  /* 게이트 78: 섹션 제목이 히어로 제목보다 지나치게 작았다(30px vs 60px) */
+  [data-hallmark="coral"] h2 { font-size: var(--text-section); line-height: 1.06; }
+  [data-hallmark="coral"] h3 { font-size: var(--text-title); line-height: 1.2; }
+
+  /* 숫자·연도는 mono가 재료다 (Coral § Type: Figures in a column) */
+  [data-hallmark="coral"] .hm-fig {
+    font-family: var(--font-outlier);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0;
+  }
+
+  /* 코튼 스톡 면 (컨트롤이 아닌 곳: 아이콘 타일, 카드) */
+  [data-hallmark="coral"] .hm-stock {
+    border-radius: var(--radius-stock);
+    background: var(--color-cotton);
+    color: var(--color-print);
+    box-shadow: var(--edge-stock), var(--cast-stock);
+  }
+
+  /* 컨트롤: Coral의 Do-not "알약도, 평평한 사각 버튼도 아니다. 눌린 카드다" */
+  [data-hallmark="coral"] .hm-press {
+    border-radius: var(--radius-stock);
+    min-height: 48px;
+    background: var(--color-cotton);
+    color: var(--color-print);
+    box-shadow: var(--edge-stock), var(--cast-stock);
+    transition: box-shadow var(--dur-short) var(--ease-out),
+                transform var(--dur-short) var(--ease-out);
+  }
+  [data-hallmark="coral"] .hm-press:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--edge-stock), var(--cast-stock-lift);
+  }
+  [data-hallmark="coral"] .hm-press:active {
+    transform: translateY(1px);
+    box-shadow: var(--press-groove);
+  }
+  [data-hallmark="coral"] .hm-press-primary {
+    background: var(--color-board);
+    color: var(--color-board-type);
+  }
+  /* 산호색이 쓰이는 단 세 자리: 링크 밑줄, 포커스, 눌린 상태 */
+  [data-hallmark="coral"] .hm-link {
+    text-decoration: underline;
+    text-decoration-color: var(--color-accent-2);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.16em;
   }
 }

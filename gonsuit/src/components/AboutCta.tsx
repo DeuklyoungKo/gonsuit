@@ -10,7 +10,7 @@ export default function AboutCta() {
       <Link
         href="/contact"
         onClick={() => trackCtaClick("협업 문의하기", "about")}
-        className="flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-sm transition-opacity hover:opacity-90"
+        className="hm-press hm-press-primary flex items-center gap-2 px-6 py-3 text-sm font-semibold"
       >
         협업 문의하기
         <ArrowRight className="h-4 w-4" />
@@ -18,7 +18,7 @@ export default function AboutCta() {
       <Link
         href="/#services"
         onClick={() => trackCtaClick("개발 상품 보기", "about")}
-        className="flex items-center gap-2 rounded-lg border border-border px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
+        className="hm-press flex items-center gap-2 px-6 py-3 text-sm font-semibold"
       >
         개발 상품 보기
       </Link>
