@@ -83,20 +83,16 @@ export default function PostPage({ params }: Props) {
 
         {/* 헤더 */}
         <header className="mb-12">
-          <span
-            className={`inline-block px-2.5 py-0.5 rounded-full text-[10px] uppercase font-bold tracking-wider mb-4 ${
-              post.color
-            }`}
-          >
-            {post.category}
-          </span>
           <h1 className="text-3xl font-bold leading-tight tracking-tight md:text-4xl">
             {post.title}
           </h1>
           <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
             {post.description}
           </p>
-          <div className="mt-6 flex items-center gap-6 text-sm text-muted-foreground border-t border-border pt-6">
+          <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-muted-foreground border-t border-border pt-6">
+            <span className="rounded-md bg-[var(--color-paper-2)] px-2 py-0.5 text-xs font-medium text-foreground border border-border">
+              {post.category}
+            </span>
             <div className="flex items-center gap-1.5">
               <Calendar className="h-4 w-4" />
               {post.date}
@@ -123,8 +119,8 @@ export default function PostPage({ params }: Props) {
             prose-li:text-foreground prose-li:leading-relaxed prose-li:my-1.5 prose-li:marker:text-primary
             prose-strong:text-foreground prose-strong:font-semibold
             prose-blockquote:not-italic prose-blockquote:my-8
-            prose-blockquote:border-l-4 prose-blockquote:border-primary
-            prose-blockquote:bg-primary/5 prose-blockquote:rounded-r-xl
+            prose-blockquote:border-l-4 prose-blockquote:border-[var(--color-board)]
+            prose-blockquote:bg-[var(--color-paper-2)] prose-blockquote:rounded-r-xl
             prose-blockquote:px-6 prose-blockquote:py-4
             prose-blockquote:text-foreground prose-blockquote:font-medium
           "
@@ -139,13 +135,13 @@ export default function PostPage({ params }: Props) {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/contact"
-              className="flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+              className="hm-press hm-press-primary flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold"
             >
               협업 문의하기
             </Link>
             <Link
               href="/lab"
-              className="flex items-center gap-2 rounded-lg border border-border px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
+              className="hm-press flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold"
             >
               다른 글 보기
             </Link>

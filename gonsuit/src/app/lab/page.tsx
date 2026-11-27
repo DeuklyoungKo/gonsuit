@@ -41,7 +41,7 @@ export default function LabPage() {
 
       <main>
         {/* Header Section */}
-        <section className="border-b border-border py-20 bg-muted/20">
+        <section className="border-b border-border py-20 bg-[var(--color-paper-2)]">
           <div className="mx-auto max-w-6xl px-6">
             <div className="max-w-3xl">
               <h1 className="text-4xl font-bold tracking-tight md:text-5xl">고앤슈트 Lab</h1>
@@ -65,17 +65,15 @@ export default function LabPage() {
                     href={`/lab/${post.slug}`}
                     className="group block"
                   >
-                    <article className="flex flex-col h-full rounded-2xl border border-border bg-card overflow-hidden transition-all hover:border-primary/40 hover:shadow-lg">
-                      <div className="aspect-[16/9] bg-muted/50 flex items-center justify-center border-b border-border transition-colors group-hover:bg-primary/5">
+                    <article className="flex flex-col h-full rounded-2xl border border-border bg-card overflow-hidden transition-[border-color,box-shadow] duration-200 hover:border-primary/40 hover:shadow-md">
+                      <div className="aspect-[16/9] bg-[var(--color-paper-2)] flex items-center justify-center border-b border-border transition-colors group-hover:bg-[var(--color-paper-3)]">
                         <Icon
-                          className={`h-12 w-12 ${post.color.split(" ")[0]} opacity-40 group-hover:scale-110 transition-transform`}
+                          className="h-12 w-12 text-foreground opacity-60 group-hover:scale-105 transition-transform"
                         />
                       </div>
                       <div className="p-6 flex-1 flex flex-col">
                         <div className="flex items-center gap-3 mb-4">
-                          <span
-                            className={`px-2.5 py-0.5 rounded-full text-[10px] uppercase font-bold tracking-wider ${post.color}`}
-                          >
+                          <span className="px-2 py-0.5 rounded-md text-xs font-medium bg-[var(--color-paper-2)] text-foreground border border-border">
                             {post.category}
                           </span>
                           <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
@@ -105,19 +103,19 @@ export default function LabPage() {
         </section>
 
         {/* Newsletter Section */}
-        <section className="py-24 border-t border-border bg-zinc-950 text-white">
+        <section className="py-24 border-t border-border bg-[var(--color-board)] text-[var(--color-board-type)]">
           <div className="mx-auto max-w-4xl px-6 text-center">
             <h2 className="text-3xl font-bold tracking-tight">기술 인사이트를 메일로 받아보세요</h2>
-            <p className="mt-4 text-zinc-400">
+            <p className="mt-4 text-[var(--color-paper-2)]">
               비정기적으로 발행되는 고앤슈트의 최신 기술 트렌드와 실험 결과를 가장 먼저 공유해 드립니다.
             </p>
             <form className="mt-10 flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
               <input
                 type="email"
                 placeholder="name@email.com"
-                className="flex-1 bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                className="flex-1 bg-[var(--color-paper)] text-[var(--color-ink)] border border-[var(--color-rule)] rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-focus)]"
               />
-              <button className="bg-primary text-primary-foreground px-6 py-3 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity">
+              <button className="hm-press hm-press-primary px-6 py-3 text-sm font-semibold border border-[var(--color-rule)]">
                 구독하기
               </button>
             </form>
